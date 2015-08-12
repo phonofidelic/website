@@ -1,0 +1,56 @@
+* {
+	/*border: solid red 1px;*/
+}
+
+body {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+}
+
+nav {
+	z-index: 100;
+	width: 100%;
+}
+
+.header {
+	/*color: #fff;*/
+	/*text-align: right;*/
+	height: 90vh;
+	/*background: url(../img/palms.jpg) no-repeat, center;*/
+	width: 100%;
+}
+
+.intro {
+	max-width: 200px;
+	text-align: left;
+	/*margin-left: 75%;*/
+	top: 45vh;
+}
+
+.nav {
+	background-color: #888;
+	min-height: 50px;
+	/*top: 100vh;*/
+	border-radius: 5px;
+}
+
+.container {
+	margin: 0;
+	width: 100%;
+}
+
+.test {
+	margin-bottom: 2000px;
+}
+
+@media (max-width: 768px) {
+	.header {
+		text-align: center;
+	}
+}
+
+@media (min-width: 768px) {
+	.header {
+
+	}
+}

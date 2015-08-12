@@ -1,70 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
 	<meta name="viewport" content="width=device-width initial-scale=1">
 	<title>Phonofidelic test-site</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/sticky/jquery.sticky.js"></script>
+	<script>
+	  $(document).ready(function(){
+	    $("#nav").sticky({topSpacing:15});
+	  });
+	</script>
 </head>
 <body>
-	<div class="welcome-bg">
-		<div class="container welcome">
-			<div class="row welcome">
-				<div class="col-md-12 welcome"><h1>phonofidelic</h1></div>
-			</div>
-		</div>
-	</div>
 	<div class="container">
-		<div class="row top">
-			<div class="col-xs-12 col-md-12 sub-header">
-				<h1>.sub-header</h1>
+		<div class="row">
+			<div class="col-xs-12 col-md-4 header">
+				<h1>
+					phonofidelic
+				</h1>
+				<p class="intro">
+					is a way for me to [do stuff] without the boundaries of a fixed profession. I rely on diverse experiences from all aspects and periods of my life [and shared experiences] in order to bring forth unexpected results. The unexpected is perhaps what I value most in my work.
+				</p>
 			</div>
 		</div>
+		<nav class="nav" id="nav">
+			<div class="container">
+				<h2>nav</h2>
+			</div>
+		</nav>
 		<div class="row">
-			<div class="col-xs-12 col-md-4 content" id="left-col">
-				<div class="row left-col-head"><h2>.left-col-head</h2></div>
-				<div class="row left-col-bod"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a vulputate sapien, ac dignissim nulla. Maecenas faucibus metus in enim euismod feugiat. Nunc at porta tellus, sit amet dapibus justo. Aenean condimentum lorem in rutrum feugiat. Suspendisse rhoncus orci ut diam commodo, nec faucibus odio tincidunt. Cras mauris nisl, pharetra ullamcorper porttitor sed, facilisis non diam. Donec nec tellus quam. Praesent venenatis sem nec tempor tristique. Aenean et ultrices mauris. Vestibulum lobortis commodo justo, ac ullamcorper lacus pellentesque in. Fusce non dapibus lacus, sit amet fringilla risus. Sed eget nibh arcu. Nunc et efficitur neque. Aliquam at sollicitudin orci. Vestibulum hendrerit ipsum non dolor maximus aliquam.</p></div>
-			</div>
-			<div class="col-xs-12 col-md-4 content" id="center-col">
-				<div class="row center-col-head"><h2>.center-col-head</h2></div>
-				<div class="row center-col-bod"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed interdum eros ut tellus ultricies imperdiet. Phasellus id condimentum diam. Duis elit magna, condimentum sit amet accumsan id, vulputate et sem. Morbi sodales leo a convallis aliquam. Sed sit amet venenatis augue. Etiam pulvinar felis ac purus molestie congue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non mollis erat, et aliquet felis. Mauris sit amet felis quam. Etiam faucibus vestibulum arcu, sit amet scelerisque turpis auctor eget. Ut congue sed purus facilisis iaculis. Praesent congue, elit auctor pellentesque varius, nisi risus bibendum mauris, eget gravida sem augue quis tortor.</p></div>
-			</div>
-			<div class="col-xs-12 col-md-4 content" id="right-col">
-				<div class="row right-col-head"><h2>.right-col-head</h2></div>
-				<div class="row right-col-bod"><p>Duis at venenatis quam. Donec tristique sed leo id bibendum. Sed posuere nisi ac varius fringilla. Cras laoreet, erat eu feugiat egestas, elit urna sodales lectus, vel hendrerit nunc libero nec nibh. Praesent id mattis ipsum. Mauris laoreet tellus justo, a rutrum turpis tincidunt sed. Aenean imperdiet leo quis risus malesuada sodales. Morbi laoreet nunc velit, ut euismod sapien ultricies nec. Mauris ligula lorem, egestas sed tincidunt sed, dictum id lectus.</p></div>
-			</div>
-			<div class="row" id="projects"></div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12 col-md-12 footer">
-				<p>.footer</p>
+			<div class="col-xs-12">
+				<p class="test">hello</p>
 			</div>
 		</div>
 	</div>
-	<div id="slides">
-		<div class="slides-container">
-			<div id="img1"><img src="images/IMG_1789.jpg" alt=""></div>
-		    <div id="img2"><img src="images/img_1922.jpg" alt=""></div>
-		    <div id="img3"><img src="images/img_1982.jpg" alt=""></div>
-		    <div id="img4"><img src="images/img_1987.jpg" alt=""></div>
-		    <div id="img5"><img src="images/img_1988.jpg" alt=""></div>
-		    <div id="img6"><img src="images/img_2014.jpg" alt=""></div>
-		    <div id="img7"><img src="images/img_2016.jpg" alt=""></div>
-		</div>
-	</div>
-	<script type="text/javascript" src="js/superslides-0.6.2/dist/jquery.superslides.js"></script>
-	<script>
-
-				$('#slides').superslides({
-					hashchange: false,
-					pagination:false,
-					play: 5000
-				});
-
-	</script>
-	<script type="text/javascript" src="js/projectMaker.js"></script>
-	<script type="text/javascript" src="js/slideInfo.js"></script>
 </body>
 </html>

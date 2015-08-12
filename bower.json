@@ -1,0 +1,24 @@
+{
+  "name": "phonofidelic.com",
+  "version": "0.0.0",
+  "authors": [
+    "phonofidelic <chris_clemons85@hotmail.com>"
+  ],
+  "description": "Website for Phonofidelic",
+  "main": "['js', 'css', 'img']",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "skeleton": "~2.0.4",
+    "superslides": "~0.6.2",
+    "bootstrap": "~3.3.5",
+    "sticky": "~1.0.1",
+    "audiojs": "*"
+  }
+}
