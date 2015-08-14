@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/galleriffic/js/jquery.galleriffic.js"></script>
 	<script type="text/javascript" src="bower_components/sticky/jquery.sticky.js"></script>
 	<script src="bower_components/oauth-signature/dist/oauth-signature.js"></script>
 	<script>
@@ -35,9 +36,28 @@
 		</nav>
 		<div class="row">
 			<div class="col-xs-12 viewer">
-				<p class="test">hello</p>
+				<div id="controls"></div>
+				<div id="loading"></div>
+				<div id="slideshow"></div>
+				<div id="caption"></div>
+				<div id="thumbs">
+				    <ul class="thumbs noscript">
+				        <li>
+				            <a class="thumb" name="optionalCustomIdentifier" href="img/p10s.jpg" title="your image title">
+				                <img src="img/p10_s.jpg" alt="your image title again for graceful degradation" />
+				            </a>
+				            <div class="caption">
+				                (Any html can go here)
+				            </div>
+				        </li>
+				        ... (repeat for every image in the gallery)
+				    </ul>
+				</div>
 			</div>
 		</div>
 	</div>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+	<script src="js/imgViewer.js"></script>
 </body>
 </html>

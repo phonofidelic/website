@@ -1,26 +1,35 @@
 var fs = require('fs'),
-  path = require('path');
+  path = require('path'),
+  fileArray = [];
 
-// read contents of img directory
-var imgDir = fs.readdirSync('img');
-// console.log(imgDir);
+// read contents of img directory and greates img object for each file in dir
+var imgDir = fs.readdir('img', function(err, files) {
+	for (var i = 0; i < files.length; i++) {
+		// instantiate File class and push new object to fileArray
+		var file = new File('img_'+i, 'img/'+files[i]);
+		fileArray.push(file);
+	}
+
+	console.log(fileArray);
+	if (err) throw err;
+});
 
 // set paths to images in img directory
 //and store them as objects in an array
 
-/*
+// File constructor function
+function File(id, src) {
+	this.id = id;
+	this.src = src;
+};
+
+/*** OUTPUT
 
 [
-	{'img1'},
-	{'img2'},
-	{'img3'}
+	{ id: 'img_0', src: 'img/.DS_Store' },
+	{ id: 'img_1', src: 'img/art_framed_s.jpg' },
+	{ id: 'img_2', src: 'img/art_like_s.jpg' },
+	...
 ]
 
 */
-
-for (var i = 0; i < imgDir.length; i++) {
-	// console.log(imgDir[i]);
-	console.log(path.extname(imgDir[i]));
-}
-
-// path.extname()

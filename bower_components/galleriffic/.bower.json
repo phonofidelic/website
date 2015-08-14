@@ -1,0 +1,14 @@
+{
+  "name": "galleriffic",
+  "homepage": "https://github.com/iamvery/galleriffic",
+  "_release": "96f94edc48",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "96f94edc48d4c0c2d002411d3b5a6dd165c4b736"
+  },
+  "_source": "git://github.com/iamvery/galleriffic.git",
+  "_target": "*",
+  "_originalSource": "galleriffic",
+  "_direct": true
+}
