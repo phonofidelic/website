@@ -1,5 +1,5 @@
 * {
-	/*border: solid red 1px;*/
+	border: solid red 1px;
 }
 
 body {
@@ -39,8 +39,12 @@ nav {
 	border-radius: 5px;
 }
 
-.viewer {
+.gallery {
+	margin: 15px;
+}
 
+.thumbs {
+	margin: 3px;
 }
 
 .test {
