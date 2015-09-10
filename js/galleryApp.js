@@ -40,3 +40,7 @@ console.log(gallery.toJSON());
 var galleryView = new app.allImgView({collection: gallery});
 
 $('#viewer').html(galleryView.render().el);
+
+var projectView = new app.allImgView({collection: gallery});
+
+$('#project-img').html(projectView.render().el);

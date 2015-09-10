@@ -49,7 +49,7 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
 	      </div>
-	      <div class="modal-body">
+	      <div class="modal-body" id="project-img">
 	        ...
 	      </div>
 	      <div class="modal-footer">
@@ -63,10 +63,14 @@
 	<script type="text/template" id="img-thumb">
 		<img src="<%= thumb %>" alt="<%= alt %>" class="image" type="button" data-toggle="modal" data-target="#img-modal">
 	</script>
+	<script type="text/template" id="project-view">
+		<img src="<%= src %>" alt="<%= alt %>" class="image">
+	</script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
     <script src="js/models/singleImgModel.js"></script>
     <script src="js/views/singleImgView.js"></script>
+    <script src="js/views/projectView.js"></script>
     <script src="js/views/allImgView.js"></script>
     <script src="js/collections/allImg.js"></script>
     <script src="js/galleryApp.js"></script>

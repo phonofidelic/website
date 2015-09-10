@@ -18,8 +18,8 @@ var imgDir = fs.readdir('img', function(err, files) {
 //and store them as objects in an array
 
 // File constructor function
-function File(id, src) {
-	this.id = id;
+function File(name, src) {
+	this.name = name;
 	this.src = src;
 };
 

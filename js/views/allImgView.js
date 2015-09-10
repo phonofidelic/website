@@ -15,3 +15,4 @@ app.allImgView = Backbone.View.extend({
 		this.$el.append(imgView.render().el);
 	}
 });
+
