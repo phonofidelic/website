@@ -1,6 +1,5 @@
 // store img objegts here
 var imgArray = [
-	{ id: 'img_0', src: 'img/.DS_Store' },
   { id: 'img_1', src: 'img/art_framed_s.jpg' },
   { id: 'img_2', src: 'img/art_like_s.jpg' },
   { id: 'img_3', src: 'img/art_pilot_s.jpg' },
@@ -55,14 +54,21 @@ function Img(src, thumb, alt) {
 	}
 };
 
-// for (var i = 0; i < imgArray.length; i++) {
-// 	var img = new Img(imgArray[i].src, null, null)
-// }
+for (var i = 0; i < imgArray.length; i++) {
+	var img = new Img(imgArray[i].src, null, null)
+}
 
 function Viewer() {
 	this.li = document.createElement('li');
 	this.link = document.createElement('a');
 	this.div = document.createElement('div');
+
+  for (var i = 0; i < imgArray.length; i++) {
+    this.span = document.createElement('span');
+    this.span.className = 'thumb';
+    $('.thumb').html('<img src="'+imgArray[i].src+'">');
+
+  }
 }
 
 // var liItem = document.createElement('li'),
