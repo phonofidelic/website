@@ -1,5 +1,5 @@
 * {
-	border: solid red 1px;
+	/*border: solid red 1px;*/
 }
 
 body {
@@ -25,11 +25,18 @@ nav {
 	width: 100%;
 }
 
+.logo {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .intro {
 	max-width: 200px;
 	text-align: left;
 	/*margin-left: 75%;*/
 	top: 45vh;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .nav {
@@ -39,17 +46,42 @@ nav {
 	border-radius: 5px;
 }
 
+.print-header {
+	margin: 0 15px 0 15px;
+}
+
 .gallery {
 	margin: 15px;
 }
 
-.thumbs {
+.thumb img {
 	margin: 3px;
 }
 
-.test {
-	margin-bottom: 2000px;
+/*
+	Modal stuff
+*/
+.arrow-nav {
+	display: inline-block;
+	padding: 10px;
+	/*float: left;*/
 }
+
+.arrow-nav:hover {
+	color: red;
+}
+
+.arrow-nav.left {
+	float: left;
+}
+
+.arrow-nav.right {
+	float: right;
+}
+
+/*
+	Media queries
+ */
 
 @media (max-width: 768px) {
 	.header {

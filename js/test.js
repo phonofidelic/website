@@ -3,10 +3,10 @@ var fs = require('fs'),
   fileArray = [];
 
 // read contents of img directory and greates img object for each file in dir
-var imgDir = fs.readdir('img', function(err, files) {
+fs.readdir('img/projects', function(err, files) {
 	for (var i = 0; i < files.length; i++) {
 		// instantiate File class and push new object to fileArray
-		var file = new File('img_'+i, 'img/'+files[i]);
+		var file = new File('img_'+i, 'img/projects/'+files[i], 'img/thumbs/'+files[i]+'_s');
 		fileArray.push(file);
 	}
 
@@ -18,9 +18,10 @@ var imgDir = fs.readdir('img', function(err, files) {
 //and store them as objects in an array
 
 // File constructor function
-function File(name, src) {
+function File(name, src, thumb) {
 	this.name = name;
 	this.src = src;
+	this.thumb = thumb;
 };
 
 /*** OUTPUT

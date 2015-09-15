@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="bower_components/galleriffic/js/jquery.galleriffic.js"></script>
 	<script type="text/javascript" src="bower_components/sticky/jquery.sticky.js"></script>
+	<script type="text/javascript" src="bower_components/handlebars/handlebars.js"></script>
 	<script src="bower_components/oauth-signature/dist/oauth-signature.js"></script>
 	<script>
 	  $(document).ready(function(){
@@ -21,8 +22,8 @@
 	<div class="container">
 		<div class="row header">
 			<div class="col-xs-12">
-				<!-- <img src="img/logo.png" alt="phonofidelic logo" class="img-responsive"> -->
-				<h1>phonofidelic</h1>
+				<img src="img/logo.png" alt="phonofidelic logo" class="img-responsive logo">
+				<!-- <h1>phonofidelic</h1> -->
 			</div>
 			<div class="col-xs-12 col-md-4">
 				<p class="intro">
@@ -37,8 +38,14 @@
 		</nav>
 	</div>
 
+
 	<div class="row">
-		<div class="col-xs-4 gallery" id="viewer">
+		<div class="col-xs-12 col-md-4 print-header">
+			<h2>Print</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-4 gallery" id="viewer">
 		</div>
 	</div>
 
@@ -47,20 +54,49 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	        <h4 class="modal-title" id="myModalLabel">Projects</h4>
 	      </div>
 	      <div class="modal-body" id="project-img">
 	        ...
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
+	      	<!-- <div class="arrow-nav left">
+	        	<span class="glyphicon glyphicon-arrow-left" data-target="#img-modal"></span>
+	        </div>
+	      	<div class="arrow-nav right">
+	        	<span class="glyphicon glyphicon-arrow-right" data-target="#img-modal"></span>
+	        </div> -->
 	      </div>
 	    </div>
 	  </div>
 	</div>
 
 
+
+
+	<script id="project-template" type="text/x-handlebars-template">
+	<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		 <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+			    <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+			    </div>
+			    <div class="modal-body" id="project-img">
+			        ...
+			    </div>
+			    <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button>
+			    </div>
+		    </div>
+		 </div>
+	</div>
+	</script>
+	<script type="text/javascript">
+		var source   = $("#project-template").html();
+		var template = Handlebars.compile(source);
+	</script>
 	<script src="js/imgViewer.js"></script>
 </body>
 </html>

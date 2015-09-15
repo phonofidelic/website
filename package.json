@@ -7,7 +7,12 @@
     "gulp-inject": "^1.5.0"
   },
   "devDependencies": {
-    "gulp-inject": "^1.5.0"
+    "event-stream": "^3.3.1",
+    "graceful-fs": "^4.1.2",
+    "gulp-inject": "^1.5.0",
+    "read-dir-files": "^0.1.1",
+    "readable-stream": "^2.0.2",
+    "readdirp": "^2.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

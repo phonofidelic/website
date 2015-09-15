@@ -1,43 +1,42 @@
-// store img objegts here
+// store img objects here
 var imgArray = [
-  { id: 'img_1', src: 'img/art_framed_s.jpg' },
-  { id: 'img_2', src: 'img/art_like_s.jpg' },
-  { id: 'img_3', src: 'img/art_pilot_s.jpg' },
-  { id: 'img_4', src: 'img/art_red_wall1_s.jpg' },
-  { id: 'img_5', src: 'img/art_smoker_s.jpg' },
-  { id: 'img_6', src: 'img/art_stranden_s.jpg' },
-  { id: 'img_7', src: 'img/art_suspended_s.jpg' },
-  { id: 'img_8', src: 'img/art_unnamed1_s.jpg' },
-  { id: 'img_9', src: 'img/art_unnamed2_s.jpg' },
-  { id: 'img_10', src: 'img/box_s.jpg' },
-  { id: 'img_11', src: 'img/ill1_s.jpg' },
-  { id: 'img_12', src: 'img/ill2_s.jpg' },
-  { id: 'img_13', src: 'img/ill3_s.jpg' },
-  { id: 'img_14', src: 'img/ill4_s.jpg' },
-  { id: 'img_15', src: 'img/ill5_s.jpg' },
-  { id: 'img_16', src: 'img/ill6_s.jpg' },
-  { id: 'img_17', src: 'img/kilroy_s.jpg' },
-  { id: 'img_18', src: 'img/kitchencd_s.jpg' },
-  { id: 'img_19', src: 'img/logo.png' },
-  { id: 'img_20', src: 'img/p10_s.jpg' },
-  { id: 'img_21', src: 'img/p11_s.jpg' },
-  { id: 'img_22', src: 'img/p12_s.jpg' },
-  { id: 'img_23', src: 'img/p13_s.jpg' },
-  { id: 'img_24', src: 'img/p14_s.jpg' },
-  { id: 'img_25', src: 'img/p15_s.jpg' },
-  { id: 'img_26', src: 'img/p16_s.jpg' },
-  { id: 'img_27', src: 'img/p17_s.jpg' },
-  { id: 'img_28', src: 'img/p1_s.jpg' },
-  { id: 'img_29', src: 'img/p3_s.jpg' },
-  { id: 'img_30', src: 'img/p4_s.jpg' },
-  { id: 'img_31', src: 'img/p5_s.jpg' },
-  { id: 'img_32', src: 'img/p6_s.jpg' },
-  { id: 'img_33', src: 'img/p8_s.jpg' },
-  { id: 'img_34', src: 'img/p9_s.jpg' },
-  { id: 'img_35', src: 'img/palms.JPG' },
-  { id: 'img_36', src: 'img/scragcd_s.jpg' },
-  { id: 'img_37', src: 'img/vanjascd_s.jpg' }
+  { id: 'img_1', src: 'img/projects/art_framed.jpg', thumb: 'img/thumbs/art_framed_s.jpg' },
+  { id: 'img_2', src: 'img/projects/art_like.jpg', thumb: 'img/thumbs/art_like_s.jpg' },
+  { id: 'img_3', src: 'img/projects/art_pilot.jpg', thumb: 'img/thumbs/art_pilot_s.jpg' },
+  { id: 'img_4', src: 'img/projects/art_red_wall1.jpg', thumb: 'img/thumbs/art_red_wall1_s.jpg' },
+  { id: 'img_5', src: 'img/projects/art_smoker.jpg', thumb: 'img/thumbs/art_smoker_s.jpg' },
+  { id: 'img_6', src: 'img/projects/art_stranden.jpg', thumb: 'img/thumbs/art_stranden_s.jpg' },
+  { id: 'img_7', src: 'img/projects/art_suspended.jpg', thumb: 'img/thumbs/art_suspended_s.jpg' },
+  { id: 'img_8', src: 'img/projects/art_unnamed1.jpg', thumb: 'img/thumbs/art_unnamed1_s.jpg' },
+  { id: 'img_9', src: 'img/projects/art_unnamed2.jpg', thumb: 'img/thumbs/art_unnamed2_s.jpg' },
+  { id: 'img_11', src: 'img/projects/ill1.jpg', thumb: 'img/thumbs/ill1_s.jpg' },
+  { id: 'img_12', src: 'img/projects/ill2.jpg', thumb: 'img/thumbs/ill2_s.jpg' },
+  { id: 'img_13', src: 'img/projects/ill3.jpg', thumb: 'img/thumbs/ill3_s.jpg' },
+  { id: 'img_14', src: 'img/projects/ill4.jpg', thumb: 'img/thumbs/ill4_s.jpg' },
+  { id: 'img_15', src: 'img/projects/ill5.jpg', thumb: 'img/thumbs/ill5_s.jpg' },
+  { id: 'img_16', src: 'img/projects/ill6.jpg', thumb: 'img/thumbs/ill6_s.jpg' },
+  { id: 'img_17', src: 'img/projects/kilroy.jpg', thumb: 'img/thumbs/kilroy_s.jpg' },
+  { id: 'img_18', src: 'img/projects/kitchencd.jpg', thumb: 'img/thumbs/kitchencd_s.jpg' },
+  { id: 'img_20', src: 'img/projects/p10.jpg', thumb: 'img/thumbs/p10_s.jpg' },
+  { id: 'img_21', src: 'img/projects/p11.jpg', thumb: 'img/thumbs/p11_s.jpg' },
+  { id: 'img_22', src: 'img/projects/p12.jpg', thumb: 'img/thumbs/p12_s.jpg' },
+  { id: 'img_23', src: 'img/projects/p13.jpg', thumb: 'img/thumbs/p13_s.jpg' },
+  { id: 'img_24', src: 'img/projects/p14.jpg', thumb: 'img/thumbs/p14_s.jpg' },
+  { id: 'img_25', src: 'img/projects/p15.jpg', thumb: 'img/thumbs/p15_s.jpg' },
+  { id: 'img_26', src: 'img/projects/p16.jpg', thumb: 'img/thumbs/p16_s.jpg' },
+  { id: 'img_27', src: 'img/projects/p17.jpg', thumb: 'img/thumbs/p17_s.jpg' },
+  { id: 'img_28', src: 'img/projects/p1.jpg', thumb: 'img/thumbs/p1_s.jpg' },
+  { id: 'img_29', src: 'img/projects/p3.jpg', thumb: 'img/thumbs/p3_s.jpg' },
+  { id: 'img_30', src: 'img/projects/p4.jpg', thumb: 'img/thumbs/p4_s.jpg' },
+  { id: 'img_31', src: 'img/projects/p5.jpg', thumb: 'img/thumbs/p5_s.jpg' },
+  { id: 'img_32', src: 'img/projects/p6.jpg', thumb: 'img/thumbs/p6_s.jpg' },
+  { id: 'img_33', src: 'img/projects/p8.jpg', thumb: 'img/thumbs/p8_s.jpg' },
+  { id: 'img_34', src: 'img/projects/p9.jpg', thumb: 'img/thumbs/p9_s.jpg' },
+  { id: 'img_36', src: 'img/projects/scragcd.jpg', thumb: 'img/thumbs/scragcd_s.jpg' },
+  { id: 'img_37', src: 'img/projects/vanjascd.jpg', thumb: 'img/thumbs/vanjascd_s.jpg' }
 ];
+
+var currentImg = null;
 
 //Img object constructor
 function Img(src, thumb, alt) {
@@ -54,35 +53,48 @@ function Img(src, thumb, alt) {
 	}
 };
 
+
+// create viewer element
 for (var i = 0; i < imgArray.length; i++) {
-	var img = new Img(imgArray[i].src, null, null)
+	// var img = new Img(imgArray[i].src, imgArray[i].thumb, imgArray[i].alt)
+  var img = imgArray[i];
+
+  // Build img-viewer element
+  var thumbDiv = document.createElement('span');
+  $(thumbDiv).addClass('thumb');
+  var thumbImg = document.createElement('img');
+  $(thumbImg).attr('src', imgArray[i].thumb);
+  $(thumbImg).attr('data-toggle', 'modal');
+  $(thumbImg).attr('data-target', '#img-modal');
+
+
+
+  // click event
+  thumbImg.addEventListener('click', (function(imgCopy) {
+    return function() {
+
+      // Set content for modal-body
+      $('.modal-body').html('<img src="'+imgCopy.src+'" class="img-responsive">');
+      console.log(imgCopy);
+
+
+
+      currentImg = imgCopy.id;
+    }
+  })(img));
+
+  thumbDiv.appendChild(thumbImg);
+  $('#viewer').append(thumbDiv)
 }
 
-function Viewer() {
-	this.li = document.createElement('li');
-	this.link = document.createElement('a');
-	this.div = document.createElement('div');
+// Build modal-footer elements
+var leftNav = document.createElement('div');
+$(leftNav).addClass('arrow-nav left');
+$(leftNav).html('<span class="glyphicon glyphicon-arrow-left" data-target="#img-modal"></span>');
+$('.modal-footer').append(leftNav);
 
-  for (var i = 0; i < imgArray.length; i++) {
-    this.span = document.createElement('span');
-    this.span.className = 'thumb';
-    $('.thumb').html('<img src="'+imgArray[i].src+'">');
+var rightNav = document.createElement('div');
+$(rightNav).addClass('arrow-nav right');
+$(rightNav).html('<span class="glyphicon glyphicon-arrow-right" data-target="#img-modal"></span>');
+$('.modal-footer').append(rightNav);
 
-  }
-}
-
-// var liItem = document.createElement('li'),
-// 			link = document.createElement('a'),
-// 			 div = document.createElement('div');
-
-
-
-
-
-
-// galleriffic plugin init
-$(document).ready(function($) {
-    var gallery = $('#thumbs').galleriffic({
-
-    });
-});
