@@ -58,6 +58,18 @@ nav {
 	margin: 15px, auto, 15px, auto;
 }
 
+.plyer {
+
+}
+
+.audio-controll-component {
+	margin: 10px;
+}
+
+.audio-controll-component:hover {
+	color: red;
+}
+
 .thumb img {
 	margin: 3px;
 }
