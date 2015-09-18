@@ -20,9 +20,9 @@ nav {
 .header {
 	/*color: #fff;*/
 	/*text-align: right;*/
-	height: 90vh;
-	/*background: url(../img/palms.jpg) no-repeat, center;*/
-	width: 100%;
+	height: 100vh;
+	background: url(../img/winter.jpg) no-repeat, center;
+	width: 100vw;
 }
 
 .logo {
