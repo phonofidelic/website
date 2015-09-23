@@ -50,6 +50,11 @@ nav {
 
 /*********	Main content: *********/
 
+.section {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
 .section-header {
 	margin: 0 15px 0 15px;
 }
@@ -79,6 +84,10 @@ nav {
 }
 
 /*********	Modal stuff *********/
+
+.project-img {
+	margin: auto;
+}
 
 .arrow-nav {
 	display: inline-block;

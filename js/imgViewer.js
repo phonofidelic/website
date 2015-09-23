@@ -1,6 +1,6 @@
 // store img objects here
 var model = {
-  currentImg: null,
+  currentSelect: null,
 
   imgArray: [
     // { id: 'img_1', src: 'img/projects/art_framed.jpg', thumb: 'img/thumbs/art_framed_s.jpg' },
@@ -57,12 +57,36 @@ function Img(src, thumb, alt) {
 };
 
 
-var controler = {
+var controller = {
+  test: {},
   init: function() {
     listView.init();
+    modalView.init();
   },
-  getCurrentImg: function() {
 
+  pointer: function(index) {
+    return model.imgArray[index];
+  },
+
+  getList: function() {
+    return model.imgArray;
+  },
+  setSelect: function(select) {
+    return model.currentSelect = select;
+    console.log('setSelect: '+select);
+  },
+  getSelect: function() {
+    return model.currentSelect;
+  },
+  incSelect: function() {
+    model.currentSelect.id++;
+    modalView.render();
+    console.log('+');
+  },
+  decSelect: function() {
+    model.currentSelect.id--;
+    modalView.render();
+    console.log('-');
   }
 };
 
@@ -71,16 +95,21 @@ var listView = {
     this.render();
   },
   render: function() {
+    var imgList = controller.getList();
+
     // create viewer element
-    for (var i = 0; i < model.imgArray.length; i++) {
+    for (var i = 0; i < imgList.length; i++) {
+
+      imgList[i].id = i;
+
       // itterate through imgArray
-      var img = model.imgArray[i];
+      var img = imgList[i];
 
       // Build each img-viewer thumb element
       var thumbDiv = document.createElement('span');
       $(thumbDiv).addClass('thumb');
       var thumbImg = document.createElement('img');
-      $(thumbImg).attr('src', model.imgArray[i].thumb);
+      $(thumbImg).attr('src', imgList[i].thumb);
       $(thumbImg).attr('data-toggle', 'modal');
       $(thumbImg).attr('data-target', '#img-modal');
 
@@ -88,11 +117,16 @@ var listView = {
       thumbImg.addEventListener('click', (function(imgCopy) {
         return function() {
 
-          // Set content for modal-body
-          $('.modal-body').html('<img src="'+imgCopy.src+'" class="img-responsive">');
-          console.log(imgCopy);
+          // Set content for modal-body ----------------------------------- TODO: move to modalView.render
+          // $('.modal-body').html('<img src="'+imgCopy.src+'" class="project-img img-responsive">');
+          // console.log(imgCopy);
 
-          currentImg = imgCopy.id;
+          // Set current sellection in model
+          controller.setSelect(imgCopy);
+          // Set selected content for modal body
+          modalView.render();
+
+          console.log(imgCopy);
         }
       })(img));
 
@@ -102,17 +136,95 @@ var listView = {
   }
 };
 
+var modalView = {
+  init: function() {
+    // Build modal elements
+    var imgModal = document.createElement('div');
+    $(imgModal).addClass('modal fade');
+    $(imgModal).attr('id', 'img-modal');
+    $(imgModal).attr('tabindex', -1);
+    $(imgModal).attr('aria-labelledy', 'myModalLabel');
+
+    imgModal.appendChild(
+      this.modalDialog = document.createElement('div'),
+      $(this.modalDialog).addClass('modal-dialog'),
+      $(this.modalDialog).attr('role', 'document')
+    );
+
+    this.modalDialog.appendChild(
+      this.modalContent = document.createElement('div'),
+      $(this.modalContent).addClass('modal-content')
+    );
+
+    // Modal header
+    this.modalContent.appendChild(
+      this.modalHeader = document.createElement('div'),
+      $(this.modalHeader).addClass('modal-header')
+    );
+
+    this.modalHeader.appendChild(
+      this.close = document.createElement('button'),
+      $(this.close).addClass('close'),
+      $(this.close).attr('type', 'button'),
+      $(this.close).attr('data-dismiss', 'modal'),
+      $(this.close).attr('aria-label', 'Close')
+    );
+
+    this.close.appendChild(
+      this.closeSpan = document.createElement('span'),
+      $(this.closeSpan).attr('aria-hidden', 'true'),
+      $(this.closeSpan).text('x')
+    );
+
+    // Modal body
+    this.modalContent.appendChild(
+      this.modalBody = document.createElement('div'),
+      $(this.modalBody).addClass('modal-body'),
+      $(this.modalBody).attr('id', 'project-img' /* TODO: dynamic id name? */) //*************************
+
+    );
+    // Modal Image
+    this.modalContent.appendChild(
+      this.modalImg = document.createElement('img'),
+      $(this.modalImg).addClass('project-img img-responsive'),
+      $(this.modalImg).attr('src', '')
+    );
+
+    // Modal footer
+    this.modalContent.appendChild(
+      this.modalFooter = document.createElement('div'),
+      $(this.modalFooter).addClass('modal-footer')
+    );
+
+    $('body').append(imgModal);
+
+    // Build modal-footer elements
+    var leftNav = document.createElement('div');
+    $(leftNav).addClass('arrow-nav left');
+    $(leftNav).html('<span class="glyphicon glyphicon-arrow-left" data-target="#img-modal"></span>');
+    $('.modal-footer').append(leftNav);
+
+    var rightNav = document.createElement('div');
+    $(rightNav).addClass('arrow-nav right');
+    $(rightNav).html('<span class="glyphicon glyphicon-arrow-right" data-target="#img-modal"></span>');
+    $('.modal-footer').append(rightNav);
+
+    // Nav button eventlistiners
+    leftNav.addEventListener('click', function() {
+      controller.decSelect();
+    });
+    rightNav.addEventListener('click', function() {
+      controller.incSelect();
+    });
+
+    this.render();
+  },
+  render: function() {
+    this.selectedContent = controller.getSelect();
+    $(this.modalImg).attr('src', this.selectedContent.src);
+  }
+};
 
 
-// Build modal-footer elements
-var leftNav = document.createElement('div');
-$(leftNav).addClass('arrow-nav left');
-$(leftNav).html('<span class="glyphicon glyphicon-arrow-left" data-target="#img-modal"></span>');
-$('.modal-footer').append(leftNav);
 
-var rightNav = document.createElement('div');
-$(rightNav).addClass('arrow-nav right');
-$(rightNav).html('<span class="glyphicon glyphicon-arrow-right" data-target="#img-modal"></span>');
-$('.modal-footer').append(rightNav);
-
-controler.init();
+controller.init();
