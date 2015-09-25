@@ -1,5 +1,6 @@
 // store img objects here
 var model = {
+  testList: [],
   currentSelect: null,
 
   imgArray: [
@@ -40,28 +41,27 @@ var model = {
   ]
 };
 
-
-//Img object constructor
-function Img(src, thumb, alt) {
-	this.src = src;
-
-	if (!src){
-		console.log('no src specified');
-	}
-	if (!thumb){
-		console.log('no thumb specified');
-	}
-	if (!alt){
-		console.log('no alt specified');
-	}
-};
-
-
 var controller = {
-  test: {},
+  testList: [],
   init: function() {
     listView.init();
     modalView.init();
+  },
+
+  controllerModel: function(condition) {
+    for (var i; i < Model.length; i++) {
+      var index = Model[i];
+      if (index.category === condition) {
+        this.testList.push(index);
+        // return Model;
+        console.log('match');
+      } else {
+        console.log('no match');
+      }
+    }
+    model.testList.push(Model[i]);
+    console.log('test');
+    console.log(condition);
   },
 
   pointer: function(index) {
@@ -81,12 +81,12 @@ var controller = {
   incSelect: function() {
     model.currentSelect.id++;
     modalView.render();
-    console.log('+');
+    console.log('incSelect +');
   },
   decSelect: function() {
     model.currentSelect.id--;
     modalView.render();
-    console.log('-');
+    console.log('decSelect -');
   }
 };
 
@@ -117,15 +117,12 @@ var listView = {
       thumbImg.addEventListener('click', (function(imgCopy) {
         return function() {
 
-          // Set content for modal-body ----------------------------------- TODO: move to modalView.render
-          // $('.modal-body').html('<img src="'+imgCopy.src+'" class="project-img img-responsive">');
-          // console.log(imgCopy);
-
           // Set current sellection in model
           controller.setSelect(imgCopy);
           // Set selected content for modal body
           modalView.render();
 
+          console.log('listView.render: ');
           console.log(imgCopy);
         }
       })(img));
@@ -222,6 +219,9 @@ var modalView = {
   render: function() {
     this.selectedContent = controller.getSelect();
     $(this.modalImg).attr('src', this.selectedContent.src);
+
+    console.log('modalView.render: ');
+    console.log(this.selectedContent);
   }
 };
 

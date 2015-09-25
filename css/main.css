@@ -44,9 +44,14 @@ nav {
 	background-color: #888;
 	/*min-height: 50px;*/
 	/*top: 100vh;*/
-	border-radius: 5px;
+	/*border-radius: 5px;*/
+	padding: 0 15px 0 15px;
 }
 
+.is-sticky {
+	color: #fff;
+	width: 100%;
+}
 
 /*********	Main content: *********/
 
