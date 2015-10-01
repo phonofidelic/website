@@ -1,37 +1,39 @@
 Model = [
-    {
-    	category: 'print',
-    	src: 'img/projects/art_framed.jpg',
-    	thumb: 'img/thumbs/art_framed_s.jpg'
-    },
-    {
-    	category: 'print',
-    	src: 'img/projects/art_like.jpg',
-    	thumb: 'img/thumbs/art_like_s.jpg'
-    },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/art_framed.jpg',
+    // 	thumb: 'img/thumbs/art_framed_s.jpg'
+    // },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/art_like.jpg',
+    // 	thumb: 'img/thumbs/art_like_s.jpg'
+    // },
     {
     	category: 'print',
     	src: 'img/projects/art_pilot.jpg',
     	thumb: 'img/thumbs/art_pilot_s.jpg'
     },
-    {
-    	category: 'print',
-    	src: 'img/projects/art_red_wall1.jpg',
-    	thumb: 'img/thumbs/art_red_wall1_s.jpg'
-    },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/art_red_wall1.jpg',
+    // 	thumb: 'img/thumbs/art_red_wall1_s.jpg'
+    // },
     {
     	category: 'print',
     	src: 'img/projects/art_smoker.jpg',
     	thumb: 'img/thumbs/art_smoker_s.jpg'
     },
-    {
-    	category: 'print',
-    	src: 'img/projects/art_stranden.jpg',
-    	thumb: 'img/thumbs/art_stranden_s.jpg' },
-    {
-    	src: 'img/projects/art_suspended.jpg',
-    	thumb: 'img/thumbs/art_suspended_s.jpg'
-    },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/art_stranden.jpg',
+    // 	thumb: 'img/thumbs/art_stranden_s.jpg'
+    // },
+    // {
+    //     category: 'print',
+    // 	src: 'img/projects/art_suspended.jpg',
+    // 	thumb: 'img/thumbs/art_suspended_s.jpg'
+    // },
     {
     	category: 'print',
     	src: 'img/projects/art_unnamed1.jpg',
@@ -42,16 +44,16 @@ Model = [
     	src: 'img/projects/art_unnamed2.jpg',
     	thumb: 'img/thumbs/art_unnamed2_s.jpg'
     },
-    {
-    	category: 'print',
-    	src: 'img/projects/ill1.jpg',
-    	thumb: 'img/thumbs/ill1_s.jpg'
-    },
-    {
-    	category: 'print',
-    	src: 'img/projects/ill2.jpg',
-    	thumb: 'img/thumbs/ill2_s.jpg'
-    },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/ill1.jpg',
+    // 	thumb: 'img/thumbs/ill1_s.jpg'
+    // },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/ill2.jpg',
+    // 	thumb: 'img/thumbs/ill2_s.jpg'
+    // },
     {
     	category: 'print',
     	src: 'img/projects/ill3.jpg',
@@ -67,11 +69,11 @@ Model = [
     	src: 'img/projects/ill5.jpg',
     	thumb: 'img/thumbs/ill5_s.jpg'
     },
-    {
-    	category: 'print',
-    	src: 'img/projects/ill6.jpg',
-    	thumb: 'img/thumbs/ill6_s.jpg'
-    },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/ill6.jpg',
+    // 	thumb: 'img/thumbs/ill6_s.jpg'
+    // },
     {
     	category: 'print',
     	src: 'img/projects/kilroy.jpg',
@@ -164,24 +166,13 @@ Model = [
     },
     {
     	category: 'web',
-    	src: [
-    		'img/web/hoodMap1.jpg',
-    		'img/web/hoodMap2.jpg'
-    	],
-    	thumbs: [
-    		'img/web/hoodMap1_s.jpg',
-    		'img/web/hoodMap2_s.jpg'
-    	]
+    	src: 'img/web/hoodMap1.jpg',
+    	thumb: 'img/web/hoodMap1_s.jpg'
+
     },
     {
     	category: 'web',
-    	src: [
-    		'img/web/hanna1.jpg',
-    		'img/web/hanna2.jpg'
-    	],
-    	thumbs: [
-    		'img/web/hanna1_s.jpg',
-    		'img/web/hanna2_s.jpg'
-    	]
+    	src: 'img/web/hanna1.jpg',
+    	thumb: 'img/web/hanna1_s.jpg',
     }
 ];

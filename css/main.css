@@ -40,6 +40,8 @@ nav {
 	margin-right: auto;
 }
 
+/*********	Nav: *********/
+
 .nav {
 	background-color: #888;
 	/*min-height: 50px;*/
@@ -68,7 +70,7 @@ nav {
 	margin: 15px, auto, 15px, auto;
 }
 
-.plyer {
+.player {
 
 }
 

@@ -2,36 +2,50 @@
 var webModel = {
   currentImg: null,
 
-  imgArray: [
-    {
-      id: 'web_1',
-      src: [
-        'img/web/hoodMap1.jpg',
-        'img/web/hoodMap2.jpg'
-      ],
-      thumbs: [
-        'img/web/hoodMap1_s.jpg',
-        'img/web/hoodMap2_s.jpg'
-      ]
-    },
-    {
-      id: 'web_2',
-      src: [
-        'img/web/hanna1.jpg',
-        'img/web/hanna2.jpg'
-      ],
-      thumbs: [
-        'img/web/hanna1_s.jpg',
-        'img/web/hanna2_s.jpg'
-      ]
-    }
-  ]
+  // imgArray: [
+  //   {
+  //     id: 'web_1',
+  //     src: [
+  //       'img/web/hoodMap1.jpg',
+  //       'img/web/hoodMap2.jpg'
+  //     ],
+  //     thumbs: [
+  //       'img/web/hoodMap1_s.jpg',
+  //       'img/web/hoodMap2_s.jpg'
+  //     ]
+  //   },
+  //   {
+  //     id: 'web_2',
+  //     src: [
+  //       'img/web/hanna1.jpg',
+  //       'img/web/hanna2.jpg'
+  //     ],
+  //     thumbs: [
+  //       'img/web/hanna1_s.jpg',
+  //       'img/web/hanna2_s.jpg'
+  //     ]
+  //   }
+  // ]
 };
 
-var webControler = {
+var webController = {
   init: function() {
     webListView.init();
     // webModalView.init();
+  },
+  getList: function() {
+    var list = Model.filter(function(list){
+      return list.category == 'web';
+    });
+    return list;
+    // return model.imgArray;
+  },
+  setSelect: function(select) {
+    return model.currentSelect = select;
+    console.log('setSelect: '+select);
+  },
+  getSelect: function() {
+    return model.currentSelect;
   },
   getCurrentImg: function() {
 
@@ -42,17 +56,52 @@ var webListView = {
   init: function() {
     this.render();
   },
-  render: function() {
+  // render: function() {
+  //   // create viewer element
+  //   for (var i = 0; i < webModel.imgArray.length; i++) {
+  //     // itterate through imgArray
+  //     var img = webModel.imgArray[i];
+
+  //     // Build each img-viewer thumb element
+  //     var thumbDiv = document.createElement('span');
+  //     $(thumbDiv).addClass('thumb');
+  //     var thumbImg = document.createElement('img');
+  //     $(thumbImg).attr('src', webModel.imgArray[i].thumbs[0]);
+  //     $(thumbImg).attr('data-toggle', 'modal');
+  //     $(thumbImg).attr('data-target', '#img-modal');
+
+  //     // click event
+  //     thumbImg.addEventListener('click', (function(imgCopy) {
+  //       return function() {
+
+  //         // Set content for modal-body
+  //         $('.modal-body').html('<img src="'+imgCopy.src[0]+'" class="project-img img-responsive">');
+  //         console.log(imgCopy);
+
+  //         currentImg = imgCopy.id;
+  //       }
+  //     })(img));
+
+  //     thumbDiv.appendChild(thumbImg);
+  //     $('#webViewer').append(thumbDiv)
+  //   }
+  // }
+    render: function() {
+    var imgList = webController.getList();
+
     // create viewer element
-    for (var i = 0; i < webModel.imgArray.length; i++) {
+    for (var i = 0; i < imgList.length; i++) {
+
+      imgList[i].id = i;
+
       // itterate through imgArray
-      var img = webModel.imgArray[i];
+      var img = imgList[i];
 
       // Build each img-viewer thumb element
       var thumbDiv = document.createElement('span');
       $(thumbDiv).addClass('thumb');
       var thumbImg = document.createElement('img');
-      $(thumbImg).attr('src', webModel.imgArray[i].thumbs[0]);
+      $(thumbImg).attr('src', imgList[i].thumb);
       $(thumbImg).attr('data-toggle', 'modal');
       $(thumbImg).attr('data-target', '#img-modal');
 
@@ -60,11 +109,13 @@ var webListView = {
       thumbImg.addEventListener('click', (function(imgCopy) {
         return function() {
 
-          // Set content for modal-body
-          $('.modal-body').html('<img src="'+imgCopy.src[0]+'" class="project-img img-responsive">');
-          console.log(imgCopy);
+          // Set current sellection in model
+          webController.setSelect(imgCopy);
+          // Set selected content for modal body
+          modalView.render();
 
-          currentImg = imgCopy.id;
+          console.log('listView.render: ');
+          console.log(imgCopy);
         }
       })(img));
 
@@ -95,4 +146,4 @@ var webListView = {
 
 
 
-webControler.init();
+webController.init();
