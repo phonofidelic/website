@@ -102,7 +102,7 @@ li {
 }
 
 .gallery {
-	margin: 15px, auto, 15px, auto;
+	margin: 15px auto 15px 85px;
 }
 
 .player {
@@ -130,7 +130,9 @@ li {
 	margin-bottom: 4000px;
 }
 .caption {
-	padding-top: 25px;
+	text-align: left;
+	margin-left: 85px;
+	/*padding-top: 25px;*/
 }
 
 /*********	Modal stuff *********/
@@ -185,6 +187,10 @@ li {
 
 	.print {
 		margin-top: 100px;
+	}
+
+	.caption {
+		margin-left: 25px;
 	}
 }
 
