@@ -55,10 +55,6 @@ nav {
 	border-radius: 0;
 }
 
-.navbar-default {
-	border: none;
-}
-
 /*.nav-button {
 	padding: 25px;
 	cursor: pointer;
@@ -79,10 +75,36 @@ nav {
 
 .btn:hover {
 	background-color: green;
+	color: #fff;
 }
 
+.navbar-toggle {
+	background-color: #000;
+	border: none;
+}
+
+.navbar-toggle:hover {
+	color: green;
+}
+
+.navbar-nav {
+	margin: 0;
+}
+
+.navbar-default
+.navbar-collapse {
+    border: none;
+}
+
+.navbar-default
+.navbar-brand {
+	color: red;
+}
+
+.navbar-default
+.navbar-toggle
 .icon-bar {
-	color: #fff;
+	background-color: #fff;
 }
 
 li {
@@ -182,6 +204,7 @@ li {
 
 	.gallery {
 		margin: auto;
+		margin-left: 20px;
 		padding: auto;
 	}
 
