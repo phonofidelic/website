@@ -91,6 +91,10 @@ nav {
 	margin: 0;
 }
 
+.navbar-default {
+	border: none;
+}
+
 .navbar-default
 .navbar-collapse {
     border: none;
@@ -124,7 +128,8 @@ li {
 }
 
 .gallery {
-	margin: 15px auto 15px 85px;
+	margin: 15px 15px 15px 85px;
+	/*width: auto;*/
 }
 
 .player {
@@ -182,6 +187,14 @@ li {
 	float: right;
 }
 
+.modal-header {
+	border: none;
+}
+
+.modal-footer {
+	border: none;
+}
+
 /*********	Footer *********/
 
 .footer {
@@ -206,6 +219,7 @@ li {
 		margin: auto;
 		margin-left: 20px;
 		padding: auto;
+		width: auto;
 	}
 
 	.print {
