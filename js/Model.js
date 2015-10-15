@@ -173,6 +173,6 @@ Model = [
     {
     	category: 'web',
     	src: 'img/web/hanna1.jpg',
-    	thumb: 'img/web/hanna1_s.jpg',
+    	thumb: 'img/web/hanna1_s.jpg'
     }
 ];

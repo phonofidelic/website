@@ -21,7 +21,7 @@ nav {
 	/*color: #fff;*/
 	/*text-align: right;*/
 	height: 100vh;
-	background: url(../img/winter.jpg) no-repeat, center;
+	background: url(../img/background.jpg) no-repeat, center;
 	width: 100vw;
 }
 
@@ -31,28 +31,62 @@ nav {
 }
 
 .intro {
+	color: #fff;
 	max-width: 200px;
 	text-align: left;
 	/*margin-left: 75%;*/
 	top: 45vh;
-	margin-top: 100px;
+	margin-top: 15px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 /*********	Nav: *********/
 
-.nav {
-	background-color: #888;
+.mynav {
+	background-color: #000;
 	/*min-height: 50px;*/
 	/*top: 100vh;*/
 	/*border-radius: 5px;*/
 	padding: 0 15px 0 15px;
 }
 
-.is-sticky {
+.navbar {
+	border-radius: 0;
+}
+
+.navbar-default {
+	border: none;
+}
+
+/*.nav-button {
+	padding: 25px;
+	cursor: pointer;
+}
+
+.nav-button:hover {
+	background-color: green;
+}*/
+
+.btn {		/* bootdtrap */
+	padding: 25px;
+	background-color: #000;
 	color: #fff;
-	width: 100%;
+	/*color: green;*/
+	height: 100%;
+	border-radius: 0;
+}
+
+.btn:hover {
+	background-color: green;
+}
+
+.icon-bar {
+	color: #fff;
+}
+
+li {
+	list-style: none;
 }
 
 /*********	Main content: *********/
@@ -63,7 +97,8 @@ nav {
 }
 
 .section-header {
-	margin: 0 15px 0 15px;
+	text-align: right;
+	margin: 0 100px 0 80px;
 }
 
 .gallery {
@@ -84,16 +119,25 @@ nav {
 
 .thumb img {
 	margin: 3px;
+	cursor: pointer;
+}
+
+.print {
+	margin-top: 300px;
 }
 
 .art {
 	margin-bottom: 4000px;
+}
+.caption {
+	padding-top: 25px;
 }
 
 /*********	Modal stuff *********/
 
 .project-img {
 	margin: auto;
+	/*margin-bottom: 20px;*/
 }
 
 .arrow-nav {
@@ -114,6 +158,12 @@ nav {
 	float: right;
 }
 
+/*********	Footer *********/
+
+.footer {
+
+}
+
 /*
 	Media queries
  */
@@ -122,10 +172,29 @@ nav {
 	.header {
 		text-align: center;
 	}
+
+	.section-header {
+		text-align: center;
+		margin: auto;
+	}
+
+	.gallery {
+		margin: auto;
+		padding: auto;
+	}
+
+	.print {
+		margin-top: 100px;
+	}
 }
 
 @media (min-width: 768px) {
 	.header {
 
+	}
+
+	.section-header {
+		text-align: center;
+		margin: auto;
 	}
 }

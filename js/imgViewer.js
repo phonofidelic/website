@@ -42,7 +42,6 @@ var model = {
 };
 
 var controller = {
-  // testList: [],
   init: function() {
     listView.init();
     modalView.init();
@@ -52,8 +51,8 @@ var controller = {
     var list = Model.filter(function(list){
       return list.category == 'print';
     });
-    return list;
-    // return model.imgArray;
+    // reverse to show newest to oldest
+    return list.reverse();
   },
   setSelect: function(select) {
     return model.currentSelect = select;
