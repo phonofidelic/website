@@ -5,7 +5,7 @@ var modalView = {
     $(imgModal).addClass('modal fade');
     $(imgModal).attr('id', 'img-modal');
     $(imgModal).attr('tabindex', -1);
-    $(imgModal).attr('aria-labelledy', 'myModalLabel');
+    $(imgModal).attr('aria-labelledby', 'myModalLabel');
 
     imgModal.appendChild(
       this.modalDialog = document.createElement('div'),

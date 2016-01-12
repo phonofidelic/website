@@ -1,0 +1,11 @@
+var contactView = {
+  init: function() {
+    this.render();
+  },
+  render: function() {
+  	$("#contact-btn").click(function() {
+  		return console.log('contaaaaact');
+  	});
+  }
+};
+
