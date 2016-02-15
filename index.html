@@ -4,14 +4,17 @@
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
 	<meta name="viewport" content="width=device-width initial-scale=1">
 	<title>Phonofidelic test-site</title>
+	<!-- build:appCss -->
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/main.css">
+	<!-- endbuild -->
+	<!-- build:headScripts -->
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="bower_components/galleriffic/js/jquery.galleriffic.js"></script>
 	<script type="text/javascript" src="bower_components/sticky/jquery.sticky.js"></script>
-	<script type="text/javascript" src="bower_components/handlebars/handlebars.js"></script>
 	<script src="bower_components/oauth-signature/dist/oauth-signature.js"></script>
+	<!-- endbuild -->
 	<script>
 	  $(document).ready(function(){
 	    $("#nav").sticky({topSpacing:0});
@@ -23,70 +26,71 @@
 	<div class="container">
 		<div class="row header">
 			<div class="col-xs-12">
-				<img src="img/logo.png" alt="phonofidelic logo" class="img-responsive logo">
-				<!-- <h1>phonofidelic</h1> -->
+				<!-- <img src="img/logo.png" alt="phonofidelic logo" class="img-responsive logo"> -->
+				<h1 class="logo">phonofidelic</h1>
 			</div>
-			<div class="col-xs-12 col-md-4">
-				<p class="intro">
-					is a way for me to [do stuff] without the boundaries of a fixed profession. I rely on diverse experiences from all aspects and periods of my life and shared experiences with others in order to bring forth unexpected results. The unexpected is perhaps what I value most in my work.
+			<div class="col-xs-12">
+				<p class="intro hidden">
+					is a way for me to [do stuff] without the boundaries of a fixed profession. I rely on diverse and shared experiences from all aspects and periods of my life in order to bring forth unexpected results. The unexpected is perhaps what I value most in my work.
 				</p>
 			</div>
 		</div>
 	</div>
 
-		<nav class="navbar navbar-default mynav" id="nav">
-			<div class="container-fluid">
-				<div class-"navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-				        <span class="sr-only">Toggle navigation</span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">nav</a>
-				</div>
-				<div class="collapse navbar-collapse" id="navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li class="nav-button"><button class="btn">about</button></li>
-						<li class="nav-button"><button class="btn">news</button></li>
-						<li class="nav-button"><button class="btn">projects</button></li>
-						<li class="nav-button"><button class="btn">portfolio</button></li>
-						<li class="nav-button"><button class="btn">shop</button></li>
-						<li class="nav-button"><button class="btn">blog</button></li>
-						<li class="nav-button"><button type="button" class="btn" data-toggle="modal" data-target="#contact-modal" id="contact-btn">contact</button></li>
-					</ul>
-				</div>
+	<nav class="navbar navbar-default mynav" id="nav">
+		<div class="container-fluid nav-container">
+			<div class-"navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+				</button>
+				<!-- <a class="navbar-brand" href="#">nav</a> -->
 			</div>
-		</nav>
+			<div class="collapse navbar-collapse" id="navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><button class="btn nav-btn" id="about-btn">about</button></li>
+					<!-- <li><button class="btn nav-btn">news</button></li> -->
+					<!-- <li><button class="btn nav-btn">projects</button></li> -->
+					<li><button class="btn nav-btn" id="portfolio-btn">portfolio</button></li>
+					<!-- <li><button class="btn nav-btn">shop</button></li> -->
+					<li><button class="btn nav-btn">blog</button></li>
+					<li><button class="btn nav-btn" id="contact-btn">contact</button></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
 
+	<div class="container main-body">
 
-	<div class="container" id="projects">
-		<div class="row section print">
-			<div class="col-xs-12 col-md-4 section-header">
+		<div class="row section about" id="about">
+			<div class="col-xs-12 col-md-12 section-header">
+				<h2>About me...</h2>
+				<p class="caption">is a way for me to [do stuff] without the boundaries of a fixed profession. I rely on diverse and shared experiences from all aspects and periods of my life in order to bring forth unexpected results. The unexpected is perhaps what I value most in my work.
+			</div>
+		</div>
+
+		<div class="row section print" id="portfolio">
+			<div class="col-xs-12 col-md-12 section-header">
 				<h2>Print</h2>
-				<p class="caption">The process of printing an image or a piece of text repeatedly onto a surface is something that has always fascinated me. The feeling of laying down the first color of a screen print design you've been working on for the past ten hours is something like a witnessing a miracle in repeat. <br>Then comes the second color... <br>perhaps a third...</p>
+				<p class="caption hidden"><span class="note">[move?/rewrite?] </span>The process of printing an image or a piece of text repeatedly onto a surface is something that has always fascinated me. The feeling of laying down the first color of a screen print design you've been working on for the past ten hours is something like a witnessing a miracle in repeat. <br>Then comes the second color... <br>perhaps a third...</p>
 			</div>
-			<div class="col-xs-12 col-md-4 gallery" id="viewer">
-			</div>
-			<div class="col-xs-12 col-md-4">
-
+			<div class="col-xs-12 col-md-12 gallery" id="viewer">
 			</div>
 		</div>
 
 		<div class="row section web">
-			<div class="col-xs-12 col-md-4 section-header">
+			<div class="col-xs-12 col-md-12 section-header">
 				<h2>Web</h2>
-				<p class="caption">I used to scoff at the idea of digital media. It seamed so temporary and transient, bits and pieces of throw-away ideas. But under that surface impression lay a whole new way of expressing [—]. The ideas may me transient and fleeting but they are anything but "throw-away". <br>Experiencing coding and computer science as a form of craft and/or art has given me something closer to a direct link to concepts that I was unable to approach appropriately  from a visual arts perspective.</p>
+				<p class="caption hidden"><span class="note">[rewrite]</span> I used to scoff at the idea of digital media. It seamed so temporary and transient, bits and pieces of throw-away ideas. But under that surface impression lay a whole new way of expressing [—]. The ideas may me transient and fleeting but they are anything but "throw-away". <br>Experiencing coding and computer science as a form of craft and/or art has given me something closer to a direct link to concepts that I was unable to approach appropriately  from a visual arts perspective.</p>
 			</div>
-			<div class="col-xs-12 col-md-4 gallery" id="webViewer">
-			</div>
-			<div class="col-xs-12 col-md-4">
-
+			<div class="col-xs-12 col-md-12 gallery" id="webViewer">
 			</div>
 		</div>
 
-		<div class="row section audio">
+		<div class="row section audio hidden">
 			<div class="col-xs-12 col-md-4 section-header">
 				<h2>Sound</h2>
 				<p class="caption">I've had the privilege of making and recording music with some wonderful people over the years. Among them are Sin Galore, Wild Fangs, Growth and Moralens Väktare.</p>
@@ -94,32 +98,78 @@
 			<div class="col-xs-12 col-md-4 player gallery" id="audio">
 				<audio src="img/audio/track1.m4a" controlls="controlls"></audio>
 			</div>
-			<div class="col-xs-12 col-md-4">
-			</div>
 		</div>
 
 		<div class="row section art">
-			<div class="col-xs-12 col-md-4 section-header art">
+			<div class="col-xs-12 col-md-12 section-header art">
 				<h2>Art</h2>
 			</div>
-			<div class="col-xs-12 col-md-4">
+			<div class="col-xs-12 col-md-12 gallery" id="artViewer">
 			</div>
-			<div class="col-xs-12 col-md-4">
+		</div>
+
+	</div>
+
+	<div class="container contact">
+		<div class="row" id="contact">
+
+		</div>
+		<div class="row contact-info">
+			<div class="col-xs-12 col-md-4 section-header">
+				<h2>Contact</h2>
+				<div class="social-icon-group">
+					<a href="https://github.com/phonofidelic" target="blank"><i class="fa fa-github-square fa-2x social-icon"></i></a>
+					<a href="http://phonofidelic.tumblr.com/" target="blank"><i class="fa fa-tumblr-square fa-2x social-icon"></i></a>
+					<a href="https://www.instagram.com/phonofidelic/" target="blank"><i class="fa fa-instagram fa-2x social-icon"></i></a>
+					<a href="https://www.linkedin.com/in/christopher-clemons-89182aba" target="blank"><i class="fa fa-linkedin-square fa-2x social-icon"></i></a>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-8 contact-form">
+
+
+				<form id="contact-form" name="contact-form" action="submitform.php" method="post">
+					<div class="form-group">
+						<label for="name-input">Name:</label>
+						<input type="text" class="form-control" name="name" id="name-input", placeholder="Name">
+						<label for="email-input">Email address:</label>
+						<input type="email" class="form-control" name="email" id="email-input", placeholder="Email">
+						<label for="message-field">Say hello:</label>
+						<textarea class="form-control" rows="5" name="message" id="message-field"></textarea>
+						<input type="submit" value="Send!" class="btn btn-default" id="submit-btn">
+					</div>
+				</form>
+
+<!-- Do not change the code! -->
+<a id="foxyform_embed_link_750233" href="http://www.foxyform.com/">foxyform</a>
+<script type="text/javascript">
+(function(d, t){
+   var g = d.createElement(t),
+       s = d.getElementsByTagName(t)[0];
+   g.src = "http://www.foxyform.com/js.php?id=750233&sec_hash=5d537402c02&width=350px";
+   s.parentNode.insertBefore(g, s);
+}(document, "script"));
+</script>
+<!-- Do not change the code! -->
+
+
 			</div>
 		</div>
 	</div>
 
 	<div class="container" id="footer">
 		<div class="row footer">
-			<div class="col-xs-12">&copy 2015 Phonofidelic Design & Printing</div>
+			<div class="col-xs-12 copy">&copy 2016 Phonofidelic Design & Printing</div>
 		</div>
 	</div>
 
 	<script src="js/Model.js"></script>
+	<script src="js/controller.js"></script>
 	<script src="js/modalView.js"></script>
 	<script src="js/imgViewer.js"></script>
 	<script src="js/webViewer.js"></script>
-	<script src="js/audioPlayer.js"></script>
-	<script src="js/contactView.js"></script>
+	<script src="js/artViewer.js"></script>
+	<script src="js/nav.js"></script>
+	<script src="js/form.js"></script>
+
 </body>
 </html>

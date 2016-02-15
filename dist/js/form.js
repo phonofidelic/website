@@ -1,0 +1,1 @@
+var contactForm=$("#contact-form"),request=new XMLHttpRequest;request.open("GET","submitform.php"),request.send(new FormData(contactForm));

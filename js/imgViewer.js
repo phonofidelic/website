@@ -1,53 +1,14 @@
-// store img objects here
-var model = {
-  testList: [],
-  currentSelect: null,
-};
-
-var controller = {
-  init: function() {
-    listView.init();
-    modalView.init();
-    contactView.init();
-  },
-
-  getList: function() {
-    var list = Model.filter(function(list){
-      return list.category == 'print';
-    });
-    // reverse to show newest to oldest
-    return list.reverse();
-  },
-  setSelect: function(select) {
-    return model.currentSelect = select;
-    console.log('setSelect: '+select);
-  },
-  getSelect: function() {
-    return model.currentSelect;
-  },
-  incSelect: function() {
-    model.currentSelect.id++;
-    modalView.render();
-    console.log('incSelect +');
-  },
-  decSelect: function() {
-    model.currentSelect.id--;
-    modalView.render();
-    console.log('decSelect -');
-  }
-};
-
-var listView = {
+var printView = {
   init: function() {
     this.render();
   },
   render: function() {
-    var imgList = controller.getList();
+    var imgList = controller.getList('print');
 
     // create viewer element
-    for (var i = 0; i < imgList.length; i++) {
+    for (var i = 0; i < 5; i++) {
 
-      imgList[i].id = i;
+      // imgList[i].id = i;
 
       // itterate through imgArray
       var img = imgList[i];
@@ -69,7 +30,7 @@ var listView = {
           // Set selected content for modal body
           modalView.render();
 
-          console.log('listView.render: ');
+          console.log('printView.render: ');
           console.log(imgCopy);
         }
       })(img));

@@ -2,9 +2,15 @@
 	/*border: solid red 1px;*/
 }
 
+.note {
+	color: red;
+}
+
 body {
 	font-family: 'Raleway', sans-serif;
 	font-weight: 400;
+	text-align: justify;
+	color: #2b2a2f;letter-spacing:
 }
 
 nav {
@@ -21,13 +27,18 @@ nav {
 	/*color: #fff;*/
 	/*text-align: right;*/
 	height: 100vh;
-	background: url(../img/background.jpg) no-repeat, center;
+	background: url(../img/skullHead.jpg) no-repeat, center;
+	background-attachment: fixed;
+	background-position: center;
 	width: 100vw;
 }
 
 .logo {
 	margin-left: auto;
 	margin-right: auto;
+	text-align: center;
+	margin-top: 25vh;
+	color: #fff;
 }
 
 .intro {
@@ -36,15 +47,17 @@ nav {
 	text-align: left;
 	/*margin-left: 75%;*/
 	top: 45vh;
-	margin-top: 15px;
+	margin-top: 25vh;
 	margin-left: auto;
 	margin-right: auto;
+	padding: 3px 10px 3px 5px;
+	background-color: #2b2a2f;
 }
 
 /*********	Nav: *********/
 
 .mynav {
-	background-color: #000;
+	background-color: #2b2a2f;
 	/*min-height: 50px;*/
 	/*top: 100vh;*/
 	/*border-radius: 5px;*/
@@ -53,7 +66,13 @@ nav {
 
 .navbar {
 	border-radius: 0;
+	/*margin-left: 100px;*/
 }
+
+/*.nav-container {
+	margin: 0 auto;
+	width: 800px;
+}*/
 
 /*.nav-button {
 	padding: 25px;
@@ -64,22 +83,24 @@ nav {
 	background-color: green;
 }*/
 
-.btn {		/* bootdtrap */
+.nav-btn {		/* bootdtrap */
 	padding: 25px;
-	background-color: #000;
+	background-color: #2b2a2f;
 	color: #fff;
 	/*color: green;*/
 	height: 100%;
 	border-radius: 0;
+	width: 100%;
 }
 
-.btn:hover {
-	background-color: green;
+.nav-btn:hover {
+	background-color: #F2E7E5;
 	color: #fff;
 }
 
+/* toggle button */
 .navbar-toggle {
-	background-color: #000;
+	background-color: #2b2a2f;
 	border: none;
 }
 
@@ -100,15 +121,19 @@ nav {
     border: none;
 }
 
-.navbar-default
+/*.navbar-default
 .navbar-brand {
 	color: red;
-}
+}*/
 
 .navbar-default
 .navbar-toggle
 .icon-bar {
 	background-color: #fff;
+}
+
+.navbar-toggle {
+	border-radius: 0px;
 }
 
 li {
@@ -117,19 +142,30 @@ li {
 
 /*********	Main content: *********/
 
+.main-body {
+	/*background-color: #eae0de;*/
+	max-width: 750px;
+	margin: 0 auto;
+	text-align: justify;
+}
+
 .section {
 	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-bottom: 100px;
 }
 
 .section-header {
-	text-align: right;
-	margin: 0 100px 0 80px;
+	/*text-align: right;*/
+	/*margin: 0 100px 0 80px;*/
 }
 
 .gallery {
-	margin: 15px 15px 15px 85px;
-	/*width: auto;*/
+	/*margin: 15px 15px 15px 85px;*/
+	/*max-width: 320px;*/
+	/*width: max;*/
+	text-align: center;
+	margin: 0 auto;
+	/*padding-top: 65px;*/
 }
 
 .player {
@@ -145,21 +181,38 @@ li {
 }
 
 .thumb img {
-	margin: 3px;
+	margin: 10px;
 	cursor: pointer;
+	border-radius: 100%;
 }
 
 .print {
-	margin-top: 300px;
+	margin-top: 200px;
 }
 
 .art {
-	margin-bottom: 4000px;
+	/*margin-bottom: 4000px;*/
 }
 .caption {
-	text-align: left;
-	margin-left: 85px;
+	text-align: justify;
+	/*margin-left: 85px;*/
 	/*padding-top: 25px;*/
+	/*background-color: #eae0de;*/
+}
+
+/********* Contact **************/
+
+.contact {
+	background-color: #eae0de;
+	/*height: 750px;*/
+	max-width: 750px;
+	margin: 0 auto;
+}
+.social-icon {
+	color: #2b2a2f;
+}
+.social-icon-group {
+	padding: 10px;
 }
 
 /*********	Modal stuff *********/
@@ -191,14 +244,29 @@ li {
 	border: none;
 }
 
+.modal-content {
+	border-radius: 0px;
+}
+
 .modal-footer {
 	border: none;
+}
+
+/********* Contact Info ****/
+
+.contact-info {
+	margin: 15px 0;
 }
 
 /*********	Footer *********/
 
 .footer {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
 
+.copy {
+	text-align: center;
 }
 
 /*
@@ -206,28 +274,27 @@ li {
  */
 
 @media (max-width: 768px) {
+	.section {
+
+	}
+
 	.header {
 		text-align: center;
 	}
 
 	.section-header {
 		text-align: center;
-		margin: auto;
+		/*margin: auto;*/
 	}
 
 	.gallery {
-		margin: auto;
-		margin-left: 20px;
-		padding: auto;
-		width: auto;
+		/*margin-left: 20px;*/
+		padding: 0;
+		margin: 0 auto;
 	}
 
 	.print {
 		margin-top: 100px;
-	}
-
-	.caption {
-		margin-left: 25px;
 	}
 }
 
@@ -239,5 +306,27 @@ li {
 	.section-header {
 		text-align: center;
 		margin: auto;
+	}
+
+/*
+center bootstrap nav-bar taken from:
+http://stackoverflow.com/questions/20696814/center-bootstrap-navbar-do-not-understand-why-navigation-wont-center
+*/
+/* centered navigation */
+	.nav.navbar-nav {
+     	clear: left;
+		float: left;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		left: 50%;
+		text-align: center;
+	}
+	.nav.navbar-nav > li {
+		position: relative;
+		right: 50%;
+	}
+	.nav.navbar-nav li {
+	    text-align: left
 	}
 }

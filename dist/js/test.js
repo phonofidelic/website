@@ -1,0 +1,1 @@
+function File(r,i,e){this.name=r,this.src=i,this.thumb=e}var fs=require("fs"),path=require("path"),fileArray=[];fs.readdir("img/projects",function(r,i){for(var e=0;e<i.length;e++){var s=new File("img_"+e,"img/projects/"+i[e],"img/thumbs/"+i[e]+"_s");fileArray.push(s)}if(console.log(fileArray),r)throw r});

@@ -9,21 +9,21 @@ Model = [
     // 	src: 'img/projects/art_like.jpg',
     // 	thumb: 'img/thumbs/art_like_s.jpg'
     // },
-    {
-    	category: 'print',
-    	src: 'img/projects/art_pilot.jpg',
-    	thumb: 'img/thumbs/art_pilot_s.jpg'
-    },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/art_pilot.jpg',
+    // 	thumb: 'img/thumbs/art_pilot_s.jpg'
+    // },
     // {
     // 	category: 'print',
     // 	src: 'img/projects/art_red_wall1.jpg',
     // 	thumb: 'img/thumbs/art_red_wall1_s.jpg'
     // },
-    {
-    	category: 'print',
-    	src: 'img/projects/art_smoker.jpg',
-    	thumb: 'img/thumbs/art_smoker_s.jpg'
-    },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/art_smoker.jpg',
+    // 	thumb: 'img/thumbs/art_smoker_s.jpg'
+    // },
     // {
     // 	category: 'print',
     // 	src: 'img/projects/art_stranden.jpg',
@@ -34,16 +34,16 @@ Model = [
     // 	src: 'img/projects/art_suspended.jpg',
     // 	thumb: 'img/thumbs/art_suspended_s.jpg'
     // },
-    {
-    	category: 'print',
-    	src: 'img/projects/art_unnamed1.jpg',
-    	thumb: 'img/thumbs/art_unnamed1_s.jpg'
-    },
-    {
-    	category: 'print',
-    	src: 'img/projects/art_unnamed2.jpg',
-    	thumb: 'img/thumbs/art_unnamed2_s.jpg'
-    },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/art_unnamed1.jpg',
+    // 	thumb: 'img/thumbs/art_unnamed1_s.jpg'
+    // },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/art_unnamed2.jpg',
+    // 	thumb: 'img/thumbs/art_unnamed2_s.jpg'
+    // },
     // {
     // 	category: 'print',
     // 	src: 'img/projects/ill1.jpg',
@@ -149,11 +149,11 @@ Model = [
     	src: 'img/projects/p8.jpg',
     	thumb: 'img/thumbs/p8_s.jpg'
     },
-    {
-    	category: 'print',
-    	src: 'img/projects/p9.jpg',
-    	thumb: 'img/thumbs/p9_s.jpg'
-    },
+    // {
+    // 	category: 'print',
+    // 	src: 'img/projects/p9.jpg',
+    // 	thumb: 'img/thumbs/p9_s.jpg'
+    // },
     {
     	category: 'print',
     	src: 'img/projects/scragcd.jpg',
@@ -174,5 +174,21 @@ Model = [
     	category: 'web',
     	src: 'img/web/hanna1.jpg',
     	thumb: 'img/web/hanna1_s.jpg'
+    },
+        {
+        category: 'web',
+        src: 'img/web/singalore1.jpg',
+        thumb: 'img/web/singalore1_s.jpg'
+    },
+        {
+        category: 'art',
+        src: 'img/art/printblocks1.jpg',
+        thumb: 'img/thumbs/printblocks1_s.jpg'
     }
+    //     {
+    //     category: 'art',
+    //     src: 'img/art/container1.jpg',
+    //     thumb: 'img/thumbs/container1_s.jpg'
+    // }
+
 ];
