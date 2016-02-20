@@ -31,6 +31,10 @@ nav {
 	background-attachment: fixed;
 	background-position: center;
 	width: 100vw;
+	text-align: center;
+	color: #fff;
+	/*background-color: #eae0de;*/
+	/*background-size: 750px;*/
 }
 
 .logo {
@@ -39,6 +43,7 @@ nav {
 	text-align: center;
 	margin-top: 25vh;
 	color: #fff;
+	padding-bottom: 50px;
 }
 
 .intro {
@@ -149,9 +154,12 @@ li {
 	text-align: justify;
 }
 
-.section {
+.portfolio {
 	margin-top: 50px;
 	margin-bottom: 100px;
+}
+.section {
+	/*height: 100vh;*/
 }
 
 .section-header {
