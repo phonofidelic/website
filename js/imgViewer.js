@@ -5,13 +5,8 @@ var printView = {
   render: function() {
     var imgList = controller.getList('print');
 
-    // create viewer element
+    // create viewer element itterating through imgArray
     for (var i = 0; i < 5; i++) {
-
-      // imgList[i].id = i;
-
-      // itterate through imgArray
-      var img = imgList[i];
 
       // Build each img-viewer thumb element
       var thumbDiv = document.createElement('span');
@@ -33,7 +28,7 @@ var printView = {
           console.log('printView.render: ');
           console.log(imgCopy);
         }
-      })(img));
+      })(imgList[i]));
 
       thumbDiv.appendChild(thumbImg);
       $('#viewer').append(thumbDiv)

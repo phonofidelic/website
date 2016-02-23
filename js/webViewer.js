@@ -14,7 +14,7 @@ var makeThumbs = function(imgList, galleryId) {
   // create viewer element
   for (var i = 0; i < 5; i++) {
 
-    imgList[i].id = i;
+    // imgList[i].id = i;
 
     // itterate through imgArray
     var img = imgList[i];

@@ -2,7 +2,7 @@ var controller = {
   init: function() {
     printView.init();
     modalView.init();
-    contactView.init();
+    // contactView.init();
   },
 
   // return all items where category is equal to 'print'
@@ -17,13 +17,9 @@ var controller = {
         return arr;
     }
     return shuffle(list);
-
-    // // reverse to show newest to oldestz
-    // return list.reverse();
   },
 
   setSelect: function(select) {
-
     return model.currentSelect = select;
     console.log('setSelect: '+select);
   },
@@ -41,4 +37,6 @@ var controller = {
     console.log('decSelect -');
   }
 };
-var model = {};
+var model = {currentSelect: {category: null, src: null, thumb: null, id: null}};
+
+// controller.init();
