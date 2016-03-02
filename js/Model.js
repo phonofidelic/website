@@ -1,6 +1,6 @@
 Model = [
     // {
-    // 	category: 'print',
+    // 	category: 'art',
     // 	src: 'img/projects/art_framed.jpg',
     // 	thumb: 'img/thumbs/art_framed_s.jpg'
     // },
