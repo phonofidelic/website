@@ -10,7 +10,8 @@ body {
 	font-family: 'Raleway', sans-serif;
 	font-weight: 400;
 	text-align: justify;
-	color: #2b2a2f;letter-spacing:
+	color: #2b2a2f;
+	/*letter-spacing:*/
 }
 
 nav {
@@ -27,7 +28,7 @@ nav {
 	/*color: #fff;*/
 	/*text-align: right;*/
 	height: 100vh;
-	background: url(../img/skullHead.jpg) no-repeat, center;
+	background: url(../img/skullHead.jpg) no-repeat center;
 	background-attachment: fixed;
 	background-position: center;
 	width: 100vw;
@@ -158,12 +159,19 @@ li {
 	text-align: justify;
 }
 
+.about {
+	margin-top: 50px;
+	margin-bottom: 100px;
+}
+
 .portfolio {
 	margin-top: 50px;
 	margin-bottom: 100px;
 }
 .section {
+	background-color: #fff;
 	/*height: 100vh;*/
+
 }
 
 .section-header {
