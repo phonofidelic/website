@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
-	<meta name="viewport" content="width=device-width initial-scale=1">
+	<meta name="viewport" content="width=device-width initial-scale=1" charset="UTF-8">
 	<title>Phonofidelic test-site</title>
 	<link rel="stylesheet" href="css/app.min.css">
 	<script src="js/headScripts.min.js"></script>	<script>
@@ -16,13 +16,11 @@
 	<div class="container">
 		<div class="row header">
 			<div class="col-xs-12">
-				<!-- <img src="img/logo.png" alt="phonofidelic logo" class="img-responsive logo"> -->
 				<h1 class="logo">phonofidelic</h1>
+				<i class="fa fa-arrow-circle-o-down fa-3x prompt"></i>
 			</div>
 			<div class="col-xs-12">
-				<p class="intro hidden">
-					is a way for me to [do stuff] without the boundaries of a fixed profession. I rely on diverse and shared experiences from all aspects and periods of my life in order to bring forth unexpected results. The unexpected is perhaps what I value most in my work.
-				</p>
+
 			</div>
 		</div>
 	</div>
@@ -57,50 +55,44 @@
 
 		<div class="row section about" id="about">
 			<div class="col-xs-12 col-md-12 section-header">
-				<h2>About me...</h2>
+				<h2>What is this?</h2>
 				<p class="caption">Phonofidelic is a way for me to do stuff without the boundaries of a fixed profession. I rely on diverse and shared experiences from all aspects and periods of my life in order to bring forth unexpected results. The unexpected is perhaps what I value most in my work.
 			</div>
 		</div>
 
-		<div class="row section print" id="portfolio">
-			<div class="col-xs-12 col-md-12 section-header">
-				<h2>Print</h2>
-				<p class="caption hidden"><span class="note">[move?/rewrite?] </span>The process of printing an image or a piece of text repeatedly onto a surface is something that has always fascinated me. The feeling of laying down the first color of a screen print design you've been working on for the past ten hours is something like a witnessing a miracle in repeat. <br>Then comes the second color... <br>perhaps a third...</p>
+		<div class="section">
+			<div class="row portfolio print" id="portfolio">
+				<div class="col-xs-12 col-md-12 section-header">
+					<h2>Print</h2>
+					<p class="caption"></p>
+				</div>
+				<div class="col-xs-12 col-md-12 gallery" id="viewer">
+				</div>
 			</div>
-			<div class="col-xs-12 col-md-12 gallery" id="viewer">
-			</div>
-		</div>
 
-		<div class="row section web">
-			<div class="col-xs-12 col-md-12 section-header">
-				<h2>Web</h2>
-				<p class="caption hidden"><span class="note">[rewrite]</span> I used to scoff at the idea of digital media. It seamed so temporary and transient, bits and pieces of throw-away ideas. But under that surface impression lay a whole new way of expressing [—]. The ideas may me transient and fleeting but they are anything but "throw-away". <br>Experiencing coding and computer science as a form of craft and/or art has given me something closer to a direct link to concepts that I was unable to approach appropriately  from a visual arts perspective.</p>
+			<div class="row portfolio web">
+				<div class="col-xs-12 col-md-12 section-header">
+					<h2>Web</h2>
+					<p class="caption"></p>
+				</div>
+				<div class="col-xs-12 col-md-12 gallery" id="webViewer">
+				</div>
 			</div>
-			<div class="col-xs-12 col-md-12 gallery" id="webViewer">
-			</div>
-		</div>
 
-		<div class="row section audio hidden">
-			<div class="col-xs-12 col-md-4 section-header">
-				<h2>Sound</h2>
-				<p class="caption">I've had the privilege of making and recording music with some wonderful people over the years. Among them are Sin Galore, Wild Fangs, Growth and Moralens Väktare.</p>
+			<div class="row portfolio art">
+				<div class="col-xs-12 col-md-12 section-header art">
+					<h2>Art</h2>
+					<p class="caption"></p>
+				</div>
+				<div class="col-xs-12 col-md-12 gallery" id="artViewer">
+				</div>
 			</div>
-			<div class="col-xs-12 col-md-4 player gallery" id="audio">
-				<audio src="img/audio/track1.m4a" controlls="controlls"></audio>
-			</div>
-		</div>
 
-		<div class="row section art">
-			<div class="col-xs-12 col-md-12 section-header art">
-				<h2>Art</h2>
-			</div>
-			<div class="col-xs-12 col-md-12 gallery" id="artViewer">
-			</div>
 		</div>
 
 	</div>
 
-	<div class="container contact">
+	<div class="container contact section">
 		<div class="row" id="contact">
 
 		</div>
@@ -141,11 +133,9 @@
 	</div>
 
 	<script src="js/Model.js"></script>
-	<script src="js/controller.js"></script>
+	<script src="js/gallery.js"></script>
 	<script src="js/modalView.js"></script>
-	<script src="js/imgViewer.js"></script>
-	<script src="js/webViewer.js"></script>
-	<script src="js/artViewer.js"></script>
+	<script src="js/controller.js"></script>
 	<script src="js/nav.js"></script>
 	<script src="js/form.js"></script>
 

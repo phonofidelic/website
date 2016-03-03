@@ -6,9 +6,7 @@ var gulp = require('gulp'),
     catCss = require('gulp-concat-css'),
     htmlReplace = require('gulp-html-replace');
 
-// gulp.task('default', function() {
-  // place code for your default task here
-
+// script validation
 gulp.task('val', function() {
     gulp.src('js/*.js')
     .pipe(validate());
@@ -56,5 +54,6 @@ gulp.task('html', function() {
     }))
     .pipe(gulp.dest('dist'));
 });
+
 
 gulp.task('default', ['headScripts', 'appCss', 'bodyScripts', 'html']);

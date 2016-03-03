@@ -43,7 +43,11 @@ nav {
 	text-align: center;
 	margin-top: 25vh;
 	color: #fff;
-	padding-bottom: 50px;
+	/*padding-bottom: 50px;*/
+}
+
+.prompt {
+	margin-top: 50vh;
 }
 
 .intro {
