@@ -30,32 +30,34 @@ var controller = {
   },
 
   //** TODO **
-  // incSelect: function() {
-  //   model.currentSelect.id++;
-  //   modalView.render();
-  //   console.log('incSelect +');
-  // },
-  // decSelect: function() {
-  //   model.currentSelect.id--;
-  //   modalView.render();
-  //   console.log('decSelect -');
-  // },
+  incSelect: function() {
+    controller.indexRef += 1;
+    model.currentSelect = Model[controller.indexRef];
+    modalView.render();
+  },
+  decSelect: function() {
+    controller.indexRef -= 1;
+    model.currentSelect = Model[controller.indexRef];
+    modalView.render();
+  },
   //** TODO **
 
   renderPortfolio: function() {
-    var portfolioTest = [];
-    var printGallery = new Gallery('#viewer', 'print', 5);
+    var portfolio = [];
+    var printGallery = new Gallery('#printViewer', 'print', 5);
     var webGallery = new Gallery('#webViewer', 'web', 3);
-    var artGallery = new Gallery('#artViewer', 'art', 2);
+    var artGallery = new Gallery('#artViewer', 'art', 1);
 
-    portfolioTest.push(printGallery, webGallery, artGallery);
+    portfolio.push(printGallery, webGallery, artGallery);
 
-    for (var i = 0; i < portfolioTest.length; i++) {
-      portfolioTest[i].makeThumbs();
+    for (var i = 0; i < portfolio.length; i++) {
+      portfolio[i].makeThumbs();
     }
-    return portfolioTest;
+    return portfolio;
   }
 };
-var model = {currentSelect: {category: null, src: null, thumb: null, id: null}};
+
+// set initial model state
+var model = {currentSelect: {category: null, src: null, thumb: null, id: 0}};
 
 controller.init();

@@ -60,24 +60,26 @@ var modalView = {
 
     $('body').append(imgModal);
 
-    // // Build modal-footer elements
-    // var leftNav = document.createElement('div');
-    // $(leftNav).addClass('arrow-nav left');
-    // $(leftNav).html('<span class="glyphicon glyphicon-arrow-left" data-target="#img-modal"></span>');
-    // $('.modal-footer').append(leftNav);
+    // Build modal-footer elements
+    var leftNav = document.createElement('div');
+    $(leftNav).addClass('arrow-nav left');
+    $(leftNav).html('<span class="glyphicon glyphicon-arrow-left" data-target="#img-modal"></span>');
+    $('.modal-footer').append(leftNav);
 
-    // var rightNav = document.createElement('div');
-    // $(rightNav).addClass('arrow-nav right');
-    // $(rightNav).html('<span class="glyphicon glyphicon-arrow-right" data-target="#img-modal"></span>');
-    // $('.modal-footer').append(rightNav);
+    var rightNav = document.createElement('div');
+    $(rightNav).addClass('arrow-nav right');
+    $(rightNav).html('<span class="glyphicon glyphicon-arrow-right" data-target="#img-modal"></span>');
 
-    // // Nav button eventlistiners
-    // leftNav.addEventListener('click', function() {
-    //   controller.decSelect();
-    // });
-    // rightNav.addEventListener('click', function() {
-    //   controller.incSelect();
-    // });
+    // if (this.selectedContent.id != controller.getList.)
+    $('.modal-footer').append(rightNav);
+
+    // Nav button eventlistiners
+    leftNav.addEventListener('click', function() {
+      controller.decSelect();
+    });
+    rightNav.addEventListener('click', function() {
+      controller.incSelect();
+    });
 
     this.render();
   },

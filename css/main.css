@@ -79,20 +79,6 @@ nav {
 	/*margin-left: 100px;*/
 }
 
-/*.nav-container {
-	margin: 0 auto;
-	width: 800px;
-}*/
-
-/*.nav-button {
-	padding: 25px;
-	cursor: pointer;
-}
-
-.nav-button:hover {
-	background-color: green;
-}*/
-
 .nav-btn {		/* bootdtrap */
 	padding: 25px;
 	background-color: #2b2a2f;
@@ -201,6 +187,8 @@ li {
 }
 
 .thumb img {
+	width: 50px;
+	height: 50px;
 	margin: 10px;
 	cursor: pointer;
 	border-radius: 100%;
@@ -254,10 +242,12 @@ li {
 
 .arrow-nav.left {
 	float: left;
+	color: #fff;
 }
 
 .arrow-nav.right {
 	float: right;
+	color: #fff;
 }
 
 .modal-header {
@@ -266,10 +256,20 @@ li {
 
 .modal-content {
 	border-radius: 0px;
+	width: 600px;
+	height: 800px;
+	/* hide contente that spills over */
+	overflow: hidden;
 }
 
 .modal-footer {
 	border: none;
+	position: absolute;
+	width: 600px;
+	height: 72px;
+	bottom: 0;
+	background-color: #2b2a2f;
+
 }
 
 /********* Contact Info ****/
@@ -289,9 +289,7 @@ li {
 	text-align: center;
 }
 
-/*
-	Media queries
- */
+/*	Media queries */
 
 @media (max-width: 768px) {
 	.section {
@@ -315,6 +313,15 @@ li {
 
 	.print {
 		margin-top: 100px;
+	}
+
+	/* Modal */
+	.modal-content {
+		width: auto;
+		height: 100vh;
+	}
+	.modal-footer {
+		width: 100%;
 	}
 }
 

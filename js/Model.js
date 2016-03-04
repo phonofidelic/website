@@ -184,11 +184,15 @@ Model = [
         category: 'art',
         src: 'img/art/printblocks1.jpg',
         thumb: 'img/thumbs/printblocks1_s.jpg'
+    },
+        {
+        category: 'art',
+        src: 'img/art/container1.jpg',
+        thumb: 'img/thumbs/container1_s.jpg'
     }
-    //     {
-    //     category: 'art',
-    //     src: 'img/art/container1.jpg',
-    //     thumb: 'img/thumbs/container1_s.jpg'
-    // }
 
 ];
+// create id property for each item in Model
+for (var i = 0; i < Model.length; i++) {
+    Model[i].id = i;
+}

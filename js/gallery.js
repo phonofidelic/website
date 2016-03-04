@@ -6,7 +6,7 @@ var Gallery = function (name, type, maxLength) {
 };
 
 Gallery.prototype.makeThumbs = function() {
-    // create thumbnail elements
+    // create thumbnail elementsar
     for (var i = 0; i < this.galleryLength; i++) {
         var thumbDiv = document.createElement('span');
         $(thumbDiv).addClass('thumb');
@@ -22,6 +22,8 @@ Gallery.prototype.makeThumbs = function() {
             controller.setSelect(imgCopy);
             // Set selected content for modal body
             modalView.render();
+            // Set initial index refference
+            controller.indexRef = imgCopy.id;
             }
         })(this.imgList[i]));
 
