@@ -1,1 +1,0 @@
-var readdirp=require("readdirp"),path=require("path"),es=require("event-stream"),stream=readdirp({root:"img",fileFilter:"*.jpg"});stream.on("data",function(e){console.log(typeof e.path),console.log(e.path)});
