@@ -61,23 +61,23 @@ var modalView = {
     $('body').append(imgModal);
 
     // Build modal-footer elements
-    var leftNav = document.createElement('div');
-    $(leftNav).addClass('arrow-nav left');
-    $(leftNav).html('<span class="glyphicon glyphicon-arrow-left" data-target="#img-modal"></span>');
-    $('.modal-footer').append(leftNav);
+    this.leftNav = document.createElement('div');
+    $(this.leftNav).addClass('arrow-nav left');
+    $(this.leftNav).html('<i class="fa fa-arrow-circle-o-left fa-3x arrow-nav" data-target="#img-modal"></i>');
+    $('.modal-footer').append(this.leftNav);
 
-    var rightNav = document.createElement('div');
-    $(rightNav).addClass('arrow-nav right');
-    $(rightNav).html('<span class="glyphicon glyphicon-arrow-right" data-target="#img-modal"></span>');
+    this.rightNav = document.createElement('div');
+    $(this.rightNav).addClass('arrow-nav right');
+    $(this.rightNav).html('<span class="fa fa-arrow-circle-o-right fa-3x arrow-nav" data-target="#img-modal"></span>');
 
     // if (this.selectedContent.id != controller.getList.)
-    $('.modal-footer').append(rightNav);
+    $('.modal-footer').append(this.rightNav);
 
     // Nav button eventlistiners
-    leftNav.addEventListener('click', function() {
+    this.leftNav.addEventListener('click', function() {
       controller.decSelect();
     });
-    rightNav.addEventListener('click', function() {
+    this.rightNav.addEventListener('click', function() {
       controller.incSelect();
     });
 
@@ -86,6 +86,20 @@ var modalView = {
   render: function() {
     this.selectedContent = controller.getSelect();
     $(this.modalImg).attr('src', this.selectedContent.src);
+
+    // hide nav arrow if selectedContent is first or last item in model array
+    // first
+    if (this.selectedContent.id == 0) {
+      $(this.leftNav).addClass('hidden');
+    } else {
+      $(this.leftNav).removeClass('hidden');
+    }
+    // last
+    if (this.selectedContent.id == controller.getModelLength()-1) {
+      $(this.rightNav).addClass('hidden');
+    } else {
+      $(this.rightNav).removeClass('hidden');
+    }
 
     console.log('modalView.render: ');
     console.log(this.selectedContent);

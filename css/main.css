@@ -90,7 +90,7 @@ nav {
 }
 
 .nav-btn:hover {
-	background-color: #F2E7E5;
+	background-color: #f2e7e5;
 	color: #fff;
 }
 
@@ -98,10 +98,6 @@ nav {
 .navbar-toggle {
 	background-color: #2b2a2f;
 	border: none;
-}
-
-.navbar-toggle:hover {
-	color: green;
 }
 
 .navbar-nav {
@@ -232,22 +228,21 @@ li {
 
 .arrow-nav {
 	display: inline-block;
-	padding: 10px;
+	color: #3d3c43;
+	/*padding: 0;*/
 	/*float: left;*/
 }
 
 .arrow-nav:hover {
-	color: red;
+	color: #f2e7e5;
 }
 
 .arrow-nav.left {
 	float: left;
-	color: #fff;
 }
 
 .arrow-nav.right {
 	float: right;
-	color: #fff;
 }
 
 .modal-header {

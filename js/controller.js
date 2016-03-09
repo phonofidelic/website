@@ -54,10 +54,14 @@ var controller = {
       portfolio[i].makeThumbs();
     }
     return portfolio;
+  },
+
+  getModelLength: function() {
+    return Model.length;
   }
 };
 
 // set initial model state
-var model = {currentSelect: {category: null, src: null, thumb: null, id: 0}};
+var model = {currentSelect: {category: null, src: null, thumb: null, id: null}};
 
 controller.init();
