@@ -128,8 +128,12 @@ nav {
 	border-radius: 0px;
 }
 
-li {
+.nav>li {
 	list-style: none;
+}
+
+.nav>li>a {
+	padding: 0;
 }
 
 /*********	Main content: *********/
