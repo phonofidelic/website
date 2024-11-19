@@ -34,8 +34,17 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <Image
+            className="dark:hidden"
             aria-hidden
             src="/github.svg"
+            alt="GitHub icon"
+            width={24}
+            height={24}
+          />
+          <Image
+            className="hidden dark:block"
+            aria-hidden
+            src="/github-dark.svg"
             alt="GitHub icon"
             width={24}
             height={24}
@@ -49,8 +58,17 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <Image
+            className="dark:hidden"
             aria-hidden
             src="/linkedin.svg"
+            alt="LinkedIn icon"
+            width={24}
+            height={24}
+          />
+          <Image
+            className="hidden dark:block"
+            aria-hidden
+            src="/linkedin-dark.svg"
             alt="LinkedIn icon"
             width={24}
             height={24}
