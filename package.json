@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pull": "vercel env pull .env.local"
   },
   "dependencies": {
     "@sanity/icons": "^3.4.0",
