@@ -39,7 +39,7 @@ export default async function Home() {
         <div className="max-w-screen-md mx-auto flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <div>
             <h1 className="text-4xl">Christopher Clemons</h1>
-            <h2 className="text-2xl">(frontend web developer)</h2>
+            <h2 className="text-2xl">(Front-end web developer)</h2>
           </div>
           <div>
             New website is on the way. In the meantime, you can reach me on{' '}
