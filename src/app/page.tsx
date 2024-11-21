@@ -3,8 +3,8 @@ import Image from 'next/image'
 import { defineQuery, PortableText } from 'next-sanity'
 import { VscCode } from 'react-icons/vsc'
 import { client } from '../sanity/client'
-import { inspect } from 'util'
 import { IconType } from 'react-icons'
+import { checkGate } from './statsig'
 
 export const metadata: Metadata = {
   title: 'Home | Web development by Christopher Clemons',
@@ -30,7 +30,7 @@ export default async function Home() {
     },
   )
 
-  console.log('*** projects:', inspect(projects, false, 4, true))
+  const showProjects = await checkGate('projects_display')
 
   return (
     <div className="w-full">
@@ -102,33 +102,35 @@ export default async function Home() {
           </a>
         </footer>
       </header>
-      {/* <main className="flex w-full justify-center p-8 sm:p-20">
-        <div className="max-w-screen-md w-full flex flex-col gap-2">
-          {projects.map((project) => (
-            <div key={project._id}>
-              <h2 className="text-2xl">{project.title}</h2>
-              {project.technologies && project.technologies.length > 0 && (
-                <div className="flex gap-1">
-                  <h3 className="">Technologies used:</h3>
-                  {project.technologies?.map(({ _id, name, icon, link }) => (
-                    <TechnologyPill
-                      key={_id}
-                      name={name}
-                      icon={<TechnologyIcon icon={icon} />}
-                      link={link}
-                    />
-                  ))}
-                </div>
-              )}
-              <div className="prose">
-                {Array.isArray(project.body) && (
-                  <PortableText value={project.body} />
+      {showProjects && (
+        <main className="flex w-full justify-center p-8 sm:p-20">
+          <div className="max-w-screen-md w-full flex flex-col gap-2">
+            {projects.map((project) => (
+              <div key={project._id}>
+                <h2 className="text-2xl">{project.title}</h2>
+                {project.technologies && project.technologies.length > 0 && (
+                  <div className="flex gap-1">
+                    <h3 className="">Technologies used:</h3>
+                    {project.technologies?.map(({ _id, name, icon, link }) => (
+                      <TechnologyPill
+                        key={_id}
+                        name={name}
+                        icon={<TechnologyIcon icon={icon} />}
+                        link={link}
+                      />
+                    ))}
+                  </div>
                 )}
+                <div className="prose">
+                  {Array.isArray(project.body) && (
+                    <PortableText value={project.body} />
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </main> */}
+            ))}
+          </div>
+        </main>
+      )}
     </div>
   )
 }
@@ -159,7 +161,7 @@ async function TechnologyPill({
 
   return (
     <Wrapper link={link}>
-      <div className="flex gap-1 items-center text-xs bg-zinc-800 rounded-s-full rounded-e-full w-fit p-1 pr-2">
+      <div className="flex gap-1 items-center text-xs border border-zinc-800 dark:border-none dark:bg-zinc-800 rounded-s-full rounded-e-full w-fit p-1 pr-2">
         {icon} {name}
       </div>
     </Wrapper>
