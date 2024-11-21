@@ -397,7 +397,133 @@
             "importPath": {
               "type": "objectAttribute",
               "value": {
-                "type": "string"
+                "type": "union",
+                "of": [
+                  {
+                    "type": "string",
+                    "value": "fa"
+                  },
+                  {
+                    "type": "string",
+                    "value": "ci"
+                  },
+                  {
+                    "type": "string",
+                    "value": "fa6"
+                  },
+                  {
+                    "type": "string",
+                    "value": "io"
+                  },
+                  {
+                    "type": "string",
+                    "value": "io5"
+                  },
+                  {
+                    "type": "string",
+                    "value": "md"
+                  },
+                  {
+                    "type": "string",
+                    "value": "ti"
+                  },
+                  {
+                    "type": "string",
+                    "value": "go"
+                  },
+                  {
+                    "type": "string",
+                    "value": "fi"
+                  },
+                  {
+                    "type": "string",
+                    "value": "lu"
+                  },
+                  {
+                    "type": "string",
+                    "value": "gi"
+                  },
+                  {
+                    "type": "string",
+                    "value": "wi"
+                  },
+                  {
+                    "type": "string",
+                    "value": "di"
+                  },
+                  {
+                    "type": "string",
+                    "value": "ai"
+                  },
+                  {
+                    "type": "string",
+                    "value": "bs"
+                  },
+                  {
+                    "type": "string",
+                    "value": "ri"
+                  },
+                  {
+                    "type": "string",
+                    "value": "fc"
+                  },
+                  {
+                    "type": "string",
+                    "value": "gr"
+                  },
+                  {
+                    "type": "string",
+                    "value": "hi"
+                  },
+                  {
+                    "type": "string",
+                    "value": "hi2"
+                  },
+                  {
+                    "type": "string",
+                    "value": "si"
+                  },
+                  {
+                    "type": "string",
+                    "value": "sl"
+                  },
+                  {
+                    "type": "string",
+                    "value": "im"
+                  },
+                  {
+                    "type": "string",
+                    "value": "bi"
+                  },
+                  {
+                    "type": "string",
+                    "value": "cg"
+                  },
+                  {
+                    "type": "string",
+                    "value": "vsc"
+                  },
+                  {
+                    "type": "string",
+                    "value": "tb"
+                  },
+                  {
+                    "type": "string",
+                    "value": "tfi"
+                  },
+                  {
+                    "type": "string",
+                    "value": "rx"
+                  },
+                  {
+                    "type": "string",
+                    "value": "pi"
+                  },
+                  {
+                    "type": "string",
+                    "value": "lia"
+                  }
+                ]
               },
               "optional": true
             },

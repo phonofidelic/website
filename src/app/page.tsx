@@ -187,7 +187,7 @@ async function TechnologyIcon({
   }
 
   try {
-    // @ts-ignore
+    // @ts-expect-error Not getting the correct type for imports
     const iconPackage: { [key: string]: IconType | undefined } =
       await getIconImport(importPath)
 

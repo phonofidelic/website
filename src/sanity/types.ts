@@ -79,7 +79,38 @@ export type Technology = {
   description?: string
   link?: string
   icon?: {
-    importPath?: string
+    importPath?:
+      | 'fa'
+      | 'ci'
+      | 'fa6'
+      | 'io'
+      | 'io5'
+      | 'md'
+      | 'ti'
+      | 'go'
+      | 'fi'
+      | 'lu'
+      | 'gi'
+      | 'wi'
+      | 'di'
+      | 'ai'
+      | 'bs'
+      | 'ri'
+      | 'fc'
+      | 'gr'
+      | 'hi'
+      | 'hi2'
+      | 'si'
+      | 'sl'
+      | 'im'
+      | 'bi'
+      | 'cg'
+      | 'vsc'
+      | 'tb'
+      | 'tfi'
+      | 'rx'
+      | 'pi'
+      | 'lia'
     componentName?: string
   }
   projects?: Array<{
@@ -459,7 +490,38 @@ export type PROJECTS_QUERYResult = Array<{
     name: string | null
     description: string | null
     icon: {
-      importPath?: string
+      importPath?:
+        | 'ai'
+        | 'bi'
+        | 'bs'
+        | 'cg'
+        | 'ci'
+        | 'di'
+        | 'fa'
+        | 'fa6'
+        | 'fc'
+        | 'fi'
+        | 'gi'
+        | 'go'
+        | 'gr'
+        | 'hi'
+        | 'hi2'
+        | 'im'
+        | 'io'
+        | 'io5'
+        | 'lia'
+        | 'lu'
+        | 'md'
+        | 'pi'
+        | 'ri'
+        | 'rx'
+        | 'si'
+        | 'sl'
+        | 'tb'
+        | 'tfi'
+        | 'ti'
+        | 'vsc'
+        | 'wi'
       componentName?: string
     } | null
     link: string | null
