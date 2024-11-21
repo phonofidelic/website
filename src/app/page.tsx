@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { defineQuery, PortableText } from 'next-sanity'
 import { VscCode } from 'react-icons/vsc'
 import { client } from '@/sanity/lib/client'
+import { PROJECTS_QUERYResult } from '@/sanity/types'
 import { IconType } from 'react-icons'
 import { checkGate } from './statsig'
 
@@ -20,7 +21,7 @@ const PROJECTS_QUERY = defineQuery(`*[_type == "project"] | {
     } | order(order asc)`)
 
 export default async function Home() {
-  const projects = await client.fetch(
+  const projects = await client.fetch<PROJECTS_QUERYResult>(
     PROJECTS_QUERY,
     {},
     {
