@@ -5,7 +5,7 @@ import { VscCode } from 'react-icons/vsc'
 import { client } from '@/sanity/lib/client'
 import { PROJECTS_QUERYResult } from '@/sanity/types'
 import { IconType } from 'react-icons'
-import { checkGate } from './statsig'
+import { getShowProjects } from '@/flags'
 
 export const metadata: Metadata = {
   title: 'Home | Web development by Christopher Clemons',
@@ -31,7 +31,7 @@ export default async function Home() {
     },
   )
 
-  const showProjects = await checkGate('projects_display')
+  const showProjects = await getShowProjects()
 
   return (
     <div className="w-full">
