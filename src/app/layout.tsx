@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { VercelToolbar } from '@vercel/toolbar/next'
+import { Analytics } from '@vercel/analytics/next'
 import localFont from 'next/font/local'
 import './globals.css'
 
@@ -33,6 +34,7 @@ export default async function RootLayout({
       >
         {children}
         {shouldInjectToolbar && <VercelToolbar />}
+        <Analytics />
       </body>
     </html>
   )
