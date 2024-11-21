@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import { defineQuery, PortableText } from 'next-sanity'
 import { VscCode } from 'react-icons/vsc'
-import { client } from '../sanity/client'
+import { client } from '@/sanity/lib/client'
 import { IconType } from 'react-icons'
 import { checkGate } from './statsig'
 

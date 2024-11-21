@@ -9,8 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "pull": "vercel env pull .env.local",
-    "sanity:extract": "pnpx sanity@latest schema extract --path ./sanity/schema.json",
-    "sanity:typegen": "pnpx sanity@latest typegen generate --config-path ./sanity/sanity-typegen.json"
+    "sanity:extract": "pnpx sanity@latest schema extract --path ./src/sanity/schema.json",
+    "sanity:typegen": "pnpx sanity@latest typegen generate --config-path ./src/sanity/sanity-typegen.json"
   },
   "dependencies": {
     "@sanity/icons": "^3.4.0",
