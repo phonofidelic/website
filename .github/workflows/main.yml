@@ -1,6 +1,9 @@
 name: Generate Sanity types
 on:
   push:
+env:
+  NEXT_PUBLIC_SANITY_DATASET: ${{ vars.NEXT_PUBLIC_SANITY_DATASET }}
+  NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.NEXT_PUBLIC_SANITY_PROJECT_ID }}
 
 jobs:
   build:
