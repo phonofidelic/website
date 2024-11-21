@@ -6,7 +6,7 @@
     "predev": "pnpm sanity:typegen",
     "dev": "next dev --turbopack",
     "prebuild": "pnpm sanity:typegen",
-    "build": "pnpm sanity:typegen && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "pull": "vercel env pull .env.local",
