@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   experimental: {
     after: true,
   },
+  eslint: {
+    dirs: ['src', 'sanity'],
+  },
 }
 
 export default nextConfig
