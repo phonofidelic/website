@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
   experimental: {
     after: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+    ],
+  },
 }
 
 export default withVercelToolbar()(nextConfig)

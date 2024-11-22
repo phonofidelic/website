@@ -30,7 +30,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-zinc-800 dark:text-gray-200 bg-white dark:bg-zinc-900`}
       >
         {children}
         {shouldInjectToolbar && <VercelToolbar />}
