@@ -128,6 +128,7 @@ export type Project = {
   _createdAt: string
   _updatedAt: string
   _rev: string
+  index?: number
   title?: string
   slug?: Slug
   author?: {
@@ -209,6 +210,12 @@ export type Project = {
         _key: string
       }
   >
+  links?: Array<{
+    title?: string
+    url?: string
+    _type: 'link'
+    _key: string
+  }>
 }
 
 export type Post = {
@@ -448,9 +455,10 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol
 // Source: ./src/app/page.tsx
 // Variable: PROJECTS_QUERY
-// Query: *[_type == "project"] | {      _id,      title,      body,      technologies[]->{_id, name, description, icon, link}      } | order(order asc)
+// Query: *[_type == "project"] | {      _id,      index,      title,      body,      technologies[]->{_id, name, description, icon, link},      mainImage{...},      links[]{_key, url, title}    } | order(index asc, _createdAt)
 export type PROJECTS_QUERYResult = Array<{
   _id: string
+  index: number | null
   title: string | null
   body: Array<
     | {
@@ -526,12 +534,29 @@ export type PROJECTS_QUERYResult = Array<{
     } | null
     link: string | null
   }> | null
+  mainImage: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  } | null
+  links: Array<{
+    _key: string
+    url: string | null
+    title: string | null
+  }> | null
 }>
 
 // Query TypeMap
 import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[_type == "project"] | {\n      _id,\n      title,\n      body,\n      technologies[]->{_id, name, description, icon, link}  \n    } | order(order asc)': PROJECTS_QUERYResult
+    '*[_type == "project"] | {\n      _id,\n      index,\n      title,\n      body,\n      technologies[]->{_id, name, description, icon, link},\n      mainImage{...},\n      links[]{_key, url, title}\n    } | order(index asc, _createdAt)': PROJECTS_QUERYResult
   }
 }
