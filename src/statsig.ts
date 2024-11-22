@@ -1,4 +1,4 @@
-import Statsig from 'statsig-node'
+import Statsig, { StatsigUser } from 'statsig-node'
 import { unstable_after as after } from 'next/server'
 import { cookies } from 'next/headers'
 
@@ -10,11 +10,17 @@ const initStatsig = async () => {
   after(() => Statsig.flush(500))
 }
 
-const getStatsigUser = async () => {
+const getStatsigUser = async (): Promise<StatsigUser> => {
   const serverCookies = await cookies()
-  const ajsAnonymousId = serverCookies.get('ajs_anonymous_id')
+  const ajsAnonymousId = serverCookies.get('ajs_anonymous_id')?.value ?? ''
+  const override = serverCookies.get('override')?.value ?? ''
 
-  return { userID: ajsAnonymousId?.value ?? 'not_set' }
+  return {
+    userID: ajsAnonymousId,
+    custom: {
+      override,
+    },
+  }
 }
 
 export async function checkGate(gateName: string) {
