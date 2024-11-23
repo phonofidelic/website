@@ -60,14 +60,21 @@ export default async function Home() {
 
   return (
     <div className="w-full">
-      <header className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <div className="max-w-[300px] sm:max-w-screen-sm md:max-w-screen-md mx-auto flex flex-col gap-8 row-start-2 items-center sm:items-start">
-          <div>
-            <h1 className="text-4xl">Christopher Clemons</h1>
-            <h2 className="text-2xl">(Front-end web developer)</h2>
+      <header className="sm:max-w-screen-sm md:max-w-screen-md mx-auto grid grid-rows-fr md:grid-rows-3 items-center h-screen gap-16 font-[family-name:var(--font-geist-sans)]">
+        <div className="flex flex-col gap-8 row-start-2 p-2 sm:px-20">
+          <div className="flex flex-col gap-4 p-2">
+            <h1 className="text-4xl max-w-xs">Christopher Clemons</h1>
+            <h2 className="text-xl px-2">(Front-end web developer)</h2>
           </div>
-          {!showProjects && (
-            <div>
+          {showProjects ? (
+            <div className="px-4">
+              <p className="text-base">
+                I use web technologies to build interactions between humans and
+                computers.
+              </p>
+            </div>
+          ) : (
+            <div className="px-4">
               New website is on the way. In the meantime, you can reach me on{' '}
               <a
                 href="https://linkedin.com/in/christopher-clemons-89182aba"
@@ -79,7 +86,7 @@ export default async function Home() {
             </div>
           )}
         </div>
-        <div className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+        <div className="row-start-3 flex gap-6 w-full items-center justify-center p-2 sm:p-20 self-start">
           <a
             className="flex items-center gap-2 hover:underline hover:underline-offset-4"
             href="https://github.com/phonofidelic"
@@ -108,7 +115,7 @@ export default async function Home() {
                 Projects
               </h2>
             </div>
-            <div className=" flex flex-col gap-32 pt-16 px-2">
+            <div className="flex flex-col gap-32 pt-16 px-2">
               {projects
                 .filter((project) => assertValidProject(project))
                 .map((project) => (
