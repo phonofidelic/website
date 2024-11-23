@@ -13,6 +13,7 @@
     "sanity:typegen": "pnpx sanity@latest schema extract --path=src/sanity/schema.json && pnpx sanity@latest typegen generate --config-path=src/sanity/sanity-typegen.json"
   },
   "dependencies": {
+    "@sanity/asset-utils": "^2.2.0",
     "@sanity/client": "^6.22.5",
     "@sanity/icons": "^3.4.0",
     "@sanity/image-url": "^1.1.0",
