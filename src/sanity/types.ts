@@ -455,7 +455,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol
 // Source: ./src/app/page.tsx
 // Variable: PROJECTS_QUERY
-// Query: *[_type == "project"] | {      _id,      index,      title,      body,      technologies[]->{_id, name, description, icon, link},      mainImage{...},      links[]{_key, url, title}    } | order(index asc, _createdAt)
+// Query: *[_type == "project"] | {      _id,      index,      title,      body,      technologies[]->{_id, name, description, icon, link},      mainImage{..., asset->{...}},      links[]{_key, url, title}    } | order(index asc, _createdAt)
 export type PROJECTS_QUERYResult = Array<{
   _id: string
   index: number | null
@@ -535,12 +535,28 @@ export type PROJECTS_QUERYResult = Array<{
     link: string | null
   }> | null
   mainImage: {
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
+    asset: {
+      _id: string
+      _type: 'sanity.imageAsset'
+      _createdAt: string
+      _updatedAt: string
+      _rev: string
+      originalFilename?: string
+      label?: string
+      title?: string
+      description?: string
+      altText?: string
+      sha1hash?: string
+      extension?: string
+      mimeType?: string
+      size?: number
+      assetId?: string
+      uploadId?: string
+      path?: string
+      url?: string
+      metadata?: SanityImageMetadata
+      source?: SanityAssetSourceData
+    } | null
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     alt?: string
@@ -557,6 +573,6 @@ export type PROJECTS_QUERYResult = Array<{
 import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[_type == "project"] | {\n      _id,\n      index,\n      title,\n      body,\n      technologies[]->{_id, name, description, icon, link},\n      mainImage{...},\n      links[]{_key, url, title}\n    } | order(index asc, _createdAt)': PROJECTS_QUERYResult
+    '*[_type == "project"] | {\n      _id,\n      index,\n      title,\n      body,\n      technologies[]->{_id, name, description, icon, link},\n      mainImage{..., asset->{...}},\n      links[]{_key, url, title}\n    } | order(index asc, _createdAt)': PROJECTS_QUERYResult
   }
 }
