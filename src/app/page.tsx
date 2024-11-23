@@ -112,10 +112,10 @@ export default async function Home() {
               {projects
                 .filter((project) => assertValidProject(project))
                 .map((project) => (
-                  <div key={project._id} className="flex flex-col gap-4">
+                  <div key={project._id} className="flex flex-col gap-4 group">
                     <h3 className="text-xl">{project.title}</h3>
                     {project.mainImage && project.mainImage.asset && (
-                      <div className="p-2">
+                      <div className="p-2 dark:opacity-75 group-hover:dark:opacity-90 transition-opacity">
                         <ProjectImage
                           image={project.mainImage}
                           projectTitle={project.title}
