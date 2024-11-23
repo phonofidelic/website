@@ -167,7 +167,7 @@ export default async function Home() {
         )}
       </main>
       {showProjects && (
-        <footer className="flex flex-col gap-4 items-center p-16">
+        <footer className="flex flex-col gap-4 items-center p-16 mt-32">
           <div className="flex w-full gap-6 items-center justify-center">
             <a
               className="flex items-center gap-2 hover:underline hover:underline-offset-4"
