@@ -1,19 +1,4 @@
 import type { Metadata } from 'next'
-import { VercelToolbar } from '@vercel/toolbar/next'
-import { Analytics } from '@vercel/analytics/next'
-import localFont from 'next/font/local'
-import './globals.css'
-
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-})
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,17 +10,5 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const shouldInjectToolbar = process.env.NODE_ENV === 'development'
-
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased text-zinc-800 dark:text-gray-200 bg-white dark:bg-zinc-900`}
-      >
-        {children}
-        {shouldInjectToolbar && <VercelToolbar />}
-        <Analytics />
-      </body>
-    </html>
-  )
+  return <html lang="en">{children}</html>
 }

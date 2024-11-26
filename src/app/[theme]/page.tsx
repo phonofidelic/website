@@ -1,5 +1,6 @@
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 import Image from 'next/image'
+import { cookies } from 'next/headers'
 import { defineQuery, PortableText } from 'next-sanity'
 import { VscCode } from 'react-icons/vsc'
 import { client } from '@/sanity/lib/client'
@@ -9,6 +10,7 @@ import { IconType } from 'react-icons'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { getShowProjects } from '@/flags'
 import { urlFor } from '@/sanity/lib/image'
+import { ClientOnly, ThemeSelector } from './ThemeSelector'
 
 export const metadata: Metadata = {
   title: 'Home | Web development by Christopher Clemons',
@@ -44,7 +46,15 @@ const assertValidProject = (
   )
 }
 
-export default async function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ theme: 'light' | 'dark' }>
+}) {
+  const cookieStore = await cookies()
+  // const theme = cookieStore.get('theme')?.value as 'light' | 'dark'
+  const { theme } = await params
+
   const projects = await client.fetch<PROJECTS_QUERYResult>(
     PROJECTS_QUERY,
     {},
@@ -175,25 +185,32 @@ export default async function Home() {
       </main>
       {showProjects && (
         <footer className="flex flex-col gap-4 items-center p-16 mt-32">
-          <div className="flex w-full gap-6 items-center justify-center">
-            <a
-              className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-              href="https://github.com/phonofidelic"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithub />
-              GitHub
-            </a>
-            <a
-              className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-              href="https://linkedin.com/in/christopher-clemons-89182aba"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin />
-              LinkedIn
-            </a>
+          <div className="w-full grid grid-cols-1 sm:grid-cols-3 grid-rows-auto gap-2">
+            <div className="flex w-full gap-6 items-center justify-center sm:col-start-2">
+              <a
+                className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                href="https://github.com/phonofidelic"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub />
+                GitHub
+              </a>
+              <a
+                className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+                href="https://linkedin.com/in/christopher-clemons-89182aba"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin />
+                LinkedIn
+              </a>
+            </div>
+            <div className="justify-center sm:justify-end w-full flex">
+              <ClientOnly fallback={<div>Loading...</div>}>
+                <ThemeSelector />
+              </ClientOnly>
+            </div>
           </div>
           <div>
             <p className="text-xs">

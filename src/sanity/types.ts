@@ -453,7 +453,7 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageMetadata
 export declare const internalGroqTypeReferenceTo: unique symbol
-// Source: ./src/app/page.tsx
+// Source: ./src/app/[theme]/page.tsx
 // Variable: PROJECTS_QUERY
 // Query: *[_type == "project"] | {      _id,      index,      title,      body,      technologies[]->{_id, name, description, icon, link},      mainImage{..., asset->{...}},      links[]{_key, url, title}    } | order(index asc, _createdAt)
 export type PROJECTS_QUERYResult = Array<{
