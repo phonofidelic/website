@@ -1,6 +1,5 @@
-import { Metadata, Viewport } from 'next'
+import { Metadata } from 'next'
 import Image from 'next/image'
-import { cookies } from 'next/headers'
 import { defineQuery, PortableText } from 'next-sanity'
 import { VscCode } from 'react-icons/vsc'
 import { client } from '@/sanity/lib/client'
@@ -46,15 +45,7 @@ const assertValidProject = (
   )
 }
 
-export default async function Home({
-  params,
-}: {
-  params: Promise<{ theme: 'light' | 'dark' }>
-}) {
-  const cookieStore = await cookies()
-  // const theme = cookieStore.get('theme')?.value as 'light' | 'dark'
-  const { theme } = await params
-
+export default async function Home() {
   const projects = await client.fetch<PROJECTS_QUERYResult>(
     PROJECTS_QUERY,
     {},
