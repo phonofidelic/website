@@ -4,7 +4,7 @@ import { defineQuery, PortableText } from 'next-sanity'
 import { VscCode } from 'react-icons/vsc'
 import { client } from '@/sanity/lib/client'
 import { getImageDimensions } from '@sanity/asset-utils'
-import { PROJECTS_QUERYResult } from '@/sanity/types'
+import { FEATURED_PROJECTS_QUERYResult } from '@/sanity/types'
 import { IconType } from 'react-icons'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { getShowProjects } from '@/flags'
@@ -17,26 +17,47 @@ export const metadata: Metadata = {
     'Portfolio site exhibiting web development works by Christopher Clemons',
 }
 
-const PROJECTS_QUERY = defineQuery(`*[_type == "project"] | {
-      _id,
-      index,
-      title,
-      body,
-      technologies[]->{_id, name, description, icon, link},
-      mainImage{..., asset->{...}},
-      links[]{_key, url, title}
-    } | order(index asc, _createdAt)`)
+const FEATURED_PROJECTS_QUERY =
+  defineQuery(`*[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {
+    _id,
+    listTitle,
+    listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}
+  }`)
+
+const assertValidProjectsList = (
+  projectsList: FEATURED_PROJECTS_QUERYResult,
+): projectsList is NonNullable<FEATURED_PROJECTS_QUERYResult> & {
+  listTitle: string
+  listMembers: NonNullable<
+    NonNullable<FEATURED_PROJECTS_QUERYResult>[`listMembers`]
+  >[]
+} => {
+  return Boolean(
+    projectsList &&
+      projectsList.listTitle &&
+      projectsList.listMembers &&
+      projectsList.listMembers.length > 0,
+  )
+}
 
 const assertValidProject = (
-  project: PROJECTS_QUERYResult[number],
+  project: NonNullable<
+    NonNullable<FEATURED_PROJECTS_QUERYResult>['listMembers']
+  >[number],
 ): project is NonNullable<
-  PROJECTS_QUERYResult[number] & {
+  NonNullable<
+    NonNullable<FEATURED_PROJECTS_QUERYResult>['listMembers']
+  >[number] & {
     title: string
     mainImage: {
       asset: {
         _id: string
         url: string
       }
+    }
+    technologies: {
+      name: string
+      link: string
     }
   }
 > => {
@@ -45,19 +66,47 @@ const assertValidProject = (
   )
 }
 
-export default async function Home() {
-  const projects = await client.fetch<PROJECTS_QUERYResult>(
-    PROJECTS_QUERY,
-    {},
-    {
-      next: {
-        /** 30 seconds */
-        revalidate: 30,
-      },
-    },
+const assertValidTechnology = (technology: {
+  name?: string | undefined
+  link?: string | undefined
+  icon?:
+    | { importPath?: string | undefined; componentName?: string | undefined }
+    | undefined
+}): technology is {
+  name: string
+  link: string
+  icon: { importPath: string; componentName: string }
+} => {
+  return Boolean(
+    technology &&
+      technology.name &&
+      technology.link &&
+      technology.icon &&
+      technology.icon.importPath &&
+      technology.icon.componentName,
   )
+}
+
+export default async function Home() {
+  const featuredProjectsResult =
+    await client.fetch<FEATURED_PROJECTS_QUERYResult>(
+      FEATURED_PROJECTS_QUERY,
+      {},
+      {
+        next: {
+          /** 30 seconds */
+          revalidate: 30,
+        },
+      },
+    )
 
   const showProjects = await getShowProjects()
+
+  if (!assertValidProjectsList(featuredProjectsResult)) {
+    return null
+  }
+
+  const { listMembers, listTitle } = featuredProjectsResult
 
   return (
     <div className="w-full">
@@ -109,15 +158,15 @@ export default async function Home() {
         </div>
       </header>
       <main className="flex sm:max-w-screen-sm md:max-w-screen-md mx-auto w-full justify-center">
-        {showProjects && projects.length > 0 && (
+        {showProjects && listMembers.length > 0 && (
           <div className="flex flex-col max-w-full p-2 sm:p-20">
             <div className="mb-8 bg-white dark:bg-zinc-900 sticky top-0 z-50 border-b-3 border-zinc-800 dark:border-white">
               <h2 className="text-4xl pb-2 pt-4 px-2 sm:px-0 w-full ">
-                Projects
+                {listTitle}
               </h2>
             </div>
             <div className="flex flex-col gap-32 pt-16 px-2">
-              {projects
+              {listMembers
                 .filter((project) => assertValidProject(project))
                 .map((project) => (
                   <div key={project._id} className="flex flex-col gap-4 group">
@@ -134,16 +183,18 @@ export default async function Home() {
                       {project.technologies &&
                         project.technologies.length > 0 && (
                           <div className="flex gap-1 w-full overflow-x-auto">
-                            {project.technologies?.map(
-                              ({ _id, name, icon, link }) => (
+                            {project.technologies
+                              .filter((technology) =>
+                                assertValidTechnology(technology),
+                              )
+                              .map(({ _id, name, icon, link }) => (
                                 <Pill
                                   key={_id}
                                   title={name}
                                   icon={<TechnologyIcon icon={icon} />}
                                   link={link}
                                 />
-                              ),
-                            )}
+                              ))}
                           </div>
                         )}
                       {project.links && project.links.length > 0 && (
@@ -218,7 +269,11 @@ function ProjectImage({
   image,
   projectTitle,
 }: {
-  image: NonNullable<PROJECTS_QUERYResult[number]['mainImage']>
+  image: NonNullable<
+    NonNullable<
+      NonNullable<FEATURED_PROJECTS_QUERYResult>['listMembers']
+    >[number]['mainImage']
+  >
   projectTitle: string
 }) {
   if (!image || !image.asset) {
