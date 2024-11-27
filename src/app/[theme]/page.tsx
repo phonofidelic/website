@@ -7,9 +7,11 @@ import { getImageDimensions } from '@sanity/asset-utils'
 import { FEATURED_PROJECTS_QUERYResult } from '@/sanity/types'
 import { IconType } from 'react-icons'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { getShowProjects } from '@/flags'
+import { getShowNavigation, getShowProjects } from '@/flags'
 import { urlFor } from '@/sanity/lib/image'
 import { ClientOnly, ThemeSelector } from './ThemeSelector'
+import { Navigation } from './Navigation'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Home | Web development by Christopher Clemons',
@@ -101,6 +103,7 @@ export default async function Home() {
     )
 
   const showProjects = await getShowProjects()
+  const isNavigationEnabled = await getShowNavigation()
 
   if (!assertValidProjectsList(featuredProjectsResult)) {
     return null
@@ -160,11 +163,46 @@ export default async function Home() {
       <main className="flex sm:max-w-screen-sm md:max-w-screen-md mx-auto w-full justify-center">
         {showProjects && listMembers.length > 0 && (
           <div className="flex flex-col max-w-full p-2 sm:p-20">
-            <div className="mb-8 bg-white dark:bg-zinc-900 sticky top-0 z-50 border-b-3 border-zinc-800 dark:border-white">
-              <h2 className="text-4xl pb-2 pt-4 px-2 sm:px-0 w-full ">
-                {listTitle}
-              </h2>
-            </div>
+            {isNavigationEnabled ? (
+              <Navigation
+                header={
+                  <h2 className="text-4xl pb-2 px-2 sm:px-0">
+                    {
+                      // TODO: rename the list in Sanity
+                      // listTitle
+                      'Recent Projects'
+                    }
+                  </h2>
+                }
+              >
+                <>
+                  <Link href="/about" className="group">
+                    <h2 className="text-4xl pb-2 pt-4 px-2 sm:px-0 w-fit">
+                      About
+                      <span className="block mt-1 duration-300 max-w-0 group-hover:max-w-full opacity-0 group-hover:opacity-100 transition-all h-[3px] bg-zinc-800 dark:bg-white" />
+                    </h2>
+                  </Link>
+                  <Link href="/projects" className="group">
+                    <h2 className="text-4xl pb-2 pt-4 px-2 sm:px-0 w-fit">
+                      Projects
+                      <span className="block mt-1 duration-300 max-w-0 group-hover:max-w-full opacity-0 group-hover:opacity-100 transition-all h-[3px] bg-zinc-800 dark:bg-white" />
+                    </h2>
+                  </Link>
+                  <Link href="/contact" className="group">
+                    <h2 className="text-4xl pb-2 pt-4 px-2 sm:px-0 w-fit">
+                      Contact
+                      <span className="block mt-1 duration-300 max-w-0 group-hover:max-w-full opacity-0 group-hover:opacity-100 transition-all h-[3px] bg-zinc-800 dark:bg-white" />
+                    </h2>
+                  </Link>
+                </>
+              </Navigation>
+            ) : (
+              <div className="mb-8 bg-white dark:bg-zinc-900 sticky top-0 z-50 border-b-3 border-zinc-800 dark:border-white">
+                <h2 className="text-4xl pb-2 pt-4 px-2 sm:px-0 w-full ">
+                  {listTitle}
+                </h2>
+              </div>
+            )}
             <div className="flex flex-col gap-32 pt-16 px-2">
               {listMembers
                 .filter((project) => assertValidProject(project))
@@ -202,7 +240,7 @@ export default async function Home() {
                           {project.links.map((link) =>
                             link.url && link.title ? (
                               <a
-                                className="hover:underline pl-2 leading-[1.75rem] first:pl-0"
+                                className="hover:underline pl-2 leading-[1.75rem] first:pl-0 text-nowrap"
                                 key={link._key}
                                 href={link.url}
                                 target="_blank"

@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/next'
 import localFont from 'next/font/local'
 import { Providers } from './Providers'
 import '@/app/globals.css'
+import { notFound } from 'next/navigation'
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -19,11 +20,15 @@ export default async function ThemeLayout({
   params,
   children,
 }: {
-  children: React.ReactNode
   params: Promise<{ theme: string }>
+  children: React.ReactNode
 }) {
   const { theme } = await params
   const shouldInjectToolbar = process.env.NODE_ENV === 'development'
+
+  if (theme !== 'dark' && theme !== 'light') {
+    notFound()
+  }
 
   return (
     <body
