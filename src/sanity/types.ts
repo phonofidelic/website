@@ -76,10 +76,6 @@ export type Page = {
   _rev: string
   title?: string
   slug?: Slug
-  navigationLink?: {
-    title?: string
-    path?: string
-  }
 }
 
 export type ProjectsList = {
@@ -670,10 +666,6 @@ export type PAGES_QUERYResult = Array<{
   _rev: string
   title?: string
   slug?: Slug
-  navigationLink?: {
-    title?: string
-    path?: string
-  }
 }>
 
 // Query TypeMap
