@@ -7,11 +7,17 @@ export function middleware(request: NextRequest) {
   const ajsAnonymousId =
     request.cookies.get('ajs_anonymous_id')?.value ?? crypto.randomUUID()
   const overrideParam = request.nextUrl.searchParams.get('o')
+  const { pathname, search } = request.nextUrl
 
   const response = storedTheme
-    ? NextResponse.rewrite(new URL(`/${storedTheme}`, request.url).toString())
+    ? NextResponse.rewrite(
+        new URL(`/${storedTheme}${pathname}${search}`, request.url).toString(),
+      )
     : NextResponse.rewrite(
-        new URL(`/${systemTheme ?? 'light'}`, request.url).toString(),
+        new URL(
+          `/${systemTheme ?? 'light'}${pathname}${search}`,
+          request.url,
+        ).toString(),
       )
 
   if (storedTheme) {

@@ -68,6 +68,20 @@ export type Geopoint = {
   alt?: number
 }
 
+export type Page = {
+  _id: string
+  _type: 'page'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title?: string
+  slug?: Slug
+  navigationLink?: {
+    title?: string
+    path?: string
+  }
+}
+
 export type ProjectsList = {
   _id: string
   _type: 'projectsList'
@@ -457,6 +471,7 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | Page
   | ProjectsList
   | Technology
   | Project
@@ -471,6 +486,14 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageMetadata
 export declare const internalGroqTypeReferenceTo: unique symbol
+// Source: ./src/app/[theme]/layout.tsx
+// Variable: PAGES_NAVIGATION_QUERY
+// Query: *[_type == "page"] | {title, slug}
+export type PAGES_NAVIGATION_QUERYResult = Array<{
+  title: string | null
+  slug: Slug | null
+}>
+
 // Source: ./src/app/[theme]/page.tsx
 // Variable: FEATURED_PROJECTS_QUERY
 // Query: *[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {    _id,    listTitle,    listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}  }
@@ -636,10 +659,29 @@ export type FEATURED_PROJECTS_QUERYResult = {
   }> | null
 } | null
 
+// Source: ./src/app/[theme]/[slug]/page.tsx
+// Variable: PAGES_QUERY
+// Query: *[_type == "page"] | {...}
+export type PAGES_QUERYResult = Array<{
+  _id: string
+  _type: 'page'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title?: string
+  slug?: Slug
+  navigationLink?: {
+    title?: string
+    path?: string
+  }
+}>
+
 // Query TypeMap
 import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
+    '*[_type == "page"] | {title, slug}': PAGES_NAVIGATION_QUERYResult
     '*[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {\n    _id,\n    listTitle,\n    listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}\n  }': FEATURED_PROJECTS_QUERYResult
+    '*[_type == "page"] | {...}': PAGES_QUERYResult
   }
 }

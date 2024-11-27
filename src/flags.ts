@@ -5,3 +5,8 @@ export const getShowProjects = flag({
   key: 'projects_display',
   decide: async () => await checkGate('projects_display'),
 })
+
+export const getShowNavigation = flag({
+  key: 'navigation',
+  decide: async () => await checkGate('navigation'),
+})

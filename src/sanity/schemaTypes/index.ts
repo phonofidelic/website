@@ -7,6 +7,7 @@ import { authorType } from './authorType'
 import { projectType } from './projectType'
 import { technologyType } from './technologyType'
 import { projectsListType } from './projectsListType'
+import { pageType } from './pageType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -17,5 +18,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     projectType,
     technologyType,
     projectsListType,
+    pageType,
   ],
 }
