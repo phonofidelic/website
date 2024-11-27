@@ -76,7 +76,7 @@ export default async function ThemeLayout({
                     id="recent-projects"
                     className="text-4xl pb-2 pt-4 px-2 sm:px-0 w-full "
                   >
-                    Recent Projects
+                    Projects
                   </h2>
                 </div>
               )}
