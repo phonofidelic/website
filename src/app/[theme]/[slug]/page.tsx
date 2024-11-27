@@ -1,7 +1,8 @@
+import { getShowNavigation } from '@/flags'
 import { client } from '@/sanity/lib/client'
 import { PAGES_QUERYResult } from '@/sanity/types'
 import { defineQuery } from 'next-sanity'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 
 const PAGES_QUERY = defineQuery(`*[_type == "page"] | {...}`)
 const assertValidPage = (
@@ -20,6 +21,12 @@ export default async function SlugPage({
 }: {
   params: Promise<{ slug: string }>
 }) {
+  const isNavigationEnabled = await getShowNavigation()
+
+  if (!isNavigationEnabled) {
+    redirect('/')
+  }
+
   const { slug } = await params
   const pagesResult = await client.fetch<PAGES_QUERYResult>(
     PAGES_QUERY,
