@@ -18,6 +18,18 @@ export const pageType = defineType({
         source: 'title',
       },
     }),
+    defineField({
+      name: 'body',
+      type: 'blockContent',
+    }),
+    defineField({
+      name: 'list',
+      title: 'List',
+      type: 'reference',
+      to: {
+        type: 'projectsList',
+      },
+    }),
   ],
   preview: {
     select: {

@@ -5,7 +5,7 @@ export default async function HomeHeader() {
   const showProjects = await getShowProjects()
 
   return (
-    <header className="sm:max-w-screen-sm md:max-w-screen-md mx-auto grid grid-rows-fr md:grid-rows-3 items-center h-screen gap-16 font-[family-name:var(--font-geist-sans)]">
+    <header className="mb-20 sm:max-w-screen-sm md:max-w-screen-md mx-auto grid grid-rows-fr md:grid-rows-3 items-center h-screen gap-16 font-[family-name:var(--font-geist-sans)]">
       <div className="flex flex-col gap-8 row-start-2 p-2 sm:px-20">
         <div className="flex flex-col gap-4 p-2">
           <h1 className="text-4xl max-w-xs">Christopher Clemons</h1>

@@ -67,7 +67,7 @@ export default async function ThemeLayout({
         {header}
         <div className="w-full">
           <main className="flex sm:max-w-screen-sm md:max-w-screen-md mx-auto w-full justify-center">
-            <div className="flex flex-col max-w-full p-2 sm:p-20 w-full">
+            <div className="flex flex-col max-w-full p-2 sm:p-20 sm:pt-0 w-full">
               {isNavigationEnabled ? (
                 navigation
               ) : (
