@@ -4,9 +4,12 @@ import { defineQuery, PortableText } from 'next-sanity'
 import { VscCode } from 'react-icons/vsc'
 import { client } from '@/sanity/lib/client'
 import { getImageDimensions } from '@sanity/asset-utils'
-import { FEATURED_PROJECTS_QUERYResult } from '@/sanity/types'
+import {
+  ALL_PROJECTS_QUERYResult,
+  FEATURED_PROJECTS_QUERYResult,
+} from '@/sanity/types'
 import { IconType } from 'react-icons'
-import { getShowProjects } from '@/flags'
+import { getShowNavigation, getShowProjects } from '@/flags'
 import { urlFor } from '@/sanity/lib/image'
 
 export const metadata: Metadata = {
@@ -16,6 +19,13 @@ export const metadata: Metadata = {
 }
 
 const FEATURED_PROJECTS_QUERY =
+  defineQuery(`*[_type == "projectsList" && _id == "45c3a012-4053-462a-847c-e0650a5e1092"][0] | {
+    _id,
+    listTitle,
+    listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}
+  }`)
+
+const ALL_PROJECTS_QUERY =
   defineQuery(`*[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {
     _id,
     listTitle,
@@ -86,17 +96,29 @@ const assertValidTechnology = (technology: {
 }
 
 export default async function Home() {
-  const featuredProjectsResult =
-    await client.fetch<FEATURED_PROJECTS_QUERYResult>(
-      FEATURED_PROJECTS_QUERY,
-      {},
-      {
-        next: {
-          /** 30 seconds */
-          revalidate: 30,
+  const isNavigationEnabled = await getShowNavigation()
+
+  const featuredProjectsResult = isNavigationEnabled
+    ? await client.fetch<FEATURED_PROJECTS_QUERYResult>(
+        FEATURED_PROJECTS_QUERY,
+        {},
+        {
+          next: {
+            /** 30 seconds */
+            revalidate: 30,
+          },
         },
-      },
-    )
+      )
+    : await client.fetch<ALL_PROJECTS_QUERYResult>(
+        ALL_PROJECTS_QUERY,
+        {},
+        {
+          next: {
+            /** 30 seconds */
+            revalidate: 30,
+          },
+        },
+      )
 
   const showProjects = await getShowProjects()
 
@@ -157,7 +179,23 @@ export default async function Home() {
               </div>
               {Array.isArray(project.body) && (
                 <div className="prose">
-                  <PortableText value={project.body} />
+                  <PortableText
+                    value={project.body}
+                    components={{
+                      marks: {
+                        link: ({ children, value }) => (
+                          <a
+                            className="hover:underline"
+                            href={value.href}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                          >
+                            {children}
+                          </a>
+                        ),
+                      },
+                    }}
+                  />
                 </div>
               )}
             </div>
