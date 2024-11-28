@@ -48,7 +48,7 @@ const assertValidProjectsList = (
   )
 }
 
-const assertValidProject = (
+export const assertValidProject = (
   project: NonNullable<
     NonNullable<FEATURED_PROJECTS_QUERYResult>['listMembers']
   >[number],
@@ -74,7 +74,7 @@ const assertValidProject = (
   )
 }
 
-const assertValidTechnology = (technology: {
+export const assertValidTechnology = (technology: {
   name?: string | undefined
   link?: string | undefined
   icon?:
@@ -89,9 +89,10 @@ const assertValidTechnology = (technology: {
     technology &&
       technology.name &&
       technology.link &&
-      technology.icon &&
-      technology.icon.importPath &&
-      technology.icon.componentName,
+      ((technology.icon &&
+        technology.icon.importPath &&
+        technology.icon.componentName) ||
+        technology.icon === undefined),
   )
 }
 
