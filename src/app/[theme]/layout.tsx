@@ -1,5 +1,6 @@
 import { VercelToolbar } from '@vercel/toolbar/next'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { notFound } from 'next/navigation'
 import localFont from 'next/font/local'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
@@ -123,6 +124,7 @@ export default async function ThemeLayout({
       </Providers>
       {shouldInjectToolbar && <VercelToolbar />}
       <Analytics />
+      <SpeedInsights />
     </body>
   )
 }
