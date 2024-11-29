@@ -14,7 +14,7 @@ export function Navigation({
   const containerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    const onClickOutsider = (event: MouseEvent) => {
+    const onClickOutside = (event: MouseEvent) => {
       if (!containerRef.current) {
         return
       }
@@ -23,10 +23,10 @@ export function Navigation({
       }
     }
 
-    document.addEventListener('click', onClickOutsider)
+    document.addEventListener('click', onClickOutside)
 
     return () => {
-      document.removeEventListener('click', onClickOutsider)
+      document.removeEventListener('click', onClickOutside)
     }
   }, [isMenuOpen])
 
