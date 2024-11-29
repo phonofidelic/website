@@ -53,7 +53,7 @@ export function ProjectPreview({
           </div>
         )}
         {project.links && project.links.length > 0 && (
-          <div className="flex gap-x-2 divide-x divide-zinc-800 dark:divide-white text-sm text-nowrap">
+          <div className="flex gap-x-2 divide-x divide-zinc-800 dark:divide-white text-sm">
             {project.links.map((link) =>
               link.url && link.title ? (
                 <a
@@ -62,7 +62,8 @@ export function ProjectPreview({
                   href={link.url}
                   target="_blank"
                 >
-                  {link.title}
+                  {/* Replace spaces with non-breaking space to avoid wrapping in Safari */}
+                  {link.title.replace(/\s/g, '\u00A0')}
                 </a>
               ) : null,
             )}
