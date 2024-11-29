@@ -33,7 +33,7 @@ export function Navigation({
   return (
     <nav
       ref={containerRef}
-      className="mb-8 bg-white dark:bg-zinc-900 sticky top-0 z-50 border-b-3 border-zinc-800 dark:border-white"
+      className="mb-8 bg-white dark:bg-zinc-900 sticky top-0 z-50 "
     >
       <button
         title="Menu"
@@ -51,7 +51,7 @@ export function Navigation({
       </button>
       <div
         className={clsx(
-          'relative transition-[height] *:delay-75 *:transition-opacity flex flex-col bg-white dark:bg-zinc-900 last:*:pb-4',
+          'absolute w-full transition-[height] *:delay-75 *:transition-opacity flex flex-col bg-white dark:bg-zinc-900 last:*:pb-4 border-b-3 border-zinc-800 dark:border-white',
           {
             '*:opacity-100': isMenuOpen,
             'overflow-hidden *:opacity-0': !isMenuOpen,
