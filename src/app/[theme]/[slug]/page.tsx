@@ -42,6 +42,7 @@ export default async function SlugPage({
   const pages = pagesResult.filter(assertValidPage)
   const page = pages.find((page) => page.slug.current === slug)
   if (!page) {
+    return null
     notFound()
   }
 

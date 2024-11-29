@@ -6,9 +6,10 @@ import { useCookies } from 'react-cookie'
 import { MdOutlineLightMode } from 'react-icons/md'
 import { MdOutlineDarkMode } from 'react-icons/md'
 import { PiComputerTower } from 'react-icons/pi'
+import { THEME_COOKIE_NAME } from '@/constants'
 
 export function ThemeSelector() {
-  const [cookies, setCookie, removeCookie] = useCookies(['theme'])
+  const [cookies, setCookie, removeCookie] = useCookies([THEME_COOKIE_NAME])
 
   const [selectedTheme, setSelectedTheme] = React.useState<
     'light' | 'dark' | undefined
@@ -46,8 +47,7 @@ export function ThemeSelector() {
         )}
         onClick={() => {
           setSelectedTheme('light')
-          // localStorage.setItem('theme', 'light')
-          setCookie('theme', 'light')
+          setCookie(THEME_COOKIE_NAME, 'light')
           document.body.classList.remove('dark')
         }}
       >
@@ -63,8 +63,7 @@ export function ThemeSelector() {
           },
         )}
         onClick={() => {
-          // localStorage.removeItem('theme')
-          removeCookie('theme')
+          removeCookie(THEME_COOKIE_NAME)
           setSelectedTheme(undefined)
           document.body.classList.toggle(
             'dark',
@@ -85,8 +84,7 @@ export function ThemeSelector() {
           },
         )}
         onClick={() => {
-          // localStorage.setItem('theme', 'dark')
-          setCookie('theme', 'dark')
+          setCookie(THEME_COOKIE_NAME, 'dark')
           setSelectedTheme('dark')
           document.body.classList.toggle('dark', true)
         }}

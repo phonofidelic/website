@@ -1,6 +1,7 @@
 import Statsig, { StatsigUser } from 'statsig-node'
 import { unstable_after as after } from 'next/server'
 import { cookies } from 'next/headers'
+import { ANONYMOUS_ID_COOKIE_NAME, OVERRIDE_COOKIE_NAME } from './constants'
 
 const initStatsig = async () => {
   await Statsig.initialize(process.env.STATSIG_SERVER_SECRET_KEY!, {
@@ -12,8 +13,9 @@ const initStatsig = async () => {
 
 const getStatsigUser = async (): Promise<StatsigUser> => {
   const serverCookies = await cookies()
-  const ajsAnonymousId = serverCookies.get('ajs_anonymous_id')?.value ?? ''
-  const override = serverCookies.get('override')?.value ?? ''
+  const ajsAnonymousId =
+    serverCookies.get(ANONYMOUS_ID_COOKIE_NAME)?.value ?? ''
+  const override = serverCookies.get(OVERRIDE_COOKIE_NAME)?.value ?? ''
 
   return {
     userID: ajsAnonymousId,
