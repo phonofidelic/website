@@ -79,7 +79,7 @@ export const technologyType = defineType({
               { value: 'rx', title: 'rx' },
               { value: 'pi', title: 'pi' },
               { value: 'lia', title: 'lia' },
-            ],
+            ].sort((a, b) => (a.value > b.value ? 1 : -1)),
           },
           description:
             'The package to import the icon from. I.e.: `react-icons/[importPath]`',
