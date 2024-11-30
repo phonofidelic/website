@@ -60,7 +60,6 @@ export function Navigation({
         style={{
           height: isMenuOpen ? (64 + 8) * 3 : '0px',
         }}
-        onClick={() => setIsMenuOpen(false)}
       >
         {children}
       </div>

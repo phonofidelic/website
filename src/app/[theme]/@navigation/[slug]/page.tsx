@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { client } from '@/sanity/lib/client'
 import { Navigation } from '../../Navigation'
 import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
@@ -5,10 +6,9 @@ import {
   assertValidPageNavigationItem,
   PAGES_NAVIGATION_QUERY,
 } from '../../layout'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-export default async function SlugNavigationPartial({
+export default async function SlugNavigationSlot({
   params,
 }: {
   params: Promise<{ slug: string }>
@@ -21,8 +21,7 @@ export default async function SlugNavigationPartial({
       {},
       {
         next: {
-          /** 30 seconds */
-          revalidate: 30,
+          tags: ['page'],
         },
       },
     )

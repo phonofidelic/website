@@ -1,48 +1,42 @@
-import { client } from '@/sanity/lib/client'
-import { Navigation } from '../Navigation'
-import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
-import {
-  assertValidPageNavigationItem,
-  PAGES_NAVIGATION_QUERY,
-} from '../layout'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
+import { client } from '@/sanity/lib/client'
+import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
+import { Navigation } from '../Navigation'
 
-export default async function HomeNavigationPartial({
-  params,
-}: {
-  params: Promise<{ slug: string }>
-}) {
-  const { slug } = await params
+const PAGE_NAVIGATION_QUERY = `*[_type == "page"] | order(title asc) {
+  title,
+  "slug": slug.current,
+}`
 
+const assertValidNavigationItem = (
+  item: NonNullable<NonNullable<PAGES_NAVIGATION_QUERYResult>[number]>,
+): item is NonNullable<NonNullable<PAGES_NAVIGATION_QUERYResult>[number]> & {
+  title: string
+  slug: string | null
+} => {
+  return Boolean(item.title)
+}
+
+export default async function HomeNavigationSlot() {
   const pagesNavigationQueryResults =
     await client.fetch<PAGES_NAVIGATION_QUERYResult>(
-      PAGES_NAVIGATION_QUERY,
+      PAGE_NAVIGATION_QUERY,
       {},
       {
         next: {
-          /** 30 seconds */
-          revalidate: 30,
+          tags: ['page'],
         },
       },
     )
 
-  const currentPage = pagesNavigationQueryResults
-    .filter(assertValidPageNavigationItem)
-    .find(({ slug: navSlug }) => navSlug?.current === slug)
-
   const navigationLinks = pagesNavigationQueryResults
-    .filter(assertValidPageNavigationItem)
-    .filter(({ slug: navSlug }) => navSlug?.current !== slug)
+    .filter(assertValidNavigationItem)
+    .filter(({ slug }) => slug)
     .sort((a, b) => (a.title > b.title ? 1 : -1))
     .map(({ title, slug }) => ({
       title,
-      href: `/${slug?.current ?? '#recent-projects'}`,
+      href: `/${slug ?? '#recent-projects'}`,
     }))
-
-  if (!currentPage || !currentPage?.title) {
-    notFound()
-  }
 
   return (
     <Navigation
