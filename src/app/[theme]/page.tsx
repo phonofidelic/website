@@ -1,9 +1,6 @@
 import { Metadata } from 'next'
-import {
-  ALL_PROJECTS_QUERY,
-  client,
-  FEATURED_PROJECTS_QUERY,
-} from '@/sanity/lib/client'
+import { defineQuery } from 'next-sanity'
+import { client } from '@/sanity/lib/client'
 import {
   ALL_PROJECTS_QUERYResult,
   FEATURED_PROJECTS_QUERYResult,
@@ -17,29 +14,39 @@ export const metadata: Metadata = {
     'Portfolio site exhibiting web development works by Christopher Clemons',
 }
 
+const FEATURED_PROJECTS_QUERY =
+  defineQuery(`*[_type == "projectsList" && _id == "45c3a012-4053-462a-847c-e0650a5e1092"][0] | {
+    _id,
+    listTitle,
+    listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}
+  }`)
+
+const ALL_PROJECTS_QUERY =
+  defineQuery(`*[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {
+    _id,
+    listTitle,
+    listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}
+  }`)
+
 export default async function Home() {
   const isNavigationEnabled = await getShowNavigation()
+
+  const projectsFetchConfig = {
+    next: {
+      tags: ['projectsList'],
+    },
+  }
 
   const featuredProjectsResult = isNavigationEnabled
     ? await client.fetch<FEATURED_PROJECTS_QUERYResult>(
         FEATURED_PROJECTS_QUERY,
         {},
-        {
-          next: {
-            /** 30 seconds */
-            revalidate: 30,
-          },
-        },
+        projectsFetchConfig,
       )
     : await client.fetch<ALL_PROJECTS_QUERYResult>(
         ALL_PROJECTS_QUERY,
         {},
-        {
-          next: {
-            /** 30 seconds */
-            revalidate: 30,
-          },
-        },
+        projectsFetchConfig,
       )
 
   const showProjects = await getShowProjects()
