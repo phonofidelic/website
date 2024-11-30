@@ -1,19 +1,50 @@
 import { getShowNavigation } from '@/flags'
-import { client, PAGES_QUERY } from '@/sanity/lib/client'
-import { PAGES_QUERYResult } from '@/sanity/types'
-import { PortableText } from 'next-sanity'
+import { client } from '@/sanity/lib/client'
+import { PAGE_QUERYResult, PAGE_SLUGS_QUERYResult, Slug } from '@/sanity/types'
+import { defineQuery, PortableText } from 'next-sanity'
 import { notFound, redirect } from 'next/navigation'
 import { ProjectPreview, assertValidProject } from '../Project'
 
+const PAGE_QUERY = defineQuery(
+  `*[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]`,
+)
+
 const assertValidPage = (
-  page: NonNullable<PAGES_QUERYResult>[number],
-): page is NonNullable<PAGES_QUERYResult>[number] & {
+  page: NonNullable<PAGE_QUERYResult>,
+): page is NonNullable<PAGE_QUERYResult> & {
   title: string
   slug: {
     current: string
-  }
+  } | null
 } => {
-  return Boolean(page && page.title && page.slug && page.slug.current)
+  return Boolean(
+    page &&
+      page.title &&
+      (page.slug === null || (page.slug && page.slug.current)),
+  )
+}
+
+const PAGE_SLUGS_QUERY = defineQuery(`*[_type == "page"] | {slug}`)
+
+const assertValidPageSlug = (
+  page: NonNullable<NonNullable<PAGE_SLUGS_QUERYResult>[number]>,
+): page is NonNullable<NonNullable<PAGE_SLUGS_QUERYResult>[number]> & {
+  slug: Slug
+} => {
+  return Boolean(page && page.slug && page.slug.current)
+}
+
+export const dynamicParams = false
+
+export async function generateStaticParams() {
+  const pageSlugsResult = await client.fetch<PAGE_SLUGS_QUERYResult>(
+    PAGE_SLUGS_QUERY,
+    {},
+  )
+  const pages = pageSlugsResult.filter(assertValidPageSlug)
+  return pages.map((page) => ({
+    slug: page.slug.current,
+  }))
 }
 
 export default async function SlugPage({
@@ -28,21 +59,19 @@ export default async function SlugPage({
   }
 
   const { slug } = await params
-  const pagesResult = await client.fetch<PAGES_QUERYResult>(
-    PAGES_QUERY,
-    {},
+  const page = await client.fetch<PAGE_QUERYResult>(
+    PAGE_QUERY,
+    {
+      slug,
+    },
     {
       next: {
-        /** 30 seconds */
-        revalidate: 30,
+        tags: ['page', `page:${slug}`],
       },
     },
   )
 
-  const pages = pagesResult.filter(assertValidPage)
-  const page = pages.find((page) => page.slug.current === slug)
-  if (!page) {
-    return null
+  if (!page || !assertValidPage(page)) {
     notFound()
   }
 
