@@ -9,7 +9,6 @@ export async function POST(request: NextRequest) {
     }
 
     const { isValidSignature, body } = await parseBody<{ tags: string[] }>(
-      // @ts-expect-error react-dom version mismatch?
       request,
       process.env.SANITY_REVALIDATE_SECRET,
       true,
