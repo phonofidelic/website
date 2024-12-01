@@ -194,7 +194,6 @@ export type Project = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  index?: number
   title?: string
   slug?: Slug
   author?: {
@@ -541,7 +540,6 @@ export type FEATURED_PROJECTS_QUERYResult = {
     _createdAt: string
     _updatedAt: string
     _rev: string
-    index?: number
     title?: string
     slug?: Slug
     author?: {
@@ -704,7 +702,6 @@ export type ALL_PROJECTS_QUERYResult = {
     _createdAt: string
     _updatedAt: string
     _rev: string
-    index?: number
     title?: string
     slug?: Slug
     author?: {
@@ -915,7 +912,6 @@ export type PAGE_QUERYResult = {
       _createdAt: string
       _updatedAt: string
       _rev: string
-      index?: number
       title?: string
       slug?: Slug
       author?: {
