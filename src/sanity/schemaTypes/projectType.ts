@@ -8,11 +8,6 @@ export const projectType = defineType({
   icon: DocumentTextIcon,
   fields: [
     defineField({
-      name: 'index',
-      type: 'number',
-      initialValue: 0,
-    }),
-    defineField({
       name: 'title',
       type: 'string',
     }),
