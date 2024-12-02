@@ -196,6 +196,9 @@ export type Project = {
   _rev: string
   title?: string
   slug?: Slug
+  startDate?: string
+  endDate?: string
+  description?: string
   author?: {
     _ref: string
     _type: 'reference'
@@ -530,7 +533,7 @@ export type PAGES_NAVIGATION_QUERYResult = Array<{
 
 // Source: ./src/app/[theme]/page.tsx
 // Variable: FEATURED_PROJECTS_QUERY
-// Query: *[_type == "projectsList" && _id == "45c3a012-4053-462a-847c-e0650a5e1092"][0] | {    _id,    listTitle,    listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}  }
+// Query: *[_type == "projectsList" && _id == "45c3a012-4053-462a-847c-e0650a5e1092"][0] | {    _id,    listTitle,    listMembers[]->{..., categories[]->{'slug': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}  }
 export type FEATURED_PROJECTS_QUERYResult = {
   _id: string
   listTitle: string | null
@@ -542,6 +545,9 @@ export type FEATURED_PROJECTS_QUERYResult = {
     _rev: string
     title?: string
     slug?: Slug
+    startDate?: string
+    endDate?: string
+    description?: string
     author?: {
       _ref: string
       _type: 'reference'
@@ -642,13 +648,9 @@ export type FEATURED_PROJECTS_QUERYResult = {
         [internalGroqTypeReferenceTo]?: 'project'
       }>
     }> | null
-    categories?: Array<{
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      _key: string
-      [internalGroqTypeReferenceTo]?: 'category'
-    }>
+    categories: Array<{
+      slug: string | null
+    }> | null
     publishedAt?: string
     body?: Array<
       | {
@@ -692,7 +694,7 @@ export type FEATURED_PROJECTS_QUERYResult = {
   }> | null
 } | null
 // Variable: ALL_PROJECTS_QUERY
-// Query: *[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {    _id,    listTitle,    listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}  }
+// Query: *[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {    _id,    listTitle,    listMembers[]->{..., categories[]->{'slug': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}  }
 export type ALL_PROJECTS_QUERYResult = {
   _id: string
   listTitle: string | null
@@ -704,6 +706,9 @@ export type ALL_PROJECTS_QUERYResult = {
     _rev: string
     title?: string
     slug?: Slug
+    startDate?: string
+    endDate?: string
+    description?: string
     author?: {
       _ref: string
       _type: 'reference'
@@ -804,13 +809,9 @@ export type ALL_PROJECTS_QUERYResult = {
         [internalGroqTypeReferenceTo]?: 'project'
       }>
     }> | null
-    categories?: Array<{
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      _key: string
-      [internalGroqTypeReferenceTo]?: 'category'
-    }>
+    categories: Array<{
+      slug: string | null
+    }> | null
     publishedAt?: string
     body?: Array<
       | {
@@ -856,7 +857,7 @@ export type ALL_PROJECTS_QUERYResult = {
 
 // Source: ./src/app/[theme]/[slug]/page.tsx
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]
+// Query: *[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., categories[]->{'slug': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]
 export type PAGE_QUERYResult = {
   _id: string
   _type: 'page'
@@ -914,6 +915,9 @@ export type PAGE_QUERYResult = {
       _rev: string
       title?: string
       slug?: Slug
+      startDate?: string
+      endDate?: string
+      description?: string
       author?: {
         _ref: string
         _type: 'reference'
@@ -1014,13 +1018,9 @@ export type PAGE_QUERYResult = {
           [internalGroqTypeReferenceTo]?: 'project'
         }>
       }> | null
-      categories?: Array<{
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'category'
-      }>
+      categories: Array<{
+        slug: string | null
+      }> | null
       publishedAt?: string
       body?: Array<
         | {
@@ -1075,9 +1075,9 @@ import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
     '*[_type == "page"] | {title, slug}': PAGES_NAVIGATION_QUERYResult
-    '*[_type == "projectsList" && _id == "45c3a012-4053-462a-847c-e0650a5e1092"][0] | {\n    _id,\n    listTitle,\n    listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}\n  }': FEATURED_PROJECTS_QUERYResult
-    '*[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {\n    _id,\n    listTitle,\n    listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}\n  }': ALL_PROJECTS_QUERYResult
-    '*[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]': PAGE_QUERYResult
+    '*[_type == "projectsList" && _id == "45c3a012-4053-462a-847c-e0650a5e1092"][0] | {\n    _id,\n    listTitle,\n    listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}\n  }': FEATURED_PROJECTS_QUERYResult
+    '*[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {\n    _id,\n    listTitle,\n    listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}\n  }': ALL_PROJECTS_QUERYResult
+    '*[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]': PAGE_QUERYResult
     '*[_type == "page"] | {slug}': PAGE_SLUGS_QUERYResult
   }
 }

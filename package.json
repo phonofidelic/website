@@ -24,6 +24,7 @@
     "@vercel/speed-insights": "^1.1.0",
     "@vercel/toolbar": "^0.1.27",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
     "import-in-the-middle": "^1.11.2",
     "next": "15.0.3",
     "next-sanity": "^9.8.16",

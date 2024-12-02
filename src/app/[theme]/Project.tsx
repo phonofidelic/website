@@ -1,34 +1,124 @@
 import Image from 'next/image'
-import { urlFor } from '@/sanity/lib/image'
-import { FEATURED_PROJECTS_QUERYResult } from '@/sanity/types'
-import { getImageDimensions } from '@sanity/asset-utils'
+import dayjs from 'dayjs'
 import { PortableText } from 'next-sanity'
+import { getImageDimensions } from '@sanity/asset-utils'
+import { urlFor } from '@/sanity/lib/image'
+import { FEATURED_PROJECTS_QUERYResult, PAGE_QUERYResult } from '@/sanity/types'
 import { VscCode } from 'react-icons/vsc'
+import { TechnologyList } from './TechnologyList'
+import React from 'react'
 
 export function ProjectPreview({
   project,
 }: {
   project: NonNullable<
-    NonNullable<
-      NonNullable<FEATURED_PROJECTS_QUERYResult>['listMembers']
-    >[number]
-  > & {
+    NonNullable<NonNullable<PAGE_QUERYResult>['list']>['listMembers']
+  >[number] & {
     title: string
-    mainImage: {
-      asset: {
-        _id: string
-        url: string
-      }
-    }
-    technologies: {
-      name: string
-      link: string
-    }
+    categories: { slug: string | null }[] | null
   }
 }) {
+  if (
+    project.categories &&
+    (project.categories
+      .map((category) => category.slug)
+      .includes('work-experience') ||
+      project.categories.map((category) => category.slug).includes('education'))
+  ) {
+    const duration = dayjs(project.endDate).diff(
+      dayjs(project.startDate),
+      'month',
+    )
+
+    return (
+      <div className="grid grid-cols-3 gap-4 w-full">
+        <div className="flex flex-col gap-1">
+          {project.endDate && (
+            <div>{dayjs(project.endDate).format('MMMM YYYY')}</div>
+          )}
+          <div
+            className="flex border-l-2 border-zinc-800 dark:border-white grow ml-4"
+            style={{
+              height: `${duration / 3}rem`,
+            }}
+          ></div>
+          {project.startDate && (
+            <div>{dayjs(project.startDate).format('MMMM YYYY')}</div>
+          )}
+        </div>
+        <div className="flex flex-col gap-4 col-span-2 justify-end">
+          <h3 className="text-xl">{project.title}</h3>
+          {project.description && (
+            <div className="text-sm">{project.description}</div>
+          )}
+          {Array.isArray(project.body) && (
+            <div className="prose">
+              <PortableText
+                value={project.body}
+                components={{
+                  marks: {
+                    link: ({ children, value }) => (
+                      <a
+                        className="hover:underline"
+                        href={value.href}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                      >
+                        {children}
+                      </a>
+                    ),
+                  },
+                }}
+              />
+            </div>
+          )}
+          {project.links && project.links.length > 0 && (
+            <div className="flex gap-x-2 divide-x divide-zinc-800 dark:divide-white text-sm">
+              {project.links
+                .filter((link) => assertValidProjectLink(link))
+                .map((link) => (
+                  <ProjectLink
+                    key={link._key}
+                    title={link.title}
+                    href={link.url}
+                  />
+                ))}
+            </div>
+          )}
+          {project.technologies && project.technologies.length > 0 && (
+            <TechnologyList>
+              {project.technologies
+                .filter((technology) => assertValidTechnology(technology))
+                .map(({ _id, name, icon, link }) => (
+                  <Pill
+                    key={_id}
+                    title={name}
+                    icon={<TechnologyIcon icon={icon} />}
+                    link={link}
+                  />
+                ))}
+            </TechnologyList>
+          )}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="flex flex-col gap-4 group">
       <h3 className="text-xl">{project.title}</h3>
+      {(project.startDate ?? project.endDate) && (
+        <div className="flex gap-2">
+          {project.startDate && (
+            <div>{new Date(project.startDate).toLocaleDateString('sv-se')}</div>
+          )}
+          {project.endDate && (
+            <div>
+              to {new Date(project.endDate).toLocaleDateString('sv-se')}
+            </div>
+          )}
+        </div>
+      )}
       {project.mainImage && project.mainImage.asset && (
         <div className="p-2 dark:opacity-75 group-hover:dark:opacity-90 transition-opacity">
           <ProjectImage
@@ -54,19 +144,15 @@ export function ProjectPreview({
         )}
         {project.links && project.links.length > 0 && (
           <div className="flex gap-x-2 divide-x divide-zinc-800 dark:divide-white text-sm">
-            {project.links.map((link) =>
-              link.url && link.title ? (
-                <a
-                  className="hover:underline pl-2 leading-[1.75rem] first:pl-0 text-nowrap"
+            {project.links
+              .filter((link) => assertValidProjectLink(link))
+              .map((link) => (
+                <ProjectLink
                   key={link._key}
+                  title={link.title}
                   href={link.url}
-                  target="_blank"
-                >
-                  {/* Replace spaces with non-breaking space to avoid wrapping in Safari */}
-                  {link.title.replace(/\s/g, '\u00A0')}
-                </a>
-              ) : null,
-            )}
+                />
+              ))}
           </div>
         )}
       </div>
@@ -97,28 +183,17 @@ export function ProjectPreview({
 
 export const assertValidProject = (
   project: NonNullable<
-    NonNullable<FEATURED_PROJECTS_QUERYResult>['listMembers']
+    NonNullable<NonNullable<PAGE_QUERYResult>['list']>['listMembers']
   >[number],
 ): project is NonNullable<
   NonNullable<
-    NonNullable<FEATURED_PROJECTS_QUERYResult>['listMembers']
+    NonNullable<NonNullable<PAGE_QUERYResult>['list']>['listMembers']
   >[number] & {
     title: string
-    mainImage: {
-      asset: {
-        _id: string
-        url: string
-      }
-    }
-    technologies: {
-      name: string
-      link: string
-    }
+    categories: { slug: string | null }[] | null
   }
 > => {
-  return Boolean(
-    project && project.title && project.mainImage && project.mainImage.asset,
-  )
+  return Boolean(project && project.title)
 }
 
 const assertValidTechnology = (technology: {
@@ -141,6 +216,13 @@ const assertValidTechnology = (technology: {
         technology.icon.componentName) ||
         technology.icon === undefined),
   )
+}
+
+const assertValidProjectLink = (link: {
+  url?: string | undefined
+  title?: string | undefined
+}): link is { url: string; title: string } => {
+  return Boolean(link && link.url && link.title)
 }
 
 function ProjectImage({
@@ -174,6 +256,19 @@ function ProjectImage({
             (max-width: 1200px) 50vw,
             40vw"
     />
+  )
+}
+
+function ProjectLink({ title, href }: { title: string; href: string }) {
+  return (
+    <a
+      className="hover:underline pl-2 leading-[1.75rem] first:pl-0 text-nowrap"
+      href={href}
+      target="_blank"
+    >
+      {/* Replace spaces with non-breaking space to avoid wrapping in Safari */}
+      {title.replace(/\s/g, '\u00A0')}
+    </a>
   )
 }
 
