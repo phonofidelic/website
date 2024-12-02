@@ -19,6 +19,18 @@ export const projectType = defineType({
       },
     }),
     defineField({
+      name: 'startDate',
+      type: 'date',
+    }),
+    defineField({
+      name: 'endDate',
+      type: 'date',
+    }),
+    defineField({
+      name: 'description',
+      type: 'text',
+    }),
+    defineField({
       name: 'author',
       type: 'reference',
       to: { type: 'author' },

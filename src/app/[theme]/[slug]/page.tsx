@@ -6,7 +6,7 @@ import { notFound, redirect } from 'next/navigation'
 import { ProjectPreview, assertValidProject } from '../Project'
 
 const PAGE_QUERY = defineQuery(
-  `*[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]`,
+  `*[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., categories[]->{'slug': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]`,
 )
 
 const assertValidPage = (
