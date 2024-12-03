@@ -45,7 +45,7 @@ export function Navigation({
           className={clsx(
             'absolute right-0 top-[24px] h-full px-2 transition-[height]',
             {
-              'h-full': isMenuOpen,
+              'h-[64px]': isMenuOpen,
               'h-[24px]': !isMenuOpen,
             },
           )}
