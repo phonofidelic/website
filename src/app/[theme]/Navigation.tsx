@@ -43,7 +43,7 @@ export function Navigation({
         {header}
         <div
           className={clsx(
-            'absolute right-0 top-[24px] h-full px-2 transition-[height]',
+            'absolute right-0 top-[24px] px-2 transition-[height]',
             {
               'h-[64px]': isMenuOpen,
               'h-[24px]': !isMenuOpen,
