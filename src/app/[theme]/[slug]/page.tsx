@@ -4,6 +4,7 @@ import { PAGE_QUERYResult, PAGE_SLUGS_QUERYResult, Slug } from '@/sanity/types'
 import { defineQuery, PortableText } from 'next-sanity'
 import { notFound, redirect } from 'next/navigation'
 import { ProjectPreview, assertValidProject } from '../Project'
+import { Metadata } from 'next'
 
 const PAGE_QUERY = defineQuery(
   `*[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., categories[]->{'slug': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]`,
@@ -45,6 +46,31 @@ export async function generateStaticParams() {
   return pages.map((page) => ({
     slug: page.slug.current,
   }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const page = await client.fetch<PAGE_QUERYResult>(
+    PAGE_QUERY,
+    {
+      slug,
+    },
+    {
+      next: {
+        tags: ['page', `page:${slug}`],
+      },
+    },
+  )
+
+  return {
+    title: page?.title
+      ? `${page.title} | Web development by Christopher Clemons`
+      : 'Web development by Christopher Clemons',
+  }
 }
 
 export default async function SlugPage({
