@@ -6,7 +6,6 @@ import {
   assertValidPageNavigationItem,
   PAGES_NAVIGATION_QUERY,
 } from '../../layout'
-import { notFound } from 'next/navigation'
 
 export default async function SlugNavigationSlot({
   params,
@@ -40,7 +39,7 @@ export default async function SlugNavigationSlot({
     }))
 
   if (!currentPage || !currentPage?.title) {
-    notFound()
+    return null
   }
 
   return (
