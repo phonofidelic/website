@@ -31,10 +31,10 @@ export function ProjectPreview({
     )
 
     return (
-      <div className="grid grid-cols-3 gap-4 w-full">
+      <div className="grid grid-cols-4 gap-4 w-full">
         <div className="flex flex-col gap-1">
           {project.endDate && (
-            <div>{dayjs(project.endDate).format('MMMM YYYY')}</div>
+            <div>{dayjs(project.endDate).format('MMM YYYY')}</div>
           )}
           <div
             className="flex border-l-2 border-zinc-800 dark:border-white grow ml-4"
@@ -43,10 +43,10 @@ export function ProjectPreview({
             }}
           ></div>
           {project.startDate && (
-            <div>{dayjs(project.startDate).format('MMMM YYYY')}</div>
+            <div>{dayjs(project.startDate).format('MMM YYYY')}</div>
           )}
         </div>
-        <div className="flex flex-col gap-4 col-span-2 justify-end">
+        <div className="flex flex-col gap-4 col-span-3 justify-end">
           <h3 className="text-xl">{project.title}</h3>
           {project.description && (
             <div className="text-sm">{project.description}</div>
@@ -107,18 +107,6 @@ export function ProjectPreview({
   return (
     <div className="flex flex-col gap-4 group">
       <h3 className="text-xl">{project.title}</h3>
-      {(project.startDate ?? project.endDate) && (
-        <div className="flex gap-2">
-          {project.startDate && (
-            <div>{new Date(project.startDate).toLocaleDateString('sv-se')}</div>
-          )}
-          {project.endDate && (
-            <div>
-              to {new Date(project.endDate).toLocaleDateString('sv-se')}
-            </div>
-          )}
-        </div>
-      )}
       {project.mainImage && project.mainImage.asset && (
         <div className="p-2 dark:opacity-75 group-hover:dark:opacity-90 transition-opacity">
           <ProjectImage
