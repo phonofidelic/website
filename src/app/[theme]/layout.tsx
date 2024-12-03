@@ -7,7 +7,6 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { getShowNavigation, getShowProjects } from '@/flags'
 import { Providers } from './Providers'
 import { ClientOnly, ThemeSelector } from './ThemeSelector'
-import '@/app/globals.css'
 import { defineQuery } from 'next-sanity'
 import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
 
@@ -116,7 +115,7 @@ export default async function ThemeLayout({
             </div>
             <div>
               <p className="text-xs">
-                Copyright &copy; {new Date().getFullYear()} Christopher Clemons
+                &copy; {new Date().getFullYear()} Christopher Clemons
               </p>
             </div>
           </footer>
