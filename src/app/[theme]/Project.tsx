@@ -108,7 +108,7 @@ export function ProjectPreview({
     <div className="flex flex-col gap-4 group">
       <h3 className="text-xl">{project.title}</h3>
       {project.mainImage && project.mainImage.asset && (
-        <div className="p-2 dark:opacity-75 group-hover:dark:opacity-90 transition-opacity">
+        <div className="p-2 dark:opacity-90">
           <ProjectImage
             image={project.mainImage}
             projectTitle={project.title}
@@ -240,9 +240,8 @@ function ProjectImage({
       placeholder="blur"
       blurDataURL={urlFor(image).width(24).height(24).blur(10).url()}
       sizes="
-            (max-width: 768px) 100vw,
-            (max-width: 1200px) 50vw,
-            40vw"
+            (max-width: 639px) 100vw,
+            448px"
     />
   )
 }
