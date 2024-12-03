@@ -41,9 +41,17 @@ export function Navigation({
         onClick={() => setIsMenuOpen((previous) => !previous)}
       >
         {header}
-        <div className="pt-[3px]">
-          <div className="grid grid-rows-3 gap-1.5 pt-2 px-2">
-            <div className="bg-zinc-800 dark:bg-white h-[3px] w-7" />
+        <div
+          className={clsx(
+            'absolute right-0 top-[24px] px-2 transition-[height]',
+            {
+              'h-[64px]': isMenuOpen,
+              'h-[24px]': !isMenuOpen,
+            },
+          )}
+        >
+          <div className="h-full grid grid-rows-auto gap-1.5 place-content-between">
+            <div className="bg-zinc-800 dark:bg-white h-[3px] w-7 place-self-start" />
             <div className="bg-zinc-800 dark:bg-white h-[3px] w-7" />
             <div className="bg-zinc-800 dark:bg-white h-[3px] w-7" />
           </div>
