@@ -1,5 +1,6 @@
+import 'server-only'
 import Link from 'next/link'
-import { client } from '@/sanity/lib/client'
+import { sanityFetchCached } from '@/sanity/lib/client'
 import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
 import { Navigation } from '../Navigation'
 
@@ -19,7 +20,7 @@ const assertValidNavigationItem = (
 
 export default async function HomeNavigationSlot() {
   const pagesNavigationQueryResults =
-    await client.fetch<PAGES_NAVIGATION_QUERYResult>(
+    await sanityFetchCached<PAGES_NAVIGATION_QUERYResult>(
       PAGE_NAVIGATION_QUERY,
       {},
       {
