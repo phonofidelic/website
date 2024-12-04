@@ -1,6 +1,6 @@
 import 'server-only'
 import { getShowNavigation } from '@/flags'
-import { sanityFetchCached } from '@/sanity/lib/client'
+import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
 import { PAGE_QUERYResult, PAGE_SLUGS_QUERYResult, Slug } from '@/sanity/types'
 import { defineQuery, PortableText } from 'next-sanity'
 import { notFound, redirect } from 'next/navigation'
@@ -39,11 +39,15 @@ const assertValidPageSlug = (
 export const dynamicParams = false
 
 export async function generateStaticParams() {
+  sanityPreload<PAGE_SLUGS_QUERYResult>(PAGE_SLUGS_QUERY, {})
+
   const pageSlugsResult = await sanityFetchCached<PAGE_SLUGS_QUERYResult>(
     PAGE_SLUGS_QUERY,
     {},
   )
+
   const pages = pageSlugsResult.filter(assertValidPageSlug)
+
   return pages.map((page) => ({
     slug: page.slug.current,
   }))
@@ -55,6 +59,19 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
+
+  sanityPreload<PAGE_QUERYResult>(
+    PAGE_QUERY,
+    {
+      slug,
+    },
+    {
+      next: {
+        tags: ['page', `page:${slug}`],
+      },
+    },
+  )
+
   const page = await sanityFetchCached<PAGE_QUERYResult>(
     PAGE_QUERY,
     {
@@ -86,6 +103,19 @@ export default async function SlugPage({
   }
 
   const { slug } = await params
+
+  sanityPreload<PAGE_QUERYResult>(
+    PAGE_QUERY,
+    {
+      slug,
+    },
+    {
+      next: {
+        tags: ['page', `page:${slug}`],
+      },
+    },
+  )
+
   const page = await sanityFetchCached<PAGE_QUERYResult>(
     PAGE_QUERY,
     {
