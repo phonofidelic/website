@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import Statsig, { StatsigUser } from 'statsig-node'
 import { unstable_after as after } from 'next/server'
 import { cookies } from 'next/headers'
@@ -13,12 +14,11 @@ const initStatsig = async () => {
 
 const getStatsigUser = async (): Promise<StatsigUser> => {
   const serverCookies = await cookies()
-  const ajsAnonymousId =
-    serverCookies.get(ANONYMOUS_ID_COOKIE_NAME)?.value ?? ''
+  const userID = serverCookies.get(ANONYMOUS_ID_COOKIE_NAME)?.value ?? ''
   const override = serverCookies.get(OVERRIDE_COOKIE_NAME)?.value ?? ''
 
   return {
-    userID: ajsAnonymousId,
+    userID,
     custom: {
       override,
     },
@@ -47,3 +47,6 @@ export async function fetchGateIds() {
     throw error
   }
 }
+
+export const checkGateCached = cache(checkGate)
+export const fetchGateIdsCached = cache(fetchGateIds)
