@@ -1,12 +1,24 @@
 import 'server-only'
 import Link from 'next/link'
+import { defineQuery } from 'next-sanity'
 import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
-import { Navigation } from '../../Navigation'
+import { Navigation } from '@/app/[theme]/Navigation'
 import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
-import {
-  assertValidPageNavigationItem,
-  PAGES_NAVIGATION_QUERY,
-} from '../../layout'
+
+const PAGES_NAVIGATION_QUERY = defineQuery(`*[_type == "page"] | {title, slug}`)
+
+const assertValidPageNavigationItem = (
+  navigationItem: NonNullable<PAGES_NAVIGATION_QUERYResult>[number],
+): navigationItem is NonNullable<PAGES_NAVIGATION_QUERYResult>[number] & {
+  title: string
+  slug: { current: string } | null
+} => {
+  return Boolean(
+    navigationItem &&
+      navigationItem.title &&
+      (navigationItem.slug === null || navigationItem.slug.current),
+  )
+}
 
 export default async function SlugNavigationSlot({
   params,
