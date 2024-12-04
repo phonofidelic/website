@@ -7,8 +7,6 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { getShowNavigation, getShowProjects } from '@/flags'
 import { Providers } from './Providers'
 import { ClientOnly, ThemeSelector } from './ThemeSelector'
-import { defineQuery } from 'next-sanity'
-import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -20,25 +18,6 @@ const geistMono = localFont({
   variable: '--font-geist-mono',
   weight: '100 900',
 })
-
-// TODO: move to @navigation/[slug]/page.tsx
-export const PAGES_NAVIGATION_QUERY = defineQuery(
-  `*[_type == "page"] | {title, slug}`,
-)
-
-// TODO: move to @navigation/[slug]/page.tsx
-export const assertValidPageNavigationItem = (
-  navigationItem: NonNullable<PAGES_NAVIGATION_QUERYResult>[number],
-): navigationItem is NonNullable<PAGES_NAVIGATION_QUERYResult>[number] & {
-  title: string
-  slug: { current: string } | null
-} => {
-  return Boolean(
-    navigationItem &&
-      navigationItem.title &&
-      (navigationItem.slug === null || navigationItem.slug.current),
-  )
-}
 
 export default async function ThemeLayout({
   header,
