@@ -59,7 +59,9 @@ export const config = {
      * - studio (Sanity Studio)
      * - monitoring (Sentry)
      * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+     * - manifest
+     * - icon (icon generation route)
      */
-    '/((?!api|_next/static|_next/image|.well-known|studio|monitoring|favicon.ico|sitemap.xml|robots.txt).*)',
+    '/((?!api|_next/static|_next/image|.well-known|studio|monitoring|favicon.ico|sitemap.xml|robots.txt|manifest.webmanifest|icon).*)',
   ],
 }
