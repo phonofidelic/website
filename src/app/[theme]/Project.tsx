@@ -169,6 +169,34 @@ export function ProjectPreview({
   )
 }
 
+export function ProjectPreviewSkeleton() {
+  return (
+    <div className="flex flex-col gap-4 group">
+      <h3 className="h-6 w-1/4 bg-zinc-200 dark:bg-zinc-800 animate-pulse rounded-sm"></h3>
+      <div className="p-2 dark:opacity-90">
+        <div className="h-[30vh] sm:h-[388px] w-full bg-zinc-200 dark:bg-zinc-800 animate-pulse rounded-sm"></div>
+      </div>
+      <div className="flex flex-col sm:flex-row justify-between w-full gap-4">
+        <div className="flex gap-1">
+          <div className="w-16 h-7 rounded-s-full rounded-e-full bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
+          <div className="w-16 h-7 rounded-s-full rounded-e-full bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
+          <div className="w-16 h-7 rounded-s-full rounded-e-full bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
+          <div className="w-16 h-7 rounded-s-full rounded-e-full bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
+        </div>
+        <div className="w-fit grid grid-flow-col grid-cols-min gap-x-2 dark:divide-zinc-800 h-7 items-center">
+          <div className="w-[40px] h-[14px] bg-zinc-200 dark:bg-zinc-800 animate-pulse rounded-sm" />
+          <div className="w-[2px] h-full bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
+          <div className="w-[42px] h-[14px] bg-zinc-200 dark:bg-zinc-800 animate-pulse rounded-sm pl-2" />
+        </div>
+      </div>
+      <div className="h-12 flex flex-col justify-around">
+        <div className="w-full h-4 bg-zinc-200 dark:bg-zinc-800 animate-pulse rounded-sm" />
+        <div className="w-32 h-4 bg-zinc-200 dark:bg-zinc-800 animate-pulse rounded-sm" />
+      </div>
+    </div>
+  )
+}
+
 export const assertValidProject = (
   project: NonNullable<
     NonNullable<NonNullable<PAGE_QUERYResult>['list']>['listMembers']
