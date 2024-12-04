@@ -21,10 +21,12 @@ const geistMono = localFont({
   weight: '100 900',
 })
 
+// TODO: move to @navigation/[slug]/page.tsx
 export const PAGES_NAVIGATION_QUERY = defineQuery(
   `*[_type == "page"] | {title, slug}`,
 )
 
+// TODO: move to @navigation/[slug]/page.tsx
 export const assertValidPageNavigationItem = (
   navigationItem: NonNullable<PAGES_NAVIGATION_QUERYResult>[number],
 ): navigationItem is NonNullable<PAGES_NAVIGATION_QUERYResult>[number] & {

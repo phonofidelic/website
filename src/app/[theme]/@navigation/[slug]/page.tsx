@@ -1,5 +1,6 @@
+import 'server-only'
 import Link from 'next/link'
-import { client } from '@/sanity/lib/client'
+import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
 import { Navigation } from '../../Navigation'
 import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
 import {
@@ -14,8 +15,18 @@ export default async function SlugNavigationSlot({
 }) {
   const { slug } = await params
 
+  sanityPreload<PAGES_NAVIGATION_QUERYResult>(
+    PAGES_NAVIGATION_QUERY,
+    {},
+    {
+      next: {
+        tags: ['page'],
+      },
+    },
+  )
+
   const pagesNavigationQueryResults =
-    await client.fetch<PAGES_NAVIGATION_QUERYResult>(
+    await sanityFetchCached<PAGES_NAVIGATION_QUERYResult>(
       PAGES_NAVIGATION_QUERY,
       {},
       {

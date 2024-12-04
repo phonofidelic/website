@@ -1,6 +1,7 @@
+import 'server-only'
 import { Metadata } from 'next'
 import { defineQuery } from 'next-sanity'
-import { client } from '@/sanity/lib/client'
+import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
 import {
   ALL_PROJECTS_QUERYResult,
   FEATURED_PROJECTS_QUERYResult,
@@ -37,13 +38,27 @@ export default async function Home() {
     },
   }
 
+  if (isNavigationEnabled) {
+    sanityPreload<FEATURED_PROJECTS_QUERYResult>(
+      FEATURED_PROJECTS_QUERY,
+      {},
+      projectsFetchConfig,
+    )
+  } else {
+    sanityPreload<ALL_PROJECTS_QUERYResult>(
+      ALL_PROJECTS_QUERY,
+      {},
+      projectsFetchConfig,
+    )
+  }
+
   const featuredProjectsResult = isNavigationEnabled
-    ? await client.fetch<FEATURED_PROJECTS_QUERYResult>(
+    ? await sanityFetchCached<FEATURED_PROJECTS_QUERYResult>(
         FEATURED_PROJECTS_QUERY,
         {},
         projectsFetchConfig,
       )
-    : await client.fetch<ALL_PROJECTS_QUERYResult>(
+    : await sanityFetchCached<ALL_PROJECTS_QUERYResult>(
         ALL_PROJECTS_QUERY,
         {},
         projectsFetchConfig,
