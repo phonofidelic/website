@@ -1,5 +1,18 @@
 import type { Metadata } from 'next'
+import { cookies, headers } from 'next/headers'
+import localFont from 'next/font/local'
 import '@/app/globals.css'
+
+const geistSans = localFont({
+  src: './fonts/GeistVF.woff',
+  variable: '--font-geist-sans',
+  weight: '100 900',
+})
+const geistMono = localFont({
+  src: './fonts/GeistMonoVF.woff',
+  variable: '--font-geist-mono',
+  weight: '100 900',
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -11,5 +24,18 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <html lang="en">{children}</html>
+  const headersList = await headers()
+  const serverCookies = await cookies()
+  const systemTheme = headersList.get('sec-ch-prefers-color-scheme')
+  const theme = serverCookies.get('theme')?.value ?? systemTheme
+
+  return (
+    <html lang="en">
+      <body
+        className={`${theme === 'dark' ? theme : ''} ${geistSans.variable} ${geistMono.variable} antialiased text-zinc-800 dark:text-gray-200 bg-white dark:bg-zinc-900`}
+      >
+        {children}
+      </body>
+    </html>
+  )
 }
