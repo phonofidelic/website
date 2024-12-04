@@ -31,25 +31,23 @@ export default async function ThemeLayout({
   return (
     <Providers>
       {header}
-      <div className="w-full">
-        <main className="flex sm:max-w-screen-sm md:max-w-screen-md mx-auto w-full justify-center">
-          <div className="flex flex-col max-w-full p-2 sm:p-20 sm:pt-0 w-full">
-            {isNavigationEnabled ? (
-              navigation
-            ) : (
-              <div className="mb-8 bg-white dark:bg-zinc-900 sticky top-0 z-50 border-b-3 border-zinc-800 dark:border-white">
-                <h2
-                  id="recent-projects"
-                  className="text-4xl pb-2 pt-4 px-2 sm:px-0 w-full "
-                >
-                  Projects
-                </h2>
-              </div>
-            )}
-            {children}
-          </div>
-        </main>
-      </div>
+      <main className="flex w-full justify-center">
+        <div className="flex flex-col max-w-full p-2 sm:p-20 sm:pt-0 w-full">
+          {isNavigationEnabled ? (
+            navigation
+          ) : (
+            <div className="mb-8 bg-white dark:bg-zinc-900 sticky top-0 z-50 border-b-3 border-zinc-800 dark:border-white">
+              <h2
+                id="recent-projects"
+                className="text-4xl pb-2 pt-4 px-2 sm:px-0 w-full "
+              >
+                Projects
+              </h2>
+            </div>
+          )}
+          {children}
+        </div>
+      </main>
       {showProjects && (
         <footer className="flex flex-col gap-4 items-center p-16 mt-32">
           <div className="w-full grid grid-cols-1 sm:grid-cols-3 grid-rows-auto gap-2">

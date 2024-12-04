@@ -32,7 +32,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${theme === 'dark' ? theme : ''} ${geistSans.variable} ${geistMono.variable} antialiased text-zinc-800 dark:text-gray-200 bg-white dark:bg-zinc-900`}
+        className={`${theme === 'dark' ? theme : ''} ${geistSans.variable} ${geistMono.variable} antialiased text-zinc-800 dark:text-gray-200 bg-white dark:bg-zinc-900 sm:max-w-screen-sm md:max-w-screen-md mx-auto`}
       >
         {children}
       </body>
