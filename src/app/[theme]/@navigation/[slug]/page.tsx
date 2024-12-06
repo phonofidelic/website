@@ -2,7 +2,7 @@ import 'server-only'
 import Link from 'next/link'
 import { defineQuery } from 'next-sanity'
 import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
-import { Navigation } from '@/app/[theme]/Navigation'
+import { Navigation } from '../Navigation'
 import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
 
 const PAGES_NAVIGATION_QUERY = defineQuery(`*[_type == "page"] | {title, slug}`)

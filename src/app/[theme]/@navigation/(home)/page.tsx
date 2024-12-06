@@ -2,7 +2,7 @@ import 'server-only'
 import Link from 'next/link'
 import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
 import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
-import { Navigation } from '../../Navigation'
+import { Navigation } from '../Navigation'
 
 const PAGE_NAVIGATION_QUERY = `*[_type == "page"] | order(title asc) {
   title,
