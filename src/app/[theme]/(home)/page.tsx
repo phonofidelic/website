@@ -7,7 +7,7 @@ import {
   FEATURED_PROJECTS_QUERYResult,
 } from '@/sanity/types'
 import { getShowNavigation, getShowProjects } from '@/flags'
-import { assertValidProject, ProjectPreview } from './Project'
+import { assertValidProject, ProjectPreview } from '../Project'
 
 export const metadata: Metadata = {
   title: 'Home | Web development by Christopher Clemons',
