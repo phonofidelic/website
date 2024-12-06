@@ -1,6 +1,6 @@
 export default function NavigationLoaging() {
   return (
-    <div className="flex flex-col w-full gap-2">
+    <div className="flex flex-col w-full gap-2 pt-4 h-[67px]">
       <div
         id="recent-projects"
         className="flex w-full h-10 items-center px-2 justify-between"
