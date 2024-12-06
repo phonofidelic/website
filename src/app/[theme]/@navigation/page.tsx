@@ -52,14 +52,14 @@ export default async function HomeNavigationSlot() {
   return (
     <Navigation
       header={
-        <h2 id="recent-projects" className="text-4xl pb-2 px-2 sm:px-0">
+        <h2 id="recent-projects" className="text-4xl pb-2 px-2 ">
           Recent Projects
         </h2>
       }
     >
       {navigationLinks.map(({ title, href }) => (
         <Link key={href} href={href} className="group">
-          <h2 className="text-4xl pb-2 pt-4 px-2 sm:px-0 w-fit">
+          <h2 className="text-4xl pb-2 pt-4 px-2 w-fit">
             {title}
             <span className="block mt-1 duration-300 max-w-0 group-hover:max-w-full opacity-0 group-hover:opacity-100 transition-all h-[3px] bg-zinc-800 dark:bg-white" />
           </h2>
