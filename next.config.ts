@@ -4,9 +4,6 @@ import { withSentryConfig } from '@sentry/nextjs'
 
 const nextConfig: NextConfig = {
   /* config options here */
-  experimental: {
-    after: true,
-  },
   images: {
     remotePatterns: [
       {

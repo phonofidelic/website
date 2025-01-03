@@ -1,6 +1,6 @@
 import { cache } from 'react'
 import Statsig, { StatsigUser } from 'statsig-node'
-import { unstable_after as after } from 'next/server'
+import { after } from 'next/server'
 import { cookies } from 'next/headers'
 import { ANONYMOUS_ID_COOKIE_NAME, OVERRIDE_COOKIE_NAME } from './constants'
 
