@@ -3,7 +3,10 @@ import { getShowNavigation } from '@/flags'
 import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
 import { PAGE_QUERYResult, PAGE_SLUGS_QUERYResult, Slug } from '@/sanity/types'
 import { defineQuery, PortableText } from 'next-sanity'
-import { notFound, redirect } from 'next/navigation'
+import {
+  // notFound,
+  redirect,
+} from 'next/navigation'
 import { ProjectPreview, assertValidProject } from '../Project'
 import { Metadata } from 'next'
 
@@ -133,7 +136,8 @@ export default async function SlugPage({
   console.log('*** SlugPage, page:', page)
 
   if (!page || !assertValidPage(page)) {
-    notFound()
+    // notFound()
+    return null
   }
 
   return (
