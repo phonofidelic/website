@@ -104,6 +104,8 @@ export default async function SlugPage({
 
   const { slug } = await params
 
+  console.log('*** SlugPage, slug:', slug)
+
   sanityPreload<PAGE_QUERYResult>(
     PAGE_QUERY,
     {
@@ -127,6 +129,8 @@ export default async function SlugPage({
       },
     },
   )
+
+  console.log('*** SlugPage, page:', page)
 
   if (!page || !assertValidPage(page)) {
     notFound()
