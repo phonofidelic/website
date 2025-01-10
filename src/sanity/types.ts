@@ -1056,11 +1056,6 @@ export type PAGE_QUERYResult = {
     }> | null
   } | null
 } | null
-// Variable: PAGE_SLUGS_QUERY
-// Query: *[_type == "page"] | {slug}
-export type PAGE_SLUGS_QUERYResult = Array<{
-  slug: Slug | null
-}>
 
 // Source: ./src/app/[theme]/@navigation/[slug]/page.tsx
 // Variable: PAGES_NAVIGATION_QUERY
@@ -1077,7 +1072,6 @@ declare module '@sanity/client' {
     '*[_type == "projectsList" && _id == "45c3a012-4053-462a-847c-e0650a5e1092"][0] | {\n    _id,\n    listTitle,\n    listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}\n  }': FEATURED_PROJECTS_QUERYResult
     '*[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {\n    _id,\n    listTitle,\n    listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}\n  }': ALL_PROJECTS_QUERYResult
     '*[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]': PAGE_QUERYResult
-    '*[_type == "page"] | {slug}': PAGE_SLUGS_QUERYResult
     '*[_type == "page"] | {title, slug}': PAGES_NAVIGATION_QUERYResult
   }
 }
