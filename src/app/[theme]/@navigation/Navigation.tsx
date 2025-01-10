@@ -59,7 +59,7 @@ export function Navigation({
       </button>
       <div
         className={clsx(
-          'absolute w-full transition-[height] *:delay-75 *:transition-opacity flex flex-col bg-white dark:bg-zinc-900 last:*:pb-4 border-b-3 border-zinc-800 dark:border-white',
+          'absolute w-full transition-[height] *:delay-75 *:transition-opacity flex flex-col bg-white dark:bg-zinc-900 border-b-3 border-zinc-800 dark:border-white',
           {
             '*:opacity-100': isMenuOpen,
             'overflow-hidden *:opacity-0': !isMenuOpen,
