@@ -1,7 +1,7 @@
 import { VercelToolbar } from '@vercel/toolbar/next'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-// import { notFound } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { getShowNavigation, getShowProjects } from '@/flags'
 import { Providers } from './Providers'
@@ -19,12 +19,11 @@ export default async function ThemeLayout({
   children: React.ReactNode
 }) {
   const { theme } = await params
-  console.log('*** ThemeLayout, theme:', theme)
   const shouldInjectToolbar = process.env.NODE_ENV === 'development'
 
-  // if (theme !== 'dark' && theme !== 'light') {
-  //   notFound()
-  // }
+  if (theme !== 'dark' && theme !== 'light') {
+    notFound()
+  }
 
   const showProjects = await getShowProjects()
   const isNavigationEnabled = await getShowNavigation()
