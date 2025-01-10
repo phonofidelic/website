@@ -1,12 +1,8 @@
-import 'server-only'
 import { getShowNavigation } from '@/flags'
 import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
-import { PAGE_QUERYResult, PAGE_SLUGS_QUERYResult, Slug } from '@/sanity/types'
+import { PAGE_QUERYResult } from '@/sanity/types'
 import { defineQuery, PortableText } from 'next-sanity'
-import {
-  // notFound,
-  redirect,
-} from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { ProjectPreview, assertValidProject } from '../Project'
 import { Metadata } from 'next'
 
@@ -27,33 +23,6 @@ const assertValidPage = (
       page.title &&
       (page.slug === null || (page.slug && page.slug.current)),
   )
-}
-
-const PAGE_SLUGS_QUERY = defineQuery(`*[_type == "page"] | {slug}`)
-
-const assertValidPageSlug = (
-  page: NonNullable<NonNullable<PAGE_SLUGS_QUERYResult>[number]>,
-): page is NonNullable<NonNullable<PAGE_SLUGS_QUERYResult>[number]> & {
-  slug: Slug
-} => {
-  return Boolean(page && page.slug && page.slug.current)
-}
-
-export const dynamicParams = false
-
-export async function generateStaticParams() {
-  sanityPreload<PAGE_SLUGS_QUERYResult>(PAGE_SLUGS_QUERY, {})
-
-  const pageSlugsResult = await sanityFetchCached<PAGE_SLUGS_QUERYResult>(
-    PAGE_SLUGS_QUERY,
-    {},
-  )
-
-  const pages = pageSlugsResult.filter(assertValidPageSlug)
-
-  return pages.map((page) => ({
-    slug: page.slug.current,
-  }))
 }
 
 export async function generateMetadata({
@@ -136,8 +105,7 @@ export default async function SlugPage({
   console.log('*** SlugPage, page:', page)
 
   if (!page || !assertValidPage(page)) {
-    // notFound()
-    return null
+    notFound()
   }
 
   return (
