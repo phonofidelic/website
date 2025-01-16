@@ -20,7 +20,7 @@
     "@sanity/vision": "^3.64.1",
     "@sentry/nextjs": "^8",
     "@vercel/analytics": "^1.4.1",
-    "@vercel/flags": "^2.6.3",
+    "@vercel/flags": "^3.0.0",
     "@vercel/speed-insights": "^1.1.0",
     "@vercel/toolbar": "^0.1.27",
     "clsx": "^2.1.1",
