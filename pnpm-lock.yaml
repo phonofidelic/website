@@ -73,7 +73,7 @@ importers:
         version: 3.69.0(@emotion/is-prop-valid@1.2.2)(@types/babel__core@7.20.5)(@types/node@22.10.5)(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(terser@5.44.0)(typescript@5.7.3)
       statsig-node:
         specifier: ^6.0.1
-        version: 6.0.1
+        version: 6.5.1
       styled-components:
         specifier: ^6.1.13
         version: 6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -5799,8 +5799,9 @@ packages:
     resolution: {integrity: sha512-KJP1OCML99+8fhOHxwwzyWrlUuVX5GQ0ZpJTd1DFXhdkrvg1szxfHhawXUZ3g9TkXORQd4/WG68jMlQZ2p8wlg==}
     engines: {node: '>=6'}
 
-  statsig-node@6.0.1:
-    resolution: {integrity: sha512-OtCwVMqqcZCKvPnRp7BNIw2uOgb64zh/ta+6HMmz0sApElCvK3WWcU9FHpYsBZG1AaQrkYq+SgnLz/xV72gvdA==}
+  statsig-node@6.5.1:
+    resolution: {integrity: sha512-/rKvMMN9SWTK8+b7MyRP1wOsStsKf55Mdj8O2ffV/bCQ/38bXYCC/GVd3gVvBSwVCibAnkTz2v1gpRJSIKsBIg==}
+    engines: {pnpm: never}
 
   stream-each@1.2.3:
     resolution: {integrity: sha512-vlMC2f8I2u/bZGqkdfLQW/13Zihpej/7PmSiMQsbYddxuTsJp8vRe2x2FvVExZg7FaOds43ROAuFJwPR4MTZLw==}
@@ -6062,6 +6063,10 @@ packages:
     resolution: {integrity: sha512-tk2G5R2KRwBd+ZN0zaEXpmzdKyOYksXwywulIX95MBODjSzMIuQnQ3m8JxgbhnL1LeVo7lqQKsYa1O3Htl7K5g==}
     engines: {node: '>=18'}
 
+  tr46@5.1.1:
+    resolution: {integrity: sha512-hdF5ZgjTqgAntKkklYw0R03MG2x/bSzTtkxmIRw/sTNV8YXsCJ1tfLAX23lhxhHJlEf3CRCOCGGWw3vI3GaSPw==}
+    engines: {node: '>=18'}
+
   treeify@1.1.0:
     resolution: {integrity: sha512-1m4RA7xVAJrSGrrXGs0L3YTwyvBs2S8PbRHaLZAkFw7JR8oIFwYtysxlBZhYIa7xSyiYJKZ3iGrrk55cGA3i9A==}
     engines: {node: '>=0.6'}
@@ -6154,8 +6159,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  ua-parser-js@1.0.39:
-    resolution: {integrity: sha512-k24RCVWlEcjkdOxYmVJgeD/0a1TiSpqLg+ZalVGV9lsnr4yqu0w7tX/x2xX6G4zpkgQnRf89lxuZ1wsbjXM8lw==}
+  ua-parser-js@1.0.41:
+    resolution: {integrity: sha512-LbBDqdIC5s8iROCUjMbW1f5dJQTEFB1+KO9ogbvlb3nm9n4YHa5p4KTvFPWvh2Hs8gZMBuiB1/8+pdfe/tDPug==}
     hasBin: true
 
   unbox-primitive@1.1.0:
@@ -6289,8 +6294,8 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  uuid@11.0.5:
-    resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
     hasBin: true
 
   uuid@8.3.2:
@@ -6401,6 +6406,10 @@ packages:
 
   whatwg-url@14.1.0:
     resolution: {integrity: sha512-jlf/foYIKywAt3x/XWKZ/3rz8OSJPiWktjmk891alJUEjiVxKX9LEO92qH3hv4aJ0mN3MWPvGMCy8jQi95xK4w==}
+    engines: {node: '>=18'}
+
+  whatwg-url@14.2.0:
+    resolution: {integrity: sha512-De72GdQZzNTUBBChsXueQUnPKDkg/5A5zp7pFDuQAj5UFoENpiACU0wlCvzpAGnTkj++ihpKwKyYewn/XNUbKw==}
     engines: {node: '>=18'}
 
   whatwg-url@5.0.0:
@@ -8626,13 +8635,13 @@ snapshots:
   '@sanity/comlink@2.0.4':
     dependencies:
       rxjs: 7.8.1
-      uuid: 11.0.5
+      uuid: 11.1.0
       xstate: 5.19.1
 
   '@sanity/comlink@3.0.0':
     dependencies:
       rxjs: 7.8.1
-      uuid: 11.0.5
+      uuid: 11.1.0
       xstate: 5.19.1
 
   '@sanity/diff-match-patch@3.1.2': {}
@@ -8823,7 +8832,7 @@ snapshots:
       rxjs: 7.8.1
       treeify: 1.1.0
       typescript: 5.7.3
-      uuid: 11.0.5
+      uuid: 11.1.0
       zod: 3.24.1
       zod-validation-error: 3.4.0(zod@3.24.1)
     transitivePeerDependencies:
@@ -11656,7 +11665,7 @@ snapshots:
       webidl-conversions: 7.0.0
       whatwg-encoding: 3.1.1
       whatwg-mimetype: 4.0.0
-      whatwg-url: 14.1.0
+      whatwg-url: 14.2.0
       ws: 8.18.0
       xml-name-validator: 5.0.0
     transitivePeerDependencies:
@@ -13154,11 +13163,11 @@ snapshots:
     dependencies:
       type-fest: 0.7.1
 
-  statsig-node@6.0.1:
+  statsig-node@6.5.1:
     dependencies:
       ip3country: 5.0.0
       node-fetch: 2.7.0
-      ua-parser-js: 1.0.39
+      ua-parser-js: 1.0.41
       uuid: 8.3.2
     transitivePeerDependencies:
       - encoding
@@ -13492,6 +13501,10 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
+  tr46@5.1.1:
+    dependencies:
+      punycode: 2.3.1
+
   treeify@1.1.0: {}
 
   trim-newlines@3.0.1: {}
@@ -13584,7 +13597,7 @@ snapshots:
 
   typescript@5.7.3: {}
 
-  ua-parser-js@1.0.39: {}
+  ua-parser-js@1.0.41: {}
 
   unbox-primitive@1.1.0:
     dependencies:
@@ -13708,7 +13721,7 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  uuid@11.0.5: {}
+  uuid@11.1.0: {}
 
   uuid@8.3.2: {}
 
@@ -13803,6 +13816,11 @@ snapshots:
   whatwg-url@14.1.0:
     dependencies:
       tr46: 5.0.0
+      webidl-conversions: 7.0.0
+
+  whatwg-url@14.2.0:
+    dependencies:
+      tr46: 5.1.1
       webidl-conversions: 7.0.0
 
   whatwg-url@5.0.0:
