@@ -13,7 +13,7 @@ importers:
         version: 2.2.1
       '@sanity/client':
         specifier: ^6.22.5
-        version: 6.24.3(debug@4.4.0)
+        version: 6.29.1(debug@4.4.0)
       '@sanity/icons':
         specifier: ^3.4.0
         version: 3.5.7(react@19.2.0)
@@ -25,19 +25,19 @@ importers:
         version: 3.69.0(@babel/runtime@7.26.0)(@codemirror/lint@6.8.4)(@codemirror/theme-one-dark@6.1.2)(@emotion/is-prop-valid@1.2.2)(codemirror@6.0.1)(react-dom@19.2.0(react@19.2.0))(react-is@18.3.1)(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
       '@sentry/nextjs':
         specifier: ^8
-        version: 8.49.0(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.56.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(webpack@5.97.1(esbuild@0.21.5))
+        version: 8.49.0(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.56.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(webpack@5.97.1(esbuild@0.21.5))
       '@vercel/analytics':
         specifier: ^1.4.1
-        version: 1.4.1(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+        version: 1.4.1(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
       '@vercel/flags':
         specifier: ^2.6.3
-        version: 2.6.3(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 2.6.3(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@vercel/speed-insights':
         specifier: ^1.1.0
-        version: 1.1.0(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+        version: 1.1.0(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
       '@vercel/toolbar':
         specifier: ^0.1.27
-        version: 0.1.30(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(vite@5.4.11(@types/node@22.10.5)(terser@5.44.0))
+        version: 0.1.30(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(vite@5.4.11(@types/node@22.10.5)(terser@5.44.0))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -49,10 +49,10 @@ importers:
         version: 1.12.0
       next:
         specifier: 15.4.7
-        version: 15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next-sanity:
         specifier: ^9.8.16
-        version: 9.8.35(@sanity/client@6.24.3)(@sanity/icons@3.5.7(react@19.2.0))(@sanity/types@3.69.0(@types/react@19.2.2))(@sanity/ui@2.11.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.0(react@19.2.0))(react-is@18.3.1)(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0)))(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sanity@3.69.0(@emotion/is-prop-valid@1.2.2)(@types/babel__core@7.20.5)(@types/node@22.10.5)(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(terser@5.44.0)(typescript@5.7.3))(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
+        version: 9.8.35(@sanity/client@6.29.1)(@sanity/icons@3.5.7(react@19.2.0))(@sanity/types@3.69.0(@types/react@19.2.2))(@sanity/ui@2.11.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.0(react@19.2.0))(react-is@18.3.1)(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0)))(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sanity@3.69.0(@emotion/is-prop-valid@1.2.2)(@types/babel__core@7.20.5)(@types/node@22.10.5)(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(terser@5.44.0)(typescript@5.7.3))(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
       react:
         specifier: 19.2.0
         version: 19.2.0
@@ -2088,8 +2088,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@sanity/client@6.24.3':
-    resolution: {integrity: sha512-WfF6Gq2rCxv7n9IcWYRvtGpCYq4398MT303HJhwP/jf3jeU81OxWZ+ApGat37BOJ37tDZmhHxG3Pb1boDxA0EQ==}
+  '@sanity/client@6.29.1':
+    resolution: {integrity: sha512-BQRCMeDlBxwnMbFtB61HUxFf9aSb4HNVrpfrC7IFVqFf4cwcc3o5H8/nlrL9U3cDFedbe4W0AXt1mQzwbY/ljw==}
     engines: {node: '>=14.18'}
 
   '@sanity/codegen@3.69.0':
@@ -4009,8 +4009,8 @@ packages:
     resolution: {integrity: sha512-Ik/6OCk9RQQ0T5Xw+hKNLWrjSMtv51dD4GRmJjbD5a58TIEpI5a5iXagKVl3Z5UuyslMCA8Xwnu76jQob62Yhg==}
     engines: {node: '>=10'}
 
-  follow-redirects@1.15.9:
-    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
+  follow-redirects@1.15.11:
+    resolution: {integrity: sha512-deG2P0JfjrTxl50XGCDyfI97ZGVCxIpfKYmfyrQ54n5FO/0gfIES8C/Psl6kWVDolizcaaxZJnTS0QSMxvnsBQ==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -4089,6 +4089,10 @@ packages:
   get-intrinsic@1.2.6:
     resolution: {integrity: sha512-qxsEs+9A+u85HhllWJJFicJfPDhRmjzoYdl64aMWW9yRIJmSyxdn8IEkuIM530/7T+lv0TIHd8L6Q/ra0tEoeA==}
     engines: {node: '>= 0.4'}
+
+  get-it@8.6.10:
+    resolution: {integrity: sha512-27StIK860ZVp2bhsG/aTWpcoA4OrFxtMqBbesa5sR23m5OxfVQYCnpm2rPQeo3gs5qsUk0FdkISLgXRJ4HynNw==}
+    engines: {node: '>=14.0.0'}
 
   get-it@8.6.6:
     resolution: {integrity: sha512-2YKp5J+/x7VE9n8n6QGF6+gE4o1WOVSWrJd/C79JFqPlzHzWx/JQS6L49STWwqmkonkrXHhohQ/PkaI2o7l01g==}
@@ -5747,6 +5751,9 @@ packages:
   rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
 
+  rxjs@7.8.2:
+    resolution: {integrity: sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==}
+
   safe-array-concat@1.1.3:
     resolution: {integrity: sha512-AURm5f0jYEOydBj7VQlVvDrjeFgthDdEF5H1dP+6mNpoXOMo1quQqJ4wvJDyRZ9+pO3kGWoOdmV08cSv2aJV6Q==}
     engines: {node: '>=0.4'}
@@ -6174,6 +6181,9 @@ packages:
 
   through2@3.0.2:
     resolution: {integrity: sha512-enaDQ4MUyP2W6ZyT6EsMzqBPZaM/avg8iuo+l2d3QCs0J+6RaqkHV/2/lOwDTueBHeJ/2LG9lrLW3d5rWPucuQ==}
+
+  through2@4.0.2:
+    resolution: {integrity: sha512-iOqSav00cVxEEICeD7TjLB1sueEL+81Wpzp2bY17uZjZN0pWZPuo4suZ/61VujxmqSGFfgOcNuTZ85QJwNZQpw==}
 
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
@@ -8844,7 +8854,7 @@ snapshots:
   '@sanity/cli@3.69.0(@types/babel__core@7.20.5)(@types/node@22.10.5)(@types/react@19.2.2)(react@19.2.0)(typescript@5.7.3)':
     dependencies:
       '@babel/traverse': 7.26.5
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/codegen': 3.69.0
       '@sanity/telemetry': 0.7.9(react@19.2.0)
       '@sanity/template-validator': 2.3.2(@types/babel__core@7.20.5)(@types/node@22.10.5)(debug@4.4.0)(typescript@5.7.3)
@@ -8869,11 +8879,11 @@ snapshots:
       - supports-color
       - typescript
 
-  '@sanity/client@6.24.3(debug@4.4.0)':
+  '@sanity/client@6.29.1(debug@4.4.0)':
     dependencies:
       '@sanity/eventsource': 5.0.2
-      get-it: 8.6.6(debug@4.4.0)
-      rxjs: 7.8.1
+      get-it: 8.6.10(debug@4.4.0)
+      rxjs: 7.8.2
     transitivePeerDependencies:
       - debug
 
@@ -8907,7 +8917,7 @@ snapshots:
 
   '@sanity/comlink@3.0.0':
     dependencies:
-      rxjs: 7.8.1
+      rxjs: 7.8.2
       uuid: 11.1.0
       xstate: 5.19.1
 
@@ -8926,7 +8936,7 @@ snapshots:
 
   '@sanity/export@3.42.2(@types/react@19.2.2)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/util': 3.68.3(@types/react@19.2.2)(debug@4.4.0)
       archiver: 7.0.1
       debug: 4.4.0
@@ -8998,7 +9008,7 @@ snapshots:
 
   '@sanity/migrate@3.69.0(@types/react@19.2.2)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/mutate': 0.11.1(debug@4.4.0)
       '@sanity/types': 3.69.0(@types/react@19.2.2)(debug@4.4.0)
       '@sanity/util': 3.69.0(@types/react@19.2.2)(debug@4.4.0)
@@ -9013,7 +9023,7 @@ snapshots:
 
   '@sanity/mutate@0.11.0-canary.4(xstate@5.19.1)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/diff-match-patch': 3.1.2
       hotscript: 1.0.13
       lodash: 4.17.21
@@ -9027,7 +9037,7 @@ snapshots:
 
   '@sanity/mutate@0.11.1(debug@4.4.0)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/diff-match-patch': 3.1.2
       hotscript: 1.0.13
       lodash: 4.17.21
@@ -9048,11 +9058,11 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@sanity/next-loader@1.2.12(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)':
+  '@sanity/next-loader@1.2.12(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/comlink': 3.0.0
-      next: 15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next: 15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react: 19.2.0
       use-effect-event: 1.0.2(react@19.2.0)
     transitivePeerDependencies:
@@ -9110,11 +9120,11 @@ snapshots:
 
   '@sanity/presentation@1.20.1(@emotion/is-prop-valid@1.2.2)(@sanity/color@3.0.6)(debug@4.4.0)(react-dom@19.2.0(react@19.2.0))(react-is@18.3.1)(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/comlink': 2.0.4
       '@sanity/icons': 3.5.7(react@19.2.0)
       '@sanity/logos': 2.1.13(@sanity/color@3.0.6)(react@19.2.0)
-      '@sanity/preview-url-secret': 2.0.5(@sanity/client@6.24.3)
+      '@sanity/preview-url-secret': 2.0.5(@sanity/client@6.29.1)
       '@sanity/ui': 2.11.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.0(react@19.2.0))(react-is@18.3.1)(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
       '@sanity/uuid': 3.0.2
       fast-deep-equal: 3.1.3
@@ -9136,28 +9146,28 @@ snapshots:
       - react-is
       - styled-components
 
-  '@sanity/preview-kit-compat@1.5.31(@sanity/client@6.24.3)(react@19.2.0)':
+  '@sanity/preview-kit-compat@1.5.31(@sanity/client@6.29.1)(react@19.2.0)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/comlink': 3.0.0
       react: 19.2.0
 
-  '@sanity/preview-kit@5.1.28(@sanity/client@6.24.3)(react@19.2.0)':
+  '@sanity/preview-kit@5.1.28(@sanity/client@6.29.1)(react@19.2.0)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
-      '@sanity/preview-kit-compat': 1.5.31(@sanity/client@6.24.3)(react@19.2.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
+      '@sanity/preview-kit-compat': 1.5.31(@sanity/client@6.29.1)(react@19.2.0)
       mendoza: 3.0.8
     optionalDependencies:
       react: 19.2.0
 
-  '@sanity/preview-url-secret@2.0.5(@sanity/client@6.24.3)':
+  '@sanity/preview-url-secret@2.0.5(@sanity/client@6.29.1)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/uuid': 3.0.2
 
-  '@sanity/preview-url-secret@2.0.7(@sanity/client@6.24.3)':
+  '@sanity/preview-url-secret@2.0.7(@sanity/client@6.29.1)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/uuid': 3.0.2
 
   '@sanity/schema@3.69.0(@types/react@19.2.2)(debug@4.4.0)':
@@ -9198,14 +9208,14 @@ snapshots:
 
   '@sanity/types@3.68.3(@types/react@19.2.2)(debug@4.4.0)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@types/react': 19.2.2
     transitivePeerDependencies:
       - debug
 
   '@sanity/types@3.69.0(@types/react@19.2.2)(debug@4.4.0)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@types/react': 19.2.2
     transitivePeerDependencies:
       - debug
@@ -9229,7 +9239,7 @@ snapshots:
 
   '@sanity/util@3.68.3(@types/react@19.2.2)(debug@4.4.0)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/types': 3.68.3(@types/react@19.2.2)(debug@4.4.0)
       get-random-values-esm: 1.0.2
       moment: 2.30.1
@@ -9240,7 +9250,7 @@ snapshots:
 
   '@sanity/util@3.69.0(@types/react@19.2.2)(debug@4.4.0)':
     dependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/types': 3.69.0(@types/react@19.2.2)(debug@4.4.0)
       get-random-values-esm: 1.0.2
       moment: 2.30.1
@@ -9288,11 +9298,11 @@ snapshots:
       - react-dom
       - react-is
 
-  '@sanity/visual-editing@2.11.9(@sanity/client@6.24.3)(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@sanity/visual-editing@2.11.9(@sanity/client@6.29.1)(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@sanity/comlink': 3.0.0
       '@sanity/mutate': 0.11.0-canary.4(xstate@5.19.1)
-      '@sanity/preview-url-secret': 2.0.7(@sanity/client@6.24.3)
+      '@sanity/preview-url-secret': 2.0.7(@sanity/client@6.29.1)
       '@vercel/stega': 0.1.2
       get-random-values-esm: 1.0.2
       react: 19.2.0
@@ -9303,8 +9313,8 @@ snapshots:
       valibot: 0.31.1
       xstate: 5.19.1
     optionalDependencies:
-      '@sanity/client': 6.24.3(debug@4.4.0)
-      next: 15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
+      next: 15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
     transitivePeerDependencies:
       - debug
 
@@ -9420,7 +9430,7 @@ snapshots:
 
   '@sentry/core@8.49.0': {}
 
-  '@sentry/nextjs@8.49.0(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.56.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(webpack@5.97.1(esbuild@0.21.5))':
+  '@sentry/nextjs@8.49.0(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.56.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(webpack@5.97.1(esbuild@0.21.5))':
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/semantic-conventions': 1.37.0
@@ -9433,7 +9443,7 @@ snapshots:
       '@sentry/vercel-edge': 8.49.0
       '@sentry/webpack-plugin': 2.22.7(webpack@5.97.1(esbuild@0.21.5))
       chalk: 3.0.0
-      next: 15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next: 15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       resolve: 1.22.8
       rollup: 3.29.5
       stacktrace-parser: 0.1.11
@@ -9849,27 +9859,27 @@ snapshots:
       - '@codemirror/lint'
       - '@codemirror/search'
 
-  '@vercel/analytics@1.4.1(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)':
+  '@vercel/analytics@1.4.1(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)':
     optionalDependencies:
-      next: 15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next: 15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react: 19.2.0
 
-  '@vercel/flags@2.6.3(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@vercel/flags@2.6.3(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       jose: 5.2.1
     optionalDependencies:
-      next: 15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next: 15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@vercel/speed-insights@1.1.0(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)':
+  '@vercel/speed-insights@1.1.0(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)':
     optionalDependencies:
-      next: 15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next: 15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react: 19.2.0
 
   '@vercel/stega@0.1.2': {}
 
-  '@vercel/toolbar@0.1.30(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(vite@5.4.11(@types/node@22.10.5)(terser@5.44.0))':
+  '@vercel/toolbar@0.1.30(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)(vite@5.4.11(@types/node@22.10.5)(terser@5.44.0))':
     dependencies:
       '@tinyhttp/app': 1.3.0
       chokidar: 3.6.0
@@ -9879,7 +9889,7 @@ snapshots:
       get-port: 5.1.1
       strip-ansi: 6.0.1
     optionalDependencies:
-      next: 15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next: 15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react: 19.2.0
       vite: 5.4.11(@types/node@22.10.5)(terser@5.44.0)
 
@@ -11333,7 +11343,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  follow-redirects@1.15.9(debug@4.4.0):
+  follow-redirects@1.15.11(debug@4.4.0):
     optionalDependencies:
       debug: 4.4.0
 
@@ -11416,12 +11426,23 @@ snapshots:
       hasown: 2.0.2
       math-intrinsics: 1.1.0
 
+  get-it@8.6.10(debug@4.4.0):
+    dependencies:
+      '@types/follow-redirects': 1.14.4
+      decompress-response: 7.0.0
+      follow-redirects: 1.15.11(debug@4.4.0)
+      is-retry-allowed: 2.2.0
+      through2: 4.0.2
+      tunnel-agent: 0.6.0
+    transitivePeerDependencies:
+      - debug
+
   get-it@8.6.6(debug@4.4.0):
     dependencies:
       '@types/follow-redirects': 1.14.4
       '@types/progress-stream': 2.0.5
       decompress-response: 7.0.0
-      follow-redirects: 1.15.9(debug@4.4.0)
+      follow-redirects: 1.15.11(debug@4.4.0)
       is-retry-allowed: 2.2.0
       progress-stream: 2.0.0
       tunnel-agent: 0.6.0
@@ -12296,20 +12317,20 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-sanity@9.8.35(@sanity/client@6.24.3)(@sanity/icons@3.5.7(react@19.2.0))(@sanity/types@3.69.0(@types/react@19.2.2))(@sanity/ui@2.11.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.0(react@19.2.0))(react-is@18.3.1)(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0)))(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sanity@3.69.0(@emotion/is-prop-valid@1.2.2)(@types/babel__core@7.20.5)(@types/node@22.10.5)(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(terser@5.44.0)(typescript@5.7.3))(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0)):
+  next-sanity@9.8.35(@sanity/client@6.29.1)(@sanity/icons@3.5.7(react@19.2.0))(@sanity/types@3.69.0(@types/react@19.2.2))(@sanity/ui@2.11.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.0(react@19.2.0))(react-is@18.3.1)(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0)))(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sanity@3.69.0(@emotion/is-prop-valid@1.2.2)(@types/babel__core@7.20.5)(@types/node@22.10.5)(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(terser@5.44.0)(typescript@5.7.3))(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0)):
     dependencies:
       '@portabletext/react': 3.2.0(react@19.2.0)
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/icons': 3.5.7(react@19.2.0)
-      '@sanity/next-loader': 1.2.12(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
-      '@sanity/preview-kit': 5.1.28(@sanity/client@6.24.3)(react@19.2.0)
-      '@sanity/preview-url-secret': 2.0.7(@sanity/client@6.24.3)
+      '@sanity/next-loader': 1.2.12(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+      '@sanity/preview-kit': 5.1.28(@sanity/client@6.29.1)(react@19.2.0)
+      '@sanity/preview-url-secret': 2.0.7(@sanity/client@6.29.1)
       '@sanity/types': 3.69.0(@types/react@19.2.2)(debug@4.4.0)
       '@sanity/ui': 2.11.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.2.0(react@19.2.0))(react-is@18.3.1)(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
-      '@sanity/visual-editing': 2.11.9(@sanity/client@6.24.3)(next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@sanity/visual-editing': 2.11.9(@sanity/client@6.29.1)(next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       groq: 3.69.0
       history: 5.3.0
-      next: 15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next: 15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react: 19.2.0
       sanity: 3.69.0(@emotion/is-prop-valid@1.2.2)(@types/babel__core@7.20.5)(@types/node@22.10.5)(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(styled-components@6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(terser@5.44.0)(typescript@5.7.3)
       styled-components: 6.1.14(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -12321,7 +12342,7 @@ snapshots:
       - react-router
       - svelte
 
-  next@15.4.7(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  next@15.4.7(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       '@next/env': 15.4.7
       '@swc/helpers': 0.5.15
@@ -12329,7 +12350,7 @@ snapshots:
       postcss: 8.4.31
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
-      styled-jsx: 5.1.6(@babel/core@7.28.5)(react@19.2.0)
+      styled-jsx: 5.1.6(@babel/core@7.26.0)(react@19.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.4.7
       '@next/swc-darwin-x64': 15.4.7
@@ -13122,6 +13143,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  rxjs@7.8.2:
+    dependencies:
+      tslib: 2.8.1
+
   safe-array-concat@1.1.3:
     dependencies:
       call-bind: 1.0.8
@@ -13160,7 +13185,7 @@ snapshots:
       '@sanity/bifur-client': 0.4.1
       '@sanity/block-tools': 3.69.0(@types/react@19.2.2)(debug@4.4.0)
       '@sanity/cli': 3.69.0(@types/babel__core@7.20.5)(@types/node@22.10.5)(@types/react@19.2.2)(react@19.2.0)(typescript@5.7.3)
-      '@sanity/client': 6.24.3(debug@4.4.0)
+      '@sanity/client': 6.29.1(debug@4.4.0)
       '@sanity/color': 3.0.6
       '@sanity/diff': 3.69.0
       '@sanity/diff-match-patch': 3.1.2
@@ -13641,12 +13666,12 @@ snapshots:
       stylis: 4.3.2
       tslib: 2.6.2
 
-  styled-jsx@5.1.6(@babel/core@7.28.5)(react@19.2.0):
+  styled-jsx@5.1.6(@babel/core@7.26.0)(react@19.2.0):
     dependencies:
       client-only: 0.0.1
       react: 19.2.0
     optionalDependencies:
-      '@babel/core': 7.28.5
+      '@babel/core': 7.26.0
 
   stylis@4.3.2: {}
 
@@ -13796,6 +13821,10 @@ snapshots:
   through2@3.0.2:
     dependencies:
       inherits: 2.0.4
+      readable-stream: 3.6.2
+
+  through2@4.0.2:
+    dependencies:
       readable-stream: 3.6.2
 
   through@2.3.8: {}
