@@ -7,10 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Sanity vars satisfy assertValue() checks in env.ts; types are committed so no
-      # actual Sanity requests are made during next build.
-      NEXT_PUBLIC_SANITY_PROJECT_ID: placeholder
-      NEXT_PUBLIC_SANITY_DATASET: production
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+      NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -18,9 +17,8 @@ jobs:
           version: 9
       - uses: actions/setup-node@v4
         with:
-          node-version-file: .nvmrc
+          node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      # Run next build directly to skip prebuild (sanity typegen); types are committed.
       - run: pnpm exec next build
       - run: pnpm run lint
