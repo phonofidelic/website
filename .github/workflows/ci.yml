@@ -1,0 +1,26 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Sanity vars satisfy assertValue() checks in env.ts; types are committed so no
+      # actual Sanity requests are made during next build.
+      NEXT_PUBLIC_SANITY_PROJECT_ID: placeholder
+      NEXT_PUBLIC_SANITY_DATASET: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # Run next build directly to skip prebuild (sanity typegen); types are committed.
+      - run: pnpm exec next build
+      - run: pnpm run lint
