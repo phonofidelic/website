@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 import { defineQuery } from 'next-sanity'
 import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
 import {
-  ALL_PROJECTS_QUERYResult,
-  FEATURED_PROJECTS_QUERYResult,
+  ALL_PROJECTS_QUERY_RESULT,
+  FEATURED_PROJECTS_QUERY_RESULT,
 } from '@/sanity/types'
 import { getShowNavigation, getShowProjects } from '@/flags'
 import { assertValidProject, ProjectPreview } from '../Project'
@@ -39,13 +39,13 @@ export default async function Home() {
   }
 
   if (isNavigationEnabled) {
-    sanityPreload<FEATURED_PROJECTS_QUERYResult>(
+    sanityPreload<FEATURED_PROJECTS_QUERY_RESULT>(
       FEATURED_PROJECTS_QUERY,
       {},
       projectsFetchConfig,
     )
   } else {
-    sanityPreload<ALL_PROJECTS_QUERYResult>(
+    sanityPreload<ALL_PROJECTS_QUERY_RESULT>(
       ALL_PROJECTS_QUERY,
       {},
       projectsFetchConfig,
@@ -53,16 +53,16 @@ export default async function Home() {
   }
 
   const featuredProjectsResult = isNavigationEnabled
-    ? await sanityFetchCached<FEATURED_PROJECTS_QUERYResult>(
-        FEATURED_PROJECTS_QUERY,
-        {},
-        projectsFetchConfig,
-      )
-    : await sanityFetchCached<ALL_PROJECTS_QUERYResult>(
-        ALL_PROJECTS_QUERY,
-        {},
-        projectsFetchConfig,
-      )
+    ? await sanityFetchCached<FEATURED_PROJECTS_QUERY_RESULT>(
+      FEATURED_PROJECTS_QUERY,
+      {},
+      projectsFetchConfig,
+    )
+    : await sanityFetchCached<ALL_PROJECTS_QUERY_RESULT>(
+      ALL_PROJECTS_QUERY,
+      {},
+      projectsFetchConfig,
+    )
 
   const showProjects = await getShowProjects()
 
