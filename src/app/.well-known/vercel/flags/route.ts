@@ -1,7 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { verifyAccess, type ApiData } from '@vercel/flags'
-// @ts-expect-error
-import { fetchGateIds, fetchGateIdsCached } from '@/statsig'
+import { fetchGateIdsCached } from '../../../../statsig'
 import { cache } from 'react'
 
 export async function GET(request: NextRequest) {
