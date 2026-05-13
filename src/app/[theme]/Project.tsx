@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import { PortableText } from 'next-sanity'
 import { getImageDimensions } from '@sanity/asset-utils'
 import { urlFor } from '@/sanity/lib/image'
-import { FEATURED_PROJECTS_QUERYResult, PAGE_QUERYResult } from '@/sanity/types'
+import { FEATURED_PROJECTS_QUERY_RESULT, PAGE_QUERY_RESULT } from '@/sanity/types'
 import { VscCode } from 'react-icons/vsc'
 import { TechnologyList } from './TechnologyList'
 import React from 'react'
@@ -12,7 +12,7 @@ export function ProjectPreview({
   project,
 }: {
   project: NonNullable<
-    NonNullable<NonNullable<PAGE_QUERYResult>['list']>['listMembers']
+    NonNullable<NonNullable<PAGE_QUERY_RESULT>['list']>['listMembers']
   >[number] & {
     title: string
     categories: { slug: string | null }[] | null
@@ -199,11 +199,11 @@ export function ProjectPreviewSkeleton() {
 
 export const assertValidProject = (
   project: NonNullable<
-    NonNullable<NonNullable<PAGE_QUERYResult>['list']>['listMembers']
+    NonNullable<NonNullable<PAGE_QUERY_RESULT>['list']>['listMembers']
   >[number],
 ): project is NonNullable<
   NonNullable<
-    NonNullable<NonNullable<PAGE_QUERYResult>['list']>['listMembers']
+    NonNullable<NonNullable<PAGE_QUERY_RESULT>['list']>['listMembers']
   >[number] & {
     title: string
     categories: { slug: string | null }[] | null
@@ -216,8 +216,8 @@ const assertValidTechnology = (technology: {
   name?: string | undefined
   link?: string | undefined
   icon?:
-    | { importPath?: string | undefined; componentName?: string | undefined }
-    | undefined
+  | { importPath?: string | undefined; componentName?: string | undefined }
+  | undefined
 }): technology is {
   name: string
   link: string
@@ -225,12 +225,12 @@ const assertValidTechnology = (technology: {
 } => {
   return Boolean(
     technology &&
-      technology.name &&
-      technology.link &&
-      ((technology.icon &&
-        technology.icon.importPath &&
-        technology.icon.componentName) ||
-        technology.icon === undefined),
+    technology.name &&
+    technology.link &&
+    ((technology.icon &&
+      technology.icon.importPath &&
+      technology.icon.componentName) ||
+      technology.icon === undefined),
   )
 }
 
@@ -247,7 +247,7 @@ function ProjectImage({
 }: {
   image: NonNullable<
     NonNullable<
-      NonNullable<FEATURED_PROJECTS_QUERYResult>['listMembers']
+      NonNullable<FEATURED_PROJECTS_QUERY_RESULT>['listMembers']
     >[number]['mainImage']
   >
   projectTitle: string

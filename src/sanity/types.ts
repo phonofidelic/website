@@ -12,7 +12,9 @@
  * ---------------------------------------------------------------------------------
  */
 
-// Source: schema.json
+export declare const internalGroqTypeReferenceTo: unique symbol
+
+// Source: src/sanity/schema.json
 export type SanityImagePaletteSwatch = {
   _type: 'sanity.imagePaletteSwatch'
   background?: string
@@ -39,6 +41,33 @@ export type SanityImageDimensions = {
   aspectRatio?: number
 }
 
+export type SanityImageMetadata = {
+  _type: 'sanity.imageMetadata'
+  location?: Geopoint
+  dimensions?: SanityImageDimensions
+  palette?: SanityImagePalette
+  lqip?: string
+  blurHash?: string
+  hasAlpha?: boolean
+  isOpaque?: boolean
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x?: number
+  y?: number
+  height?: number
+  width?: number
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+}
+
 export type SanityFileAsset = {
   _id: string
   _type: 'sanity.fileAsset'
@@ -61,11 +90,31 @@ export type SanityFileAsset = {
   source?: SanityAssetSourceData
 }
 
+export type SanityAssetSourceData = {
+  _type: 'sanity.assetSourceData'
+  name?: string
+  id?: string
+  url?: string
+}
+
 export type Geopoint = {
   _type: 'geopoint'
   lat?: number
   lng?: number
   alt?: number
+}
+
+export type Slug = {
+  _type: 'slug'
+  current?: string
+  source?: string
+}
+
+export type ProjectsListReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'projectsList'
 }
 
 export type Page = {
@@ -76,45 +125,51 @@ export type Page = {
   _rev: string
   title?: string
   slug?: Slug
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>
-          text?: string
-          _type: 'span'
-          _key: string
-        }>
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote'
-        listItem?: 'bullet'
-        markDefs?: Array<{
-          href?: string
-          _type: 'link'
-          _key: string
-        }>
-        level?: number
-        _type: 'block'
+  body?: BlockContent
+  list?: ProjectsListReference
+}
+
+export type SanityImageAssetReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+}
+
+export type BlockContent = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>
+        text?: string
+        _type: 'span'
         _key: string
-      }
-    | {
-        asset?: {
-          _ref: string
-          _type: 'reference'
-          _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-        }
-        hotspot?: SanityImageHotspot
-        crop?: SanityImageCrop
-        alt?: string
-        _type: 'image'
+      }>
+      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote'
+      listItem?: 'bullet'
+      markDefs?: Array<{
+        href?: string
+        _type: 'link'
         _key: string
-      }
-  >
-  list?: {
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    [internalGroqTypeReferenceTo]?: 'projectsList'
-  }
+      }>
+      level?: number
+      _type: 'block'
+      _key: string
+    }
+  | {
+      asset?: SanityImageAssetReference
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      _type: 'image'
+      _key: string
+    }
+>
+
+export type ProjectReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'project'
 }
 
 export type ProjectsList = {
@@ -125,13 +180,11 @@ export type ProjectsList = {
   _rev: string
   id?: string
   listTitle?: string
-  listMembers?: Array<{
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    _key: string
-    [internalGroqTypeReferenceTo]?: 'project'
-  }>
+  listMembers?: Array<
+    {
+      _key: string
+    } & ProjectReference
+  >
 }
 
 export type Technology = {
@@ -179,13 +232,32 @@ export type Technology = {
       | 'wi'
     componentName?: string
   }
-  projects?: Array<{
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    _key: string
-    [internalGroqTypeReferenceTo]?: 'project'
-  }>
+  projects?: Array<
+    {
+      _key: string
+    } & ProjectReference
+  >
+}
+
+export type AuthorReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'author'
+}
+
+export type TechnologyReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'technology'
+}
+
+export type CategoryReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'category'
 }
 
 export type Project = {
@@ -199,85 +271,34 @@ export type Project = {
   startDate?: string
   endDate?: string
   description?: string
-  author?: {
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    [internalGroqTypeReferenceTo]?: 'author'
-  }
+  author?: AuthorReference
   mainImage?: {
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
+    asset?: SanityImageAssetReference
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     alt?: string
     _type: 'image'
   }
   contentImages?: Array<{
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
+    asset?: SanityImageAssetReference
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     alt?: string
     _type: 'image'
     _key: string
   }>
-  technologies?: Array<{
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    _key: string
-    [internalGroqTypeReferenceTo]?: 'technology'
-  }>
-  categories?: Array<{
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    _key: string
-    [internalGroqTypeReferenceTo]?: 'category'
-  }>
-  publishedAt?: string
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>
-          text?: string
-          _type: 'span'
-          _key: string
-        }>
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote'
-        listItem?: 'bullet'
-        markDefs?: Array<{
-          href?: string
-          _type: 'link'
-          _key: string
-        }>
-        level?: number
-        _type: 'block'
-        _key: string
-      }
-    | {
-        asset?: {
-          _ref: string
-          _type: 'reference'
-          _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-        }
-        hotspot?: SanityImageHotspot
-        crop?: SanityImageCrop
-        alt?: string
-        _type: 'image'
-        _key: string
-      }
+  technologies?: Array<
+    {
+      _key: string
+    } & TechnologyReference
   >
+  categories?: Array<
+    {
+      _key: string
+    } & CategoryReference
+  >
+  publishedAt?: string
+  body?: BlockContent
   links?: Array<{
     title?: string
     url?: string
@@ -294,65 +315,21 @@ export type Post = {
   _rev: string
   title?: string
   slug?: Slug
-  author?: {
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    [internalGroqTypeReferenceTo]?: 'author'
-  }
+  author?: AuthorReference
   mainImage?: {
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
+    asset?: SanityImageAssetReference
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     alt?: string
     _type: 'image'
   }
-  categories?: Array<{
-    _ref: string
-    _type: 'reference'
-    _weak?: boolean
-    _key: string
-    [internalGroqTypeReferenceTo]?: 'category'
-  }>
-  publishedAt?: string
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>
-          text?: string
-          _type: 'span'
-          _key: string
-        }>
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote'
-        listItem?: 'bullet'
-        markDefs?: Array<{
-          href?: string
-          _type: 'link'
-          _key: string
-        }>
-        level?: number
-        _type: 'block'
-        _key: string
-      }
-    | {
-        asset?: {
-          _ref: string
-          _type: 'reference'
-          _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-        }
-        hotspot?: SanityImageHotspot
-        crop?: SanityImageCrop
-        alt?: string
-        _type: 'image'
-        _key: string
-      }
+  categories?: Array<
+    {
+      _key: string
+    } & CategoryReference
   >
+  publishedAt?: string
+  body?: BlockContent
 }
 
 export type Author = {
@@ -364,12 +341,7 @@ export type Author = {
   name?: string
   slug?: Slug
   image?: {
-    asset?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-    }
+    asset?: SanityImageAssetReference
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
     _type: 'image'
@@ -405,62 +377,6 @@ export type Category = {
   description?: string
 }
 
-export type Slug = {
-  _type: 'slug'
-  current?: string
-  source?: string
-}
-
-export type BlockContent = Array<
-  | {
-      children?: Array<{
-        marks?: Array<string>
-        text?: string
-        _type: 'span'
-        _key: string
-      }>
-      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote'
-      listItem?: 'bullet'
-      markDefs?: Array<{
-        href?: string
-        _type: 'link'
-        _key: string
-      }>
-      level?: number
-      _type: 'block'
-      _key: string
-    }
-  | {
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-      _key: string
-    }
->
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
-}
-
 export type SanityImageAsset = {
   _id: string
   _type: 'sanity.imageAsset'
@@ -484,50 +400,38 @@ export type SanityImageAsset = {
   source?: SanityAssetSourceData
 }
 
-export type SanityAssetSourceData = {
-  _type: 'sanity.assetSourceData'
-  name?: string
-  id?: string
-  url?: string
-}
-
-export type SanityImageMetadata = {
-  _type: 'sanity.imageMetadata'
-  location?: Geopoint
-  dimensions?: SanityImageDimensions
-  palette?: SanityImagePalette
-  lqip?: string
-  blurHash?: string
-  hasAlpha?: boolean
-  isOpaque?: boolean
-}
-
 export type AllSanitySchemaTypes =
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
+  | SanityImageMetadata
+  | SanityImageHotspot
+  | SanityImageCrop
   | SanityFileAsset
+  | SanityAssetSourceData
   | Geopoint
+  | Slug
+  | ProjectsListReference
   | Page
+  | SanityImageAssetReference
+  | BlockContent
+  | ProjectReference
   | ProjectsList
   | Technology
+  | AuthorReference
+  | TechnologyReference
+  | CategoryReference
   | Project
   | Post
   | Author
   | Category
-  | Slug
-  | BlockContent
-  | SanityImageCrop
-  | SanityImageHotspot
   | SanityImageAsset
-  | SanityAssetSourceData
-  | SanityImageMetadata
-export declare const internalGroqTypeReferenceTo: unique symbol
-// Source: ./src/app/[theme]/(home)/page.tsx
+
+// Source: src/app/[theme]/(home)/page.tsx
 // Variable: FEATURED_PROJECTS_QUERY
 // Query: *[_type == "projectsList" && _id == "45c3a012-4053-462a-847c-e0650a5e1092"][0] | {    _id,    listTitle,    listMembers[]->{..., categories[]->{'slug': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}  }
-export type FEATURED_PROJECTS_QUERYResult = {
-  _id: string
+export type FEATURED_PROJECTS_QUERY_RESULT = {
+  _id: '45c3a012-4053-462a-847c-e0650a5e1092'
   listTitle: string | null
   listMembers: Array<{
     _id: string
@@ -540,12 +444,7 @@ export type FEATURED_PROJECTS_QUERYResult = {
     startDate?: string
     endDate?: string
     description?: string
-    author?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'author'
-    }
+    author?: AuthorReference
     mainImage: {
       asset: {
         _id: string
@@ -575,12 +474,7 @@ export type FEATURED_PROJECTS_QUERYResult = {
       _type: 'image'
     } | null
     contentImages?: Array<{
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
+      asset?: SanityImageAssetReference
       hotspot?: SanityImageHotspot
       crop?: SanityImageCrop
       alt?: string
@@ -632,212 +526,17 @@ export type FEATURED_PROJECTS_QUERYResult = {
           | 'wi'
         componentName?: string
       }
-      projects?: Array<{
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'project'
-      }>
+      projects?: Array<
+        {
+          _key: string
+        } & ProjectReference
+      >
     }> | null
     categories: Array<{
       slug: string | null
     }> | null
     publishedAt?: string
-    body?: Array<
-      | {
-          children?: Array<{
-            marks?: Array<string>
-            text?: string
-            _type: 'span'
-            _key: string
-          }>
-          style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal'
-          listItem?: 'bullet'
-          markDefs?: Array<{
-            href?: string
-            _type: 'link'
-            _key: string
-          }>
-          level?: number
-          _type: 'block'
-          _key: string
-        }
-      | {
-          asset?: {
-            _ref: string
-            _type: 'reference'
-            _weak?: boolean
-            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-          }
-          hotspot?: SanityImageHotspot
-          crop?: SanityImageCrop
-          alt?: string
-          _type: 'image'
-          _key: string
-        }
-    >
-    links?: Array<{
-      title?: string
-      url?: string
-      _type: 'link'
-      _key: string
-    }>
-  }> | null
-} | null
-// Variable: ALL_PROJECTS_QUERY
-// Query: *[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {    _id,    listTitle,    listMembers[]->{..., categories[]->{'slug': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}  }
-export type ALL_PROJECTS_QUERYResult = {
-  _id: string
-  listTitle: string | null
-  listMembers: Array<{
-    _id: string
-    _type: 'project'
-    _createdAt: string
-    _updatedAt: string
-    _rev: string
-    title?: string
-    slug?: Slug
-    startDate?: string
-    endDate?: string
-    description?: string
-    author?: {
-      _ref: string
-      _type: 'reference'
-      _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'author'
-    }
-    mainImage: {
-      asset: {
-        _id: string
-        _type: 'sanity.imageAsset'
-        _createdAt: string
-        _updatedAt: string
-        _rev: string
-        originalFilename?: string
-        label?: string
-        title?: string
-        description?: string
-        altText?: string
-        sha1hash?: string
-        extension?: string
-        mimeType?: string
-        size?: number
-        assetId?: string
-        uploadId?: string
-        path?: string
-        url?: string
-        metadata?: SanityImageMetadata
-        source?: SanityAssetSourceData
-      } | null
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-    } | null
-    contentImages?: Array<{
-      asset?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-      }
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-      _key: string
-    }>
-    technologies: Array<{
-      _id: string
-      _type: 'technology'
-      _createdAt: string
-      _updatedAt: string
-      _rev: string
-      name?: string
-      slug?: Slug
-      description?: string
-      link?: string
-      icon?: {
-        importPath?:
-          | 'ai'
-          | 'bi'
-          | 'bs'
-          | 'cg'
-          | 'ci'
-          | 'di'
-          | 'fa'
-          | 'fa6'
-          | 'fc'
-          | 'fi'
-          | 'gi'
-          | 'go'
-          | 'gr'
-          | 'hi'
-          | 'hi2'
-          | 'im'
-          | 'io'
-          | 'io5'
-          | 'lia'
-          | 'lu'
-          | 'md'
-          | 'pi'
-          | 'ri'
-          | 'rx'
-          | 'si'
-          | 'sl'
-          | 'tb'
-          | 'tfi'
-          | 'ti'
-          | 'vsc'
-          | 'wi'
-        componentName?: string
-      }
-      projects?: Array<{
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        _key: string
-        [internalGroqTypeReferenceTo]?: 'project'
-      }>
-    }> | null
-    categories: Array<{
-      slug: string | null
-    }> | null
-    publishedAt?: string
-    body?: Array<
-      | {
-          children?: Array<{
-            marks?: Array<string>
-            text?: string
-            _type: 'span'
-            _key: string
-          }>
-          style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal'
-          listItem?: 'bullet'
-          markDefs?: Array<{
-            href?: string
-            _type: 'link'
-            _key: string
-          }>
-          level?: number
-          _type: 'block'
-          _key: string
-        }
-      | {
-          asset?: {
-            _ref: string
-            _type: 'reference'
-            _weak?: boolean
-            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-          }
-          hotspot?: SanityImageHotspot
-          crop?: SanityImageCrop
-          alt?: string
-          _type: 'image'
-          _key: string
-        }
-    >
+    body?: BlockContent
     links?: Array<{
       title?: string
       url?: string
@@ -847,10 +546,137 @@ export type ALL_PROJECTS_QUERYResult = {
   }> | null
 } | null
 
-// Source: ./src/app/[theme]/[slug]/page.tsx
+// Source: src/app/[theme]/(home)/page.tsx
+// Variable: ALL_PROJECTS_QUERY
+// Query: *[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {    _id,    listTitle,    listMembers[]->{..., categories[]->{'slug': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}  }
+export type ALL_PROJECTS_QUERY_RESULT = {
+  _id: '15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb'
+  listTitle: string | null
+  listMembers: Array<{
+    _id: string
+    _type: 'project'
+    _createdAt: string
+    _updatedAt: string
+    _rev: string
+    title?: string
+    slug?: Slug
+    startDate?: string
+    endDate?: string
+    description?: string
+    author?: AuthorReference
+    mainImage: {
+      asset: {
+        _id: string
+        _type: 'sanity.imageAsset'
+        _createdAt: string
+        _updatedAt: string
+        _rev: string
+        originalFilename?: string
+        label?: string
+        title?: string
+        description?: string
+        altText?: string
+        sha1hash?: string
+        extension?: string
+        mimeType?: string
+        size?: number
+        assetId?: string
+        uploadId?: string
+        path?: string
+        url?: string
+        metadata?: SanityImageMetadata
+        source?: SanityAssetSourceData
+      } | null
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      _type: 'image'
+    } | null
+    contentImages?: Array<{
+      asset?: SanityImageAssetReference
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      _type: 'image'
+      _key: string
+    }>
+    technologies: Array<{
+      _id: string
+      _type: 'technology'
+      _createdAt: string
+      _updatedAt: string
+      _rev: string
+      name?: string
+      slug?: Slug
+      description?: string
+      link?: string
+      icon?: {
+        importPath?:
+          | 'ai'
+          | 'bi'
+          | 'bs'
+          | 'cg'
+          | 'ci'
+          | 'di'
+          | 'fa'
+          | 'fa6'
+          | 'fc'
+          | 'fi'
+          | 'gi'
+          | 'go'
+          | 'gr'
+          | 'hi'
+          | 'hi2'
+          | 'im'
+          | 'io'
+          | 'io5'
+          | 'lia'
+          | 'lu'
+          | 'md'
+          | 'pi'
+          | 'ri'
+          | 'rx'
+          | 'si'
+          | 'sl'
+          | 'tb'
+          | 'tfi'
+          | 'ti'
+          | 'vsc'
+          | 'wi'
+        componentName?: string
+      }
+      projects?: Array<
+        {
+          _key: string
+        } & ProjectReference
+      >
+    }> | null
+    categories: Array<{
+      slug: string | null
+    }> | null
+    publishedAt?: string
+    body?: BlockContent
+    links?: Array<{
+      title?: string
+      url?: string
+      _type: 'link'
+      _key: string
+    }>
+  }> | null
+} | null
+
+// Source: src/app/[theme]/@navigation/[slug]/page.tsx
+// Variable: PAGES_NAVIGATION_QUERY
+// Query: *[_type == "page"] | {title, slug}
+export type PAGES_NAVIGATION_QUERY_RESULT = Array<{
+  title: string | null
+  slug: Slug | null
+}>
+
+// Source: src/app/[theme]/[slug]/page.tsx
 // Variable: PAGE_QUERY
 // Query: *[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., categories[]->{'slug': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]
-export type PAGE_QUERYResult = {
+export type PAGE_QUERY_RESULT = {
   _id: string
   _type: 'page'
   _createdAt: string
@@ -858,39 +684,7 @@ export type PAGE_QUERYResult = {
   _rev: string
   title?: string
   slug?: Slug
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>
-          text?: string
-          _type: 'span'
-          _key: string
-        }>
-        style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal'
-        listItem?: 'bullet'
-        markDefs?: Array<{
-          href?: string
-          _type: 'link'
-          _key: string
-        }>
-        level?: number
-        _type: 'block'
-        _key: string
-      }
-    | {
-        asset?: {
-          _ref: string
-          _type: 'reference'
-          _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-        }
-        hotspot?: SanityImageHotspot
-        crop?: SanityImageCrop
-        alt?: string
-        _type: 'image'
-        _key: string
-      }
-  >
+  body?: BlockContent
   list: {
     _id: string
     _type: 'projectsList'
@@ -910,12 +704,7 @@ export type PAGE_QUERYResult = {
       startDate?: string
       endDate?: string
       description?: string
-      author?: {
-        _ref: string
-        _type: 'reference'
-        _weak?: boolean
-        [internalGroqTypeReferenceTo]?: 'author'
-      }
+      author?: AuthorReference
       mainImage: {
         asset: {
           _id: string
@@ -945,12 +734,7 @@ export type PAGE_QUERYResult = {
         _type: 'image'
       } | null
       contentImages?: Array<{
-        asset?: {
-          _ref: string
-          _type: 'reference'
-          _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-        }
+        asset?: SanityImageAssetReference
         hotspot?: SanityImageHotspot
         crop?: SanityImageCrop
         alt?: string
@@ -1002,51 +786,17 @@ export type PAGE_QUERYResult = {
             | 'wi'
           componentName?: string
         }
-        projects?: Array<{
-          _ref: string
-          _type: 'reference'
-          _weak?: boolean
-          _key: string
-          [internalGroqTypeReferenceTo]?: 'project'
-        }>
+        projects?: Array<
+          {
+            _key: string
+          } & ProjectReference
+        >
       }> | null
       categories: Array<{
         slug: string | null
       }> | null
       publishedAt?: string
-      body?: Array<
-        | {
-            children?: Array<{
-              marks?: Array<string>
-              text?: string
-              _type: 'span'
-              _key: string
-            }>
-            style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal'
-            listItem?: 'bullet'
-            markDefs?: Array<{
-              href?: string
-              _type: 'link'
-              _key: string
-            }>
-            level?: number
-            _type: 'block'
-            _key: string
-          }
-        | {
-            asset?: {
-              _ref: string
-              _type: 'reference'
-              _weak?: boolean
-              [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
-            }
-            hotspot?: SanityImageHotspot
-            crop?: SanityImageCrop
-            alt?: string
-            _type: 'image'
-            _key: string
-          }
-      >
+      body?: BlockContent
       links?: Array<{
         title?: string
         url?: string
@@ -1057,21 +807,13 @@ export type PAGE_QUERYResult = {
   } | null
 } | null
 
-// Source: ./src/app/[theme]/@navigation/[slug]/page.tsx
-// Variable: PAGES_NAVIGATION_QUERY
-// Query: *[_type == "page"] | {title, slug}
-export type PAGES_NAVIGATION_QUERYResult = Array<{
-  title: string | null
-  slug: Slug | null
-}>
-
 // Query TypeMap
 import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[_type == "projectsList" && _id == "45c3a012-4053-462a-847c-e0650a5e1092"][0] | {\n    _id,\n    listTitle,\n    listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}\n  }': FEATURED_PROJECTS_QUERYResult
-    '*[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {\n    _id,\n    listTitle,\n    listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}\n  }': ALL_PROJECTS_QUERYResult
-    '*[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]': PAGE_QUERYResult
-    '*[_type == "page"] | {title, slug}': PAGES_NAVIGATION_QUERYResult
+    '*[_type == "projectsList" && _id == "45c3a012-4053-462a-847c-e0650a5e1092"][0] | {\n    _id,\n    listTitle,\n    listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}\n  }': FEATURED_PROJECTS_QUERY_RESULT
+    '*[_type == "projectsList" && _id == "15a3c4ec-0d3b-428c-8a9f-f7d2d54ef7eb"][0] | {\n    _id,\n    listTitle,\n    listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}\n  }': ALL_PROJECTS_QUERY_RESULT
+    '*[_type == "page"] | {title, slug}': PAGES_NAVIGATION_QUERY_RESULT
+    '*[_type == "page" && slug.current == $slug] | {..., list->{..., listMembers[]->{..., categories[]->{\'slug\': slug.current}, mainImage{..., asset->{...}}, technologies[]->{...}}}}[0]': PAGE_QUERY_RESULT
   }
 }
