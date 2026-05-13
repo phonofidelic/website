@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
   if (!access) return NextResponse.json(null, { status: 401 })
 
   const gateIds = await fetchGateIdsCached() as string[]
-  let definitions: Record<string, any> = {}
+  const definitions: Record<string, ReturnType<typeof createGateDefinitionCached>> = {}
   gateIds.forEach((gateId) => {
     definitions[gateId] = createGateDefinitionCached(gateId)
   })
