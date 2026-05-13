@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   const access = await verifyAccess(request.headers.get('Authorization'))
   if (!access) return NextResponse.json(null, { status: 401 })
 
-  const gateIds = await fetchGateIdsCached()
+  const gateIds = await fetchGateIdsCached() as string[]
   let definitions: Record<string, any> = {}
   gateIds.forEach((gateId) => {
     definitions[gateId] = createGateDefinitionCached(gateId)
