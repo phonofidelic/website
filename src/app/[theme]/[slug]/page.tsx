@@ -1,6 +1,6 @@
 import { getShowNavigation } from '@/flags'
 import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
-import { PAGE_QUERYResult } from '@/sanity/types'
+import { PAGE_QUERY_RESULT } from '@/sanity/types'
 import { defineQuery, PortableText } from 'next-sanity'
 import { notFound, redirect } from 'next/navigation'
 import { ProjectPreview, assertValidProject } from '../Project'
@@ -11,8 +11,8 @@ const PAGE_QUERY = defineQuery(
 )
 
 const assertValidPage = (
-  page: NonNullable<PAGE_QUERYResult>,
-): page is NonNullable<PAGE_QUERYResult> & {
+  page: NonNullable<PAGE_QUERY_RESULT>,
+): page is NonNullable<PAGE_QUERY_RESULT> & {
   title: string
   slug: {
     current: string
@@ -20,8 +20,8 @@ const assertValidPage = (
 } => {
   return Boolean(
     page &&
-      page.title &&
-      (page.slug === null || (page.slug && page.slug.current)),
+    page.title &&
+    (page.slug === null || (page.slug && page.slug.current)),
   )
 }
 
@@ -32,7 +32,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
 
-  sanityPreload<PAGE_QUERYResult>(
+  sanityPreload<PAGE_QUERY_RESULT>(
     PAGE_QUERY,
     {
       slug,
@@ -44,7 +44,7 @@ export async function generateMetadata({
     },
   )
 
-  const page = await sanityFetchCached<PAGE_QUERYResult>(
+  const page = await sanityFetchCached<PAGE_QUERY_RESULT>(
     PAGE_QUERY,
     {
       slug,
@@ -76,7 +76,7 @@ export default async function SlugPage({
 
   const { slug } = await params
 
-  sanityPreload<PAGE_QUERYResult>(
+  sanityPreload<PAGE_QUERY_RESULT>(
     PAGE_QUERY,
     {
       slug,
@@ -88,7 +88,7 @@ export default async function SlugPage({
     },
   )
 
-  const page = await sanityFetchCached<PAGE_QUERYResult>(
+  const page = await sanityFetchCached<PAGE_QUERY_RESULT>(
     PAGE_QUERY,
     {
       slug,

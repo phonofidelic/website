@@ -3,20 +3,20 @@ import Link from 'next/link'
 import { defineQuery } from 'next-sanity'
 import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
 import { Navigation } from '../Navigation'
-import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
+import { PAGES_NAVIGATION_QUERY_RESULT } from '@/sanity/types'
 
 const PAGES_NAVIGATION_QUERY = defineQuery(`*[_type == "page"] | {title, slug}`)
 
 const assertValidPageNavigationItem = (
-  navigationItem: NonNullable<PAGES_NAVIGATION_QUERYResult>[number],
-): navigationItem is NonNullable<PAGES_NAVIGATION_QUERYResult>[number] & {
+  navigationItem: NonNullable<PAGES_NAVIGATION_QUERY_RESULT>[number],
+): navigationItem is NonNullable<PAGES_NAVIGATION_QUERY_RESULT>[number] & {
   title: string
   slug: { current: string } | null
 } => {
   return Boolean(
     navigationItem &&
-      navigationItem.title &&
-      (navigationItem.slug === null || navigationItem.slug.current),
+    navigationItem.title &&
+    (navigationItem.slug === null || navigationItem.slug.current),
   )
 }
 
@@ -27,7 +27,7 @@ export default async function SlugNavigationSlot({
 }) {
   const { slug } = await params
 
-  sanityPreload<PAGES_NAVIGATION_QUERYResult>(
+  sanityPreload<PAGES_NAVIGATION_QUERY_RESULT>(
     PAGES_NAVIGATION_QUERY,
     {},
     {
@@ -38,7 +38,7 @@ export default async function SlugNavigationSlot({
   )
 
   const pagesNavigationQueryResults =
-    await sanityFetchCached<PAGES_NAVIGATION_QUERYResult>(
+    await sanityFetchCached<PAGES_NAVIGATION_QUERY_RESULT>(
       PAGES_NAVIGATION_QUERY,
       {},
       {

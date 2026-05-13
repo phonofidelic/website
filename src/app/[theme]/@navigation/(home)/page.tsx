@@ -1,7 +1,7 @@
 import 'server-only'
 import Link from 'next/link'
 import { sanityFetchCached, sanityPreload } from '@/sanity/lib/client'
-import { PAGES_NAVIGATION_QUERYResult } from '@/sanity/types'
+import { PAGES_NAVIGATION_QUERY_RESULT } from '@/sanity/types'
 import { Navigation } from '../Navigation'
 
 const PAGE_NAVIGATION_QUERY = `*[_type == "page"] | order(title asc) {
@@ -10,8 +10,8 @@ const PAGE_NAVIGATION_QUERY = `*[_type == "page"] | order(title asc) {
 }`
 
 const assertValidNavigationItem = (
-  item: NonNullable<NonNullable<PAGES_NAVIGATION_QUERYResult>[number]>,
-): item is NonNullable<NonNullable<PAGES_NAVIGATION_QUERYResult>[number]> & {
+  item: NonNullable<NonNullable<PAGES_NAVIGATION_QUERY_RESULT>[number]>,
+): item is NonNullable<NonNullable<PAGES_NAVIGATION_QUERY_RESULT>[number]> & {
   title: string
   slug: string | null
 } => {
@@ -19,7 +19,7 @@ const assertValidNavigationItem = (
 }
 
 export default async function HomeNavigationSlot() {
-  sanityPreload<PAGES_NAVIGATION_QUERYResult>(
+  sanityPreload<PAGES_NAVIGATION_QUERY_RESULT>(
     PAGE_NAVIGATION_QUERY,
     {},
     {
@@ -30,7 +30,7 @@ export default async function HomeNavigationSlot() {
   )
 
   const pagesNavigationQueryResults =
-    await sanityFetchCached<PAGES_NAVIGATION_QUERYResult>(
+    await sanityFetchCached<PAGES_NAVIGATION_QUERY_RESULT>(
       PAGE_NAVIGATION_QUERY,
       {},
       {
