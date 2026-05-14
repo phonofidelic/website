@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { verifyAccess, type ApiData } from '@vercel/flags'
+import { verifyAccess, version, type ApiData } from 'flags'
 import { fetchGateIdsCached } from '../../../../statsig'
 import { cache } from 'react'
 
@@ -13,8 +13,8 @@ export async function GET(request: NextRequest) {
     definitions[gateId] = createGateDefinitionCached(gateId)
   })
 
-  return NextResponse.json<ApiData>({
-    definitions,
+  return NextResponse.json<ApiData>({ definitions }, {
+    headers: { 'x-flags-sdk-version': version },
   })
 }
 

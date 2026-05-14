@@ -1,5 +1,5 @@
 import { cache } from 'react'
-import { flag } from '@vercel/flags/next'
+import { flag } from 'flags/next'
 import { checkGateCached } from '@/statsig'
 
 export const getShowProjects = cache(
