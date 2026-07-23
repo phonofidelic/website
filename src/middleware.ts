@@ -25,20 +25,24 @@ export function middleware(request: NextRequest) {
         ).toString(),
       )
 
-  if (storedTheme) {
-    response.cookies.set(THEME_COOKIE_NAME, storedTheme, {
-      maxAge: /* 1 year */ 1000 * 365 * 60 * 60 * 24,
-    })
+  // Keep these attributes in sync with the client CookiesProvider
+  // (src/app/[theme]/Providers.tsx) so the server and client never write the
+  // same cookie with drifting attributes.
+  const cookieOptions = {
+    maxAge: /* 1 year */ 365 * 60 * 60 * 24,
+    path: '/',
+    sameSite: 'lax' as const,
+    secure: process.env.NEXT_PUBLIC_ENV !== 'development',
   }
 
-  response.cookies.set(ANONYMOUS_ID_COOKIE_NAME, ajsAnonymousId, {
-    maxAge: /* 1 year */ 1000 * 365 * 60 * 60 * 24,
-  })
+  if (storedTheme) {
+    response.cookies.set(THEME_COOKIE_NAME, storedTheme, cookieOptions)
+  }
+
+  response.cookies.set(ANONYMOUS_ID_COOKIE_NAME, ajsAnonymousId, cookieOptions)
 
   if (overrideParam) {
-    response.cookies.set(OVERRIDE_COOKIE_NAME, overrideParam, {
-      maxAge: /* 1 year */ 1000 * 365 * 60 * 60 * 24,
-    })
+    response.cookies.set(OVERRIDE_COOKIE_NAME, overrideParam, cookieOptions)
   }
 
   response.headers.set('Accept-CH', 'Sec-CH-Prefers-Color-Scheme')

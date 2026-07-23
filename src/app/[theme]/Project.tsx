@@ -277,7 +277,7 @@ function ProjectImage({
 function ProjectLink({ title, href }: { title: string; href: string }) {
   return (
     <a
-      className="hover:underline pl-2 leading-[1.75rem] first:pl-0 text-nowrap"
+      className="hover:underline pr-2 leading-[1.75rem] last:pr-0 text-nowrap"
       href={href}
       target="_blank"
     >

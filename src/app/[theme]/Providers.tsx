@@ -8,7 +8,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       defaultSetOptions={{
         maxAge: /* 1 year */ 1000 * 365 * 60 * 60 * 24,
         path: '/',
-        sameSite: 'strict',
+        sameSite: 'lax',
         secure: process.env.NEXT_PUBLIC_ENV !== 'development',
       }}
     >
