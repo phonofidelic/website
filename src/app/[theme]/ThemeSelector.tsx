@@ -47,7 +47,7 @@ export function ThemeSelector() {
         )}
         onClick={() => {
           setSelectedTheme('light')
-          setCookie(THEME_COOKIE_NAME, 'light')
+          setCookie(THEME_COOKIE_NAME, 'light', { path: '/' })
           document.body.classList.remove('dark')
         }}
       >
@@ -63,7 +63,7 @@ export function ThemeSelector() {
           },
         )}
         onClick={() => {
-          removeCookie(THEME_COOKIE_NAME)
+          removeCookie(THEME_COOKIE_NAME, { path: '/' })
           setSelectedTheme(undefined)
           document.body.classList.toggle(
             'dark',
@@ -84,7 +84,7 @@ export function ThemeSelector() {
           },
         )}
         onClick={() => {
-          setCookie(THEME_COOKIE_NAME, 'dark')
+          setCookie(THEME_COOKIE_NAME, 'dark', { path: '/' })
           setSelectedTheme('dark')
           document.body.classList.toggle('dark', true)
         }}
