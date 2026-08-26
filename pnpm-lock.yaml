@@ -15,8 +15,8 @@ importers:
         specifier: ^7.22.0
         version: 7.26.2
       '@sanity/icons':
-        specifier: ^3.7.4
-        version: 3.8.0(react@19.2.8)
+        specifier: ^5.0.0
+        version: 5.2.1(react@19.2.8)
       '@sanity/image-url':
         specifier: ^2.1.1
         version: 2.1.1
@@ -52,7 +52,7 @@ importers:
         version: 15.5.23(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       next-sanity:
         specifier: ^9.12.3
-        version: 9.12.3(mxxtzbw4ahlvq7jp2jqbep4nru)
+        version: 9.12.3(dxdbv5u2tzvqqa6vp6gfvim24u)
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -2143,6 +2143,12 @@ packages:
     peerDependencies:
       react: ^18.3 || ^19.0.0-0
 
+  '@sanity/icons@5.2.1':
+    resolution: {integrity: sha512-P5gY1HRungh4RgCcypdIpu/SKoTwRBTttpbHntZjdW1MO3MK6xEOs+pbAzSARyhh22OcN9PkBBEYk2FL34BvfQ==}
+    engines: {node: '>=20.19 <22 || >=22.12'}
+    peerDependencies:
+      react: ^18 || ^19
+
   '@sanity/id-utils@1.0.0':
     resolution: {integrity: sha512-2sb7tbdMDuUuVyocJPKG0gZBiOML/ovCe+mJiLrv1j69ODOfa2LfUjDVR+dRw/A/+XuxoJSSP8ebG7NiwTOgIA==}
     engines: {node: '>=18'}
@@ -4145,6 +4151,7 @@ packages:
   eslint@9.39.5:
     resolution: {integrity: sha512-DgZS62aPLXKlnxILS/AYCoRvHaZeXceIzlXPkkGGzJWSow1aEk0lbTlxUSlyjC8jcaKxAdOnTDz+o1JFSBsyjw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -9583,6 +9590,10 @@ snapshots:
     dependencies:
       react: 19.2.8
 
+  '@sanity/icons@5.2.1(react@19.2.8)':
+    dependencies:
+      react: 19.2.8
+
   '@sanity/id-utils@1.0.0':
     dependencies:
       '@sanity/uuid': 3.0.2
@@ -9733,6 +9744,14 @@ snapshots:
       '@sanity/uuid': 3.0.2
     optionalDependencies:
       '@sanity/icons': 3.8.0(react@19.2.8)
+      sanity: 3.99.0(@emotion/is-prop-valid@1.4.0)(@noble/hashes@2.2.0)(@types/node@24.13.3)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(immer@10.2.0)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.1(css-to-react-native@3.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(terser@5.49.2)(typescript@5.9.3)(yaml@2.9.0)
+
+  '@sanity/preview-url-secret@2.1.16(@sanity/client@7.26.2)(@sanity/icons@5.2.1(react@19.2.8))(sanity@3.99.0(@emotion/is-prop-valid@1.4.0)(@noble/hashes@2.2.0)(@types/node@24.13.3)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(immer@10.2.0)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.1(css-to-react-native@3.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(terser@5.49.2)(typescript@5.9.3)(yaml@2.9.0))':
+    dependencies:
+      '@sanity/client': 7.26.2
+      '@sanity/uuid': 3.0.2
+    optionalDependencies:
+      '@sanity/icons': 5.2.1(react@19.2.8)
       sanity: 3.99.0(@emotion/is-prop-valid@1.4.0)(@noble/hashes@2.2.0)(@types/node@24.13.3)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(immer@10.2.0)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.1(css-to-react-native@3.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(terser@5.49.2)(typescript@5.9.3)(yaml@2.9.0)
 
   '@sanity/runtime-cli@9.2.0(@types/node@24.13.3)(lightningcss@1.32.0)(terser@5.49.2)(typescript@5.9.3)(yaml@2.9.0)':
@@ -13307,13 +13326,13 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-sanity@9.12.3(mxxtzbw4ahlvq7jp2jqbep4nru):
+  next-sanity@9.12.3(dxdbv5u2tzvqqa6vp6gfvim24u):
     dependencies:
       '@portabletext/react': 3.2.4(react@19.2.8)
       '@sanity/client': 7.26.2
       '@sanity/next-loader': 1.7.5(@sanity/types@3.99.0(@types/react@19.2.18))(next@15.5.23(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
       '@sanity/preview-kit': 6.2.0(@sanity/types@3.99.0(@types/react@19.2.18))(react@19.2.8)
-      '@sanity/preview-url-secret': 2.1.16(@sanity/client@7.26.2)(@sanity/icons@3.8.0(react@19.2.8))(sanity@3.99.0(@emotion/is-prop-valid@1.4.0)(@noble/hashes@2.2.0)(@types/node@24.13.3)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(immer@10.2.0)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.1(css-to-react-native@3.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(terser@5.49.2)(typescript@5.9.3)(yaml@2.9.0))
+      '@sanity/preview-url-secret': 2.1.16(@sanity/client@7.26.2)(@sanity/icons@5.2.1(react@19.2.8))(sanity@3.99.0(@emotion/is-prop-valid@1.4.0)(@noble/hashes@2.2.0)(@types/node@24.13.3)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(immer@10.2.0)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.1(css-to-react-native@3.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(terser@5.49.2)(typescript@5.9.3)(yaml@2.9.0))
       '@sanity/ui': 2.16.22(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.8(react@19.2.8))(react-is@18.3.1)(react@19.2.8)(styled-components@6.5.1(css-to-react-native@3.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
       '@sanity/visual-editing': 2.15.4(@emotion/is-prop-valid@1.4.0)(@sanity/client@7.26.2)(@sanity/types@3.99.0(@types/react@19.2.18))(next@15.5.23(@babel/core@7.29.0)(@opentelemetry/api@1.9.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react-is@18.3.1)(react@19.2.8)(sanity@3.99.0(@emotion/is-prop-valid@1.4.0)(@noble/hashes@2.2.0)(@types/node@24.13.3)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(immer@10.2.0)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.1(css-to-react-native@3.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(terser@5.49.2)(typescript@5.9.3)(yaml@2.9.0))(styled-components@6.5.1(css-to-react-native@3.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(typescript@5.9.3)
       groq: 3.99.0
