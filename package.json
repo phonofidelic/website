@@ -18,7 +18,7 @@
     "@sanity/icons": "^3.7.4",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^3.99.0",
-    "@sentry/nextjs": "^8.55.2",
+    "@sentry/nextjs": "^10.0.0",
     "@vercel/analytics": "^2.0.1",
     "flags": "^4.0.0",
     "@vercel/speed-insights": "^2.0.0",
