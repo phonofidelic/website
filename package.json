@@ -27,7 +27,7 @@
     "dayjs": "^1.11.20",
     "import-in-the-middle": "^3.3.2",
     "next": "15.5.23",
-    "next-sanity": "^9.12.3",
+    "next-sanity": "^13.0.0",
     "react": "19.2.8",
     "react-cookie": "^8.1.2",
     "react-dom": "19.2.8",
