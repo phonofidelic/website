@@ -8,7 +8,7 @@
     "prebuild": "pnpm sanity:typegen",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "pull": "vercel env pull .env.local",
     "sanity:typegen": "pnpx sanity@latest schema extract --path=src/sanity/schema.json --force && pnpx sanity@latest typegen generate --config-path=src/sanity/sanity-typegen.json"
   },
@@ -20,11 +20,11 @@
     "@sanity/vision": "^3.99.0",
     "@sentry/nextjs": "^8.55.2",
     "@vercel/analytics": "^2.0.1",
-    "flags": "^4.0.0",
     "@vercel/speed-insights": "^2.0.0",
     "@vercel/toolbar": "^0.2.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.20",
+    "flags": "^4.0.0",
     "import-in-the-middle": "^3.3.2",
     "next": "15.5.23",
     "next-sanity": "^9.12.3",
@@ -38,12 +38,13 @@
     "styled-components": "^6.4.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^24.0.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.4",
     "eslint-config-next": "15.5.23",
-    "@tailwindcss/postcss": "^4.3.3",
     "postcss": "^8.5.14",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3"
