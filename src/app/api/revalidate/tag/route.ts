@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     }
 
     body.tags.forEach((tag) => {
-      revalidateTag(tag)
+      revalidateTag(tag, { expire: 0 })
     })
 
     return NextResponse.json({ body })
