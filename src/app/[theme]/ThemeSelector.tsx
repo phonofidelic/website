@@ -95,6 +95,8 @@ export function ThemeSelector() {
   )
 }
 
+const subscribeNoop = () => () => {}
+
 export function ClientOnly({
   fallback = null,
   children,
@@ -102,11 +104,11 @@ export function ClientOnly({
   fallback?: React.ReactNode
   children: React.ReactNode
 }) {
-  const [hasMounted, setHasMounted] = React.useState(false)
-
-  useEffect(() => {
-    setHasMounted(true)
-  }, [])
+  const hasMounted = React.useSyncExternalStore(
+    subscribeNoop,
+    () => true,
+    () => false,
+  )
 
   if (!hasMounted) {
     return fallback

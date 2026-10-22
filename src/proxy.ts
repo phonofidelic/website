@@ -6,7 +6,7 @@ import {
   THEME_COOKIE_NAME,
 } from './constants'
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const systemTheme = request.headers.get('sec-ch-prefers-color-scheme')
   const storedTheme = request.cookies.get(THEME_COOKIE_NAME)?.value
   const ajsAnonymousId =

@@ -5,6 +5,7 @@ import { getImageDimensions } from '@sanity/asset-utils'
 import { urlFor } from '@/sanity/lib/image'
 import { FEATURED_PROJECTS_QUERY_RESULT, PAGE_QUERY_RESULT } from '@/sanity/types'
 import { VscCode } from 'react-icons/vsc'
+import type { IconType } from 'react-icons'
 import { TechnologyList } from './TechnologyList'
 import React from 'react'
 
@@ -287,6 +288,21 @@ function ProjectLink({ title, href }: { title: string; href: string }) {
   )
 }
 
+const PillWrapper = ({
+  link,
+  children,
+}: {
+  link: string | null
+  children: React.ReactNode
+}) =>
+  link ? (
+    <a className="hover:underline" href={link} target="_blank">
+      {children}
+    </a>
+  ) : (
+    <span>{children}</span>
+  )
+
 async function Pill({
   title,
   icon,
@@ -296,27 +312,12 @@ async function Pill({
   icon: React.ReactNode
   link: string | null
 }) {
-  const Wrapper = ({
-    link,
-    children,
-  }: {
-    link: string | null
-    children: React.ReactNode
-  }) =>
-    link ? (
-      <a className="hover:underline" href={link} target="_blank">
-        {children}
-      </a>
-    ) : (
-      <span>{children}</span>
-    )
-
   return (
-    <Wrapper link={link}>
+    <PillWrapper link={link}>
       <div className="text-nowrap flex gap-1 items-center text-xs border border-zinc-800 dark:border-white dark:bg-zinc-900 rounded-s-full rounded-e-full w-fit p-1 pr-2">
         {icon} {title}
       </div>
-    </Wrapper>
+    </PillWrapper>
   )
 }
 
@@ -338,22 +339,24 @@ async function TechnologyIcon({
     return <VscCode />
   }
 
+  let Icon: IconType | undefined
   try {
     // @ts-expect-error Not getting the correct type for imports
     const iconPackage: { [key: string]: IconType | undefined } =
       await getIconImport(importPath)
 
-    const Icon = iconPackage[componentName]
+    Icon = iconPackage[componentName]
     if (!Icon) {
       throw new Error(
         `Failed to import icon from react-icons/${importPath}/${componentName}`,
       )
     }
-    return <Icon />
   } catch (error) {
     console.error(error)
     return <VscCode />
   }
+
+  return <Icon />
 }
 
 const getIconImport = (moduleId: string) => {
