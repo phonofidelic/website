@@ -6,7 +6,7 @@
     "predev": "pnpm sanity:typegen",
     "dev": "SENTRY_SUPPRESS_TURBOPACK_WARNING=1 next dev --turbopack",
     "prebuild": "pnpm sanity:typegen",
-    "build": "next build --webpack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "pull": "vercel env pull .env.local",
