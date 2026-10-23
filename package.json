@@ -45,7 +45,7 @@
     "oxlint": "^1.89.0",
     "postcss": "^8.5.14",
     "tailwindcss": "^4.3.3",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.0"
   },
   "engines": {
     "node": "24.x"
