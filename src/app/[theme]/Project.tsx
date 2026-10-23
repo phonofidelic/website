@@ -61,7 +61,7 @@ export function ProjectPreview({
                     link: ({ children, value }) => (
                       <a
                         className="hover:underline"
-                        href={value.href}
+                        href={value?.href}
                         target="_blank"
                         rel="noreferrer noopener"
                       >
@@ -154,7 +154,7 @@ export function ProjectPreview({
                 link: ({ children, value }) => (
                   <a
                     className="hover:underline"
-                    href={value.href}
+                    href={value?.href}
                     target="_blank"
                     rel="noreferrer noopener"
                   >
