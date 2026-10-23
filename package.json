@@ -8,7 +8,7 @@
     "prebuild": "pnpm sanity:typegen",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "oxlint .",
     "pull": "vercel env pull .env.local",
     "sanity:typegen": "pnpx sanity@latest schema extract --path=src/sanity/schema.json --force && pnpx sanity@latest typegen generate --config-path=src/sanity/sanity-typegen.json"
   },
@@ -42,8 +42,7 @@
     "@types/node": "^24.0.0",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "eslint": "10.13.0",
-    "eslint-config-next": "16.4.2",
+    "oxlint": "^1.89.0",
     "postcss": "^8.5.14",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3"

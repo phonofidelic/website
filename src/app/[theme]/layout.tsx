@@ -80,6 +80,8 @@ export default async function ThemeLayout({
             </div>
             <div>
               <p className="text-xs">
+                {/* Async Server Component renders once per request, so Date is safe here */}
+                {/* oxlint-disable-next-line react/purity */}
                 &copy; {new Date().getFullYear()} Christopher Clemons
               </p>
             </div>
