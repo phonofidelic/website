@@ -50,7 +50,7 @@
   "engines": {
     "node": "24.x"
   },
-  "packageManager": "pnpm@12.15.0",
+  "packageManager": "pnpm@12.16.1",
   "pnpm": {
     "pnpm": {
       "peerDependencyRules": {
