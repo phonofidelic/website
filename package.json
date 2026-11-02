@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "^24.0.0",
+    "@types/node": "^26.0.0",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "oxlint": "^1.89.0",
@@ -48,7 +48,7 @@
     "typescript": "^7.0.0"
   },
   "engines": {
-    "node": "24.x"
+    "node": "26.x"
   },
   "packageManager": "pnpm@12.16.1",
   "pnpm": {
