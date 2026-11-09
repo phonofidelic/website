@@ -26,7 +26,7 @@
     "dayjs": "^1.11.20",
     "flags": "^4.0.0",
     "import-in-the-middle": "^3.3.2",
-    "next": "16.4.3",
+    "next": "16.4.5",
     "next-sanity": "^13.0.0",
     "react": "19.3.1",
     "react-cookie": "^8.1.2",
@@ -50,7 +50,7 @@
   "engines": {
     "node": "24.x"
   },
-  "packageManager": "pnpm@12.16.1",
+  "packageManager": "pnpm@12.18.0",
   "pnpm": {
     "pnpm": {
       "peerDependencyRules": {
